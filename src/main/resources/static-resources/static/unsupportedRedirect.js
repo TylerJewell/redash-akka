@@ -1,0 +1,1 @@
+(navigator.appVersion.match("Trident/")||"ActiveXObject"in window)&&(window.location.href="/static/unsupported.html");

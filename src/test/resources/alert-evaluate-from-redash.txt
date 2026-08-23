@@ -1,0 +1,91 @@
+# Every row the original printed, from redash-port/probes/probe_02.py.
+# family|selector|value_kind|op|threshold|state
+value-kind|absent|whole-number|>|5|triggered
+value-kind|absent|whole-number|>=|5|triggered
+value-kind|absent|whole-number|<|5|ok
+value-kind|absent|whole-number|<=|5|ok
+value-kind|absent|whole-number|==|5|ok
+value-kind|absent|whole-number|!=|5|triggered
+value-kind|absent|whole-number|greater than|5|triggered
+value-kind|absent|whole-number|less than|5|ok
+value-kind|absent|whole-number|equals|5|ok
+value-kind|absent|float|>|5|triggered
+value-kind|absent|float|>=|5|triggered
+value-kind|absent|float|<|5|ok
+value-kind|absent|float|<=|5|ok
+value-kind|absent|float|==|5|ok
+value-kind|absent|float|!=|5|triggered
+value-kind|absent|float|greater than|5|triggered
+value-kind|absent|float|less than|5|ok
+value-kind|absent|float|equals|5|ok
+value-kind|absent|numeric-string|>|5|triggered
+value-kind|absent|numeric-string|>=|5|triggered
+value-kind|absent|numeric-string|<|5|ok
+value-kind|absent|numeric-string|<=|5|ok
+value-kind|absent|numeric-string|==|5|ok
+value-kind|absent|numeric-string|!=|5|triggered
+value-kind|absent|numeric-string|greater than|5|triggered
+value-kind|absent|numeric-string|less than|5|ok
+value-kind|absent|numeric-string|equals|5|ok
+value-kind|absent|non-numeric-string|>|5|raises:TypeError
+value-kind|absent|non-numeric-string|>=|5|raises:TypeError
+value-kind|absent|non-numeric-string|<|5|raises:TypeError
+value-kind|absent|non-numeric-string|<=|5|raises:TypeError
+value-kind|absent|non-numeric-string|==|5|ok
+value-kind|absent|non-numeric-string|!=|5|triggered
+value-kind|absent|non-numeric-string|greater than|5|raises:TypeError
+value-kind|absent|non-numeric-string|less than|5|raises:TypeError
+value-kind|absent|non-numeric-string|equals|5|ok
+value-kind|absent|boolean-true|>|5|raises:TypeError
+value-kind|absent|boolean-true|>=|5|raises:TypeError
+value-kind|absent|boolean-true|<|5|raises:TypeError
+value-kind|absent|boolean-true|<=|5|raises:TypeError
+value-kind|absent|boolean-true|==|5|ok
+value-kind|absent|boolean-true|!=|5|triggered
+value-kind|absent|boolean-true|greater than|5|raises:TypeError
+value-kind|absent|boolean-true|less than|5|raises:TypeError
+value-kind|absent|boolean-true|equals|5|ok
+value-kind|absent|boolean-false|>|5|raises:TypeError
+value-kind|absent|boolean-false|>=|5|raises:TypeError
+value-kind|absent|boolean-false|<|5|raises:TypeError
+value-kind|absent|boolean-false|<=|5|raises:TypeError
+value-kind|absent|boolean-false|==|5|ok
+value-kind|absent|boolean-false|!=|5|triggered
+value-kind|absent|boolean-false|greater than|5|raises:TypeError
+value-kind|absent|boolean-false|less than|5|raises:TypeError
+value-kind|absent|boolean-false|equals|5|ok
+value-kind|absent|null|>|5|unknown
+value-kind|absent|null|>=|5|unknown
+value-kind|absent|null|<|5|unknown
+value-kind|absent|null|<=|5|unknown
+value-kind|absent|null|==|5|unknown
+value-kind|absent|null|!=|5|unknown
+value-kind|absent|null|greater than|5|unknown
+value-kind|absent|null|less than|5|unknown
+value-kind|absent|null|equals|5|unknown
+string-threshold|absent|whole-number|==|alpha|unknown
+string-threshold|absent|float|==|alpha|unknown
+string-threshold|absent|numeric-string|==|alpha|unknown
+string-threshold|absent|non-numeric-string|==|alpha|triggered
+string-threshold|absent|boolean-true|==|alpha|ok
+string-threshold|absent|boolean-false|==|alpha|ok
+string-threshold|absent|null|==|alpha|unknown
+both-strings|absent|non-numeric-string|>|beta|unknown
+both-strings|absent|non-numeric-string|>=|beta|unknown
+both-strings|absent|non-numeric-string|<|beta|triggered
+both-strings|absent|non-numeric-string|<=|beta|triggered
+both-strings|absent|non-numeric-string|==|beta|ok
+both-strings|absent|non-numeric-string|!=|beta|triggered
+both-strings|absent|non-numeric-string|greater than|beta|unknown
+both-strings|absent|non-numeric-string|less than|beta|triggered
+both-strings|absent|non-numeric-string|equals|beta|ok
+selector|absent|rows=3,9,1|>|5|ok
+selector|first|rows=3,9,1|>|5|ok
+selector|min|rows=3,9,1|>|5|ok
+selector|max|rows=3,9,1|>|5|triggered
+selector|min|non-numeric-rows|>|5|unknown
+selector|max|non-numeric-rows|>|5|unknown
+shape|absent|no-result-row|>|5|unknown
+shape|absent|empty-rows|>|5|unknown
+shape|absent|missing-column|>|5|unknown
+shape|absent|no-result-at-all|>|5|unknown

@@ -1,0 +1,20 @@
+# Every row the original printed, from redash-port/probes/probe_06.py.
+# prior_state|result_reaches|muted|state_after|stamped|notified
+unknown|unknown|false|unknown|false|0
+unknown|unknown|true|unknown|false|0
+unknown|ok|false|ok|true|0
+unknown|ok|true|ok|true|0
+unknown|triggered|false|triggered|true|1
+unknown|triggered|true|triggered|true|0
+ok|unknown|false|unknown|true|1
+ok|unknown|true|unknown|true|0
+ok|ok|false|ok|false|0
+ok|ok|true|ok|false|0
+ok|triggered|false|triggered|true|1
+ok|triggered|true|triggered|true|0
+triggered|unknown|false|unknown|true|1
+triggered|unknown|true|unknown|true|0
+triggered|ok|false|ok|true|1
+triggered|ok|true|ok|true|0
+triggered|triggered|false|triggered|false|0
+triggered|triggered|true|triggered|false|0

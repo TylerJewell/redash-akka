@@ -1,0 +1,105 @@
+{
+  "user": {
+    "profile_image_url": "",
+    "id": 1,
+    "name": "Port",
+    "email": "port@example.com",
+    "groups": [
+      1,
+      2
+    ],
+    "permissions": [
+      "admin",
+      "super_admin",
+      "create_dashboard",
+      "create_query",
+      "edit_dashboard",
+      "edit_query",
+      "view_query",
+      "view_source",
+      "execute_query",
+      "list_users",
+      "schedule_query",
+      "list_dashboards",
+      "list_alerts",
+      "list_data_sources"
+    ]
+  },
+  "messages": [],
+  "org_slug": "default",
+  "client_config": {
+    "newVersionAvailable": false,
+    "version": "26.08.0-dev",
+    "showBeaconConsentMessage": true,
+    "allowScriptsInUserInput": false,
+    "showPermissionsControl": false,
+    "hidePlotlyModeBar": false,
+    "disablePublicUrls": false,
+    "multiByteSearchEnabled": false,
+    "allowCustomJSVisualizations": true,
+    "autoPublishNamedQueries": true,
+    "extendedAlertOptions": false,
+    "mailSettingsMissing": true,
+    "dashboardRefreshIntervals": [
+      60,
+      300,
+      600,
+      1800,
+      3600,
+      43200,
+      86400
+    ],
+    "queryRefreshIntervals": [
+      60,
+      300,
+      600,
+      900,
+      1800,
+      3600,
+      7200,
+      10800,
+      14400,
+      18000,
+      21600,
+      25200,
+      28800,
+      32400,
+      36000,
+      39600,
+      43200,
+      86400,
+      604800,
+      1209600,
+      2592000
+    ],
+    "googleLoginEnabled": false,
+    "ldapLoginEnabled": false,
+    "pageSize": 20,
+    "pageSizeOptions": [
+      5,
+      10,
+      20,
+      50,
+      100
+    ],
+    "tableCellMaxJSONSize": 50000,
+    "basePath": "http://localhost:5001/",
+    "dateFormat": "DD/MM/YY",
+    "dateFormatList": [
+      "YYYY-MM-DD",
+      "MM/DD/YY",
+      "DD/MM/YY"
+    ],
+    "timeFormatList": [
+      "HH:mm",
+      "HH:mm:ss",
+      "HH:mm:ss.SSS"
+    ],
+    "dateTimeFormat": "DD/MM/YY HH:mm",
+    "integerFormat": "0,0",
+    "floatFormat": "0,0.00",
+    "thousandsSeparator": ",",
+    "decimalSeparator": ".",
+    "nullValue": "null"
+  }
+}

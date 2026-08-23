@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.akka</groupId>
+        <artifactId>akka-javasdk-parent</artifactId>
+        <version>3.6.3</version>
+    </parent>
+    <groupId>io.akka</groupId>
+    <artifactId>redash-akka</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>redash-akka</name>
+
+    <dependencies>
+        <!-- The one query runner this port ships. redash has more than forty; a runner is
+             a driver for somebody else's database and not part of deciding when to run a
+             query, so the port has the one its benchmark and redash's own test factory
+             both default to. -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.4</version>
+            <exclusions>
+                <!-- Annotations only, and a newer version than the runtime supplies. The
+                     runtime's copy wins on the platform classpath either way. -->
+                <exclusion>
+                    <groupId>org.checkerframework</groupId>
+                    <artifactId>checker-qual</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+</project>
