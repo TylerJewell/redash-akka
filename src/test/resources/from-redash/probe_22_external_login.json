@@ -1,0 +1,99 @@
+{
+  "create_and_login_user": {
+    "disabled-address": {
+      "after": {
+        "email": "disabled-person@example.com",
+        "group_ids": [
+          2
+        ],
+        "is_disabled": true,
+        "is_invitation_pending": false,
+        "name": "Disabled Person"
+      },
+      "created": false
+    },
+    "existing-address-new-name": {
+      "after": {
+        "email": "new-person@example.com",
+        "group_ids": [
+          2
+        ],
+        "is_disabled": false,
+        "is_invitation_pending": false,
+        "name": "Renamed Person"
+      },
+      "created": true
+    },
+    "invited-address": {
+      "after": {
+        "email": "pending-person@example.com",
+        "group_ids": [
+          2
+        ],
+        "is_disabled": false,
+        "is_invitation_pending": false,
+        "name": "Pending Person"
+      },
+      "created": true
+    },
+    "pending-before": {
+      "email": "pending-person@example.com",
+      "group_ids": [
+        2
+      ],
+      "is_disabled": false,
+      "is_invitation_pending": true,
+      "name": "Pending Person"
+    },
+    "unknown-address": {
+      "after": {
+        "email": "new-person@example.com",
+        "group_ids": [
+          2
+        ],
+        "is_disabled": false,
+        "is_invitation_pending": false,
+        "name": "New Person"
+      },
+      "created": true
+    }
+  },
+  "remote_user": {
+    "after": {
+      "email": "remote-person@example.com",
+      "group_ids": [
+        2
+      ],
+      "is_disabled": false,
+      "is_invitation_pending": false,
+      "name": "remote-person@example.com"
+    },
+    "disabled-person": {
+      "location": "/",
+      "status": 302
+    },
+    "header-is-the-word-null": {
+      "location": "/?next=",
+      "status": 302
+    },
+    "switched-off": {
+      "created": false,
+      "location": "/?next=",
+      "status": 302
+    },
+    "with-the-header": {
+      "location": "/",
+      "status": 302
+    },
+    "without-the-header": {
+      "location": "/?next=",
+      "status": 302
+    }
+  },
+  "verify_profile": {
+    "domain-listed": true,
+    "domain-not-listed": false,
+    "domain-not-listed-but-known-address": true,
+    "public-organisation": true
+  }
+}

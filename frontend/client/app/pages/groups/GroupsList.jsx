@@ -7,7 +7,7 @@ import navigateTo from "@/components/ApplicationArea/navigateTo";
 import Paginator from "@/components/Paginator";
 
 import { wrap as itemsList, ControllerType } from "@/components/items-list/ItemsList";
-import { ResourceItemsSource } from "@/components/items-list/classes/ItemsSource";
+import { StreamItemsSource } from "@/components/items-list/classes/StreamItemsSource";
 import { StateStorage } from "@/components/items-list/classes/StateStorage";
 
 import LoadingState from "@/components/items-list/components/LoadingState";
@@ -139,14 +139,9 @@ const GroupsListPage = wrapSettingsTab(
   itemsList(
     GroupsList,
     () =>
-      new ResourceItemsSource({
-        isPlainList: true,
-        getRequest() {
-          return {};
-        },
-        getResource() {
-          return Group.query.bind(Group);
-        },
+      new StreamItemsSource({
+        getPath: () => "api/streams/groups",
+        searchFields: ["name"],
       }),
     () => new StateStorage({ orderByField: "name", itemsPerPage: 10 })
   )

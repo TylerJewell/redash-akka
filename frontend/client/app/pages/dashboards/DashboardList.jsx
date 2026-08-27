@@ -9,7 +9,7 @@ import Paginator from "@/components/Paginator";
 import DynamicComponent from "@/components/DynamicComponent";
 import { DashboardTagsControl } from "@/components/tags-control/TagsControl";
 import { wrap as itemsList, ControllerType } from "@/components/items-list/ItemsList";
-import { ResourceItemsSource } from "@/components/items-list/classes/ItemsSource";
+import { StreamItemsSource } from "@/components/items-list/classes/StreamItemsSource";
 import { UrlStateStorage } from "@/components/items-list/classes/StateStorage";
 import * as Sidebar from "@/components/items-list/components/Sidebar";
 import ItemsTable, { Columns } from "@/components/items-list/components/ItemsTable";
@@ -168,14 +168,9 @@ DashboardList.propTypes = {
 const DashboardListPage = itemsList(
   DashboardList,
   () =>
-    new ResourceItemsSource({
-      getResource({ params: { currentPage } }) {
-        return {
-          all: Dashboard.query.bind(Dashboard),
-          my: Dashboard.myDashboards.bind(Dashboard),
-          favorites: Dashboard.favorites.bind(Dashboard),
-        }[currentPage];
-      },
+    new StreamItemsSource({
+      getPath: ({ params: { currentPage } }) => `api/streams/dashboards?set=${currentPage}`,
+      searchFields: ["name"],
       getItemProcessor() {
         return (item) => new Dashboard(item);
       },

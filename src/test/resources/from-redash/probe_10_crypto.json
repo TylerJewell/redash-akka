@@ -1,0 +1,70 @@
+{
+  "password": {
+    "context_schemes": [
+      "sha512_crypt",
+      "sha256_crypt"
+    ],
+    "default_scheme": "sha512_crypt",
+    "example": "$6$rounds=656000$I.jdbpjcGLjMBwWN$oGm0VNNLFwJAenrMLAAhy/FasW1oIWnUibDQZjwIRZMiGUsmeO57DzAYxsNkelpBPo7jtjfWE1.OSWZrIYsZp/",
+    "prefix": "6",
+    "rounds_field": "rounds=656000",
+    "verifies_own": true,
+    "rejects_other": false,
+    "cross_scheme": {
+      "sha512_crypt": true,
+      "sha256_crypt": true
+    }
+  },
+  "token": {
+    "example": "IjQyIg.ao8P2w.AOAUTD8dLephhsJPStTBoteoSos",
+    "segments": 3,
+    "payload_segment": "IjQyIg",
+    "timestamp_segment": "ao8P2w",
+    "signature_segment": "AOAUTD8dLephhsJPStTBoteoSos",
+    "salt": "itsdangerous",
+    "digest_method": "None",
+    "key_derivation": null,
+    "ages": {
+      "0": {
+        "loads": "42"
+      },
+      "1": {
+        "loads": "42"
+      },
+      "3600": {
+        "loads": "42"
+      },
+      "tampered": {
+        "error": "BadSignature"
+      }
+    }
+  },
+  "sign": {
+    "none_key": null,
+    "example": "050949c2210165de381a7d0ae5b8344a525a1c06",
+    "path_matters": "5adef43dd9c39c93004ea206ddf3d35a60fd7784",
+    "expires_matters": "7ff29d3e608a17633973a404eea10111347e9757",
+    "expires_is_str_of_float": "aff6b43ec33773bd66528eaa9d10f30c4856063b"
+  },
+  "identity": {
+    "digest": "c929f0e4aa1dc767c46c8652ffd72979",
+    "get_id_shape": "{id}-{md5(email + ',' + password_hash)}"
+  },
+  "generate_token": {
+    "length": 40,
+    "observed_alphabet": "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+    "declared_alphabet": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+    "all_distinct": true
+  },
+  "slugify": {
+    "Hello World": "hello-world",
+    "  leading and trailing  ": "-leading-and-trailing-",
+    "UPPER": "upper",
+    "a/b\\c": "a-b-c",
+    "unicode-\u00e9\u00e8": "unicode--",
+    "already-slugged_1": "already-slugged_1",
+    "punctuation!?.,": "punctuation-",
+    "": "",
+    "---": "---"
+  }
+}

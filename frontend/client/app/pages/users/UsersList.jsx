@@ -12,7 +12,7 @@ import { UserPreviewCard } from "@/components/PreviewCard";
 import InputWithCopy from "@/components/InputWithCopy";
 
 import { wrap as itemsList, ControllerType } from "@/components/items-list/ItemsList";
-import { ResourceItemsSource } from "@/components/items-list/classes/ItemsSource";
+import { StreamItemsSource } from "@/components/items-list/classes/StreamItemsSource";
 import { UrlStateStorage } from "@/components/items-list/classes/StateStorage";
 
 import LoadingState from "@/components/items-list/components/LoadingState";
@@ -261,25 +261,9 @@ const UsersListPage = wrapSettingsTab(
   itemsList(
     UsersList,
     () =>
-      new ResourceItemsSource({
-        getRequest(request, { params: { currentPage } }) {
-          switch (currentPage) {
-            case "active":
-              request.pending = false;
-              break;
-            case "pending":
-              request.pending = true;
-              break;
-            case "disabled":
-              request.disabled = true;
-              break;
-            // no default
-          }
-          return request;
-        },
-        getResource() {
-          return User.query.bind(User);
-        },
+      new StreamItemsSource({
+        getPath: ({ params: { currentPage } }) => `api/streams/users?set=${currentPage}`,
+        searchFields: ["name", "email"],
       }),
     () => new UrlStateStorage({ orderByField: "created_at", orderByReverse: true })
   )

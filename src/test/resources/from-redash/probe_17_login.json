@@ -1,0 +1,129 @@
+{
+  "next": {
+    "plain-path": {
+      "status": 302,
+      "location": "/queries/5"
+    },
+    "path-with-query": {
+      "status": 302,
+      "location": "/queries?page=2&x=1"
+    },
+    "path-with-fragment": {
+      "status": 302,
+      "location": "/queries#top"
+    },
+    "absolute-same-host": {
+      "status": 302,
+      "location": "/dashboards"
+    },
+    "absolute-other-host": {
+      "status": 302,
+      "location": "/queries/9"
+    },
+    "scheme-relative": {
+      "status": 302,
+      "location": "/queries"
+    },
+    "three-slashes": {
+      "status": 302,
+      "location": "./"
+    },
+    "javascript-scheme": {
+      "status": 302,
+      "location": "./"
+    },
+    "data-scheme": {
+      "status": 302,
+      "location": "./"
+    },
+    "mailto-scheme": {
+      "status": 302,
+      "location": "./"
+    },
+    "scheme-without-host": {
+      "status": 302,
+      "location": "./"
+    },
+    "leading-control-character": {
+      "status": 302,
+      "location": "/queries"
+    },
+    "empty": {
+      "status": 302,
+      "location": ""
+    },
+    "absent": {
+      "status": 302,
+      "location": "/"
+    }
+  },
+  "refusals": {
+    "wrong-password": {
+      "status": 200,
+      "flash": [
+        "Wrong email or password."
+      ],
+      "shows_password_form": true,
+      "begins": "<!DOCTYPE html>\n<html class=\"no-js\">\n<head>\n  <title>Login to Redash</title>\n  <meta name=\"viewport\" content=\"width=devi"
+    },
+    "unknown-address": {
+      "status": 200,
+      "flash": [
+        "Wrong email or password."
+      ],
+      "shows_password_form": true,
+      "begins": "<!DOCTYPE html>\n<html class=\"no-js\">\n<head>\n  <title>Login to Redash</title>\n  <meta name=\"viewport\" content=\"width=devi"
+    },
+    "disabled-user": {
+      "status": 200,
+      "flash": [
+        "Wrong email or password."
+      ],
+      "shows_password_form": true,
+      "begins": "<!DOCTYPE html>\n<html class=\"no-js\">\n<head>\n  <title>Login to Redash</title>\n  <meta name=\"viewport\" content=\"width=devi"
+    },
+    "password-login-disabled-page": {
+      "status": 200,
+      "flash": [],
+      "shows_password_form": false,
+      "begins": "<!DOCTYPE html>\n<html class=\"no-js\">\n<head>\n  <title>Login to Redash</title>\n  <meta name=\"viewport\" content=\"width=devi"
+    },
+    "password-login-disabled-post": {
+      "status": 200,
+      "flash": [
+        "Password login is not enabled for your organization."
+      ],
+      "shows_password_form": false,
+      "begins": "<!DOCTYPE html>\n<html class=\"no-js\">\n<head>\n  <title>Login to Redash</title>\n  <meta name=\"viewport\" content=\"width=devi"
+    },
+    "password-login-restored-page": {
+      "status": 200,
+      "flash": [],
+      "shows_password_form": true,
+      "begins": "<!DOCTYPE html>\n<html class=\"no-js\">\n<head>\n  <title>Login to Redash</title>\n  <meta name=\"viewport\" content=\"width=devi"
+    }
+  },
+  "csrf_guard": {
+    "unauthenticated-form-no-token": {
+      "status": 400,
+      "begins": "<!doctype html>\n<html lang=en>\n<title>400 Bad Request</title>\n<h1>Bad Request</h1>\n<p>The CSRF token is missing.</p>\n"
+    },
+    "unauthenticated-form-bad-token": {
+      "status": 400,
+      "begins": "<!doctype html>\n<html lang=en>\n<title>400 Bad Request</title>\n<h1>Bad Request</h1>\n<p>The CSRF token is invalid.</p>\n"
+    },
+    "unauthenticated-token-in-header": {
+      "status": 302,
+      "location": "/",
+      "begins": "<!doctype html>\n<html lang=en>\n<title>Redirecting...</title>\n<h1>Redirecting...</h1>\n<p>You should be redirected automatically to the target URL: <a href=\"/\">/</a>. If not, click the link.\n"
+    },
+    "unauthenticated-api-no-token": {
+      "status": 400,
+      "begins": "{\"message\": \"The CSRF token is missing.\"}"
+    },
+    "api-key-no-token": {
+      "status": 500,
+      "begins": "{\"message\": \"Internal Server Error\"}"
+    }
+  }
+}

@@ -1,0 +1,288 @@
+{
+  "parse_boolean": {
+    "'yes'": true,
+    "'true'": true,
+    "'on'": true,
+    "'1'": true,
+    "'no'": false,
+    "'false'": false,
+    "'off'": false,
+    "'0'": false,
+    "'none'": false,
+    "'TRUE'": true,
+    "' True '": true,
+    "'maybe'": "ValueError: Invalid boolean value 'maybe'",
+    "''": "ValueError: Invalid boolean value ''",
+    "'2'": "ValueError: Invalid boolean value '2'"
+  },
+  "array_from_string": {
+    "'a,b,c'": [
+      "a",
+      "b",
+      "c"
+    ],
+    "''": [],
+    "'a,,b'": [
+      "a",
+      "b"
+    ],
+    "',a'": [
+      "a"
+    ],
+    "'a,'": [
+      "a"
+    ],
+    "' a , b '": [
+      " a ",
+      " b "
+    ],
+    "'a'": [
+      "a"
+    ]
+  },
+  "set_from_string": {
+    "'a,b,a'": [
+      "a",
+      "b"
+    ],
+    "''": []
+  },
+  "org_settings_defaults": {
+    "beacon_consent": null,
+    "auth_password_login_enabled": true,
+    "auth_saml_enabled": false,
+    "auth_saml_type": "",
+    "auth_saml_entity_id": "",
+    "auth_saml_metadata_url": "",
+    "auth_saml_nameid_format": "",
+    "auth_saml_sso_url": "",
+    "auth_saml_x509_cert": "",
+    "auth_saml_sp_settings": "",
+    "date_format": "DD/MM/YY",
+    "time_format": "HH:mm",
+    "integer_format": "0,0",
+    "float_format": "0,0.00",
+    "thousands_separator": ",",
+    "decimal_separator": ".",
+    "null_value": "null",
+    "multi_byte_search_enabled": false,
+    "auth_jwt_login_enabled": false,
+    "auth_jwt_auth_issuer": "",
+    "auth_jwt_auth_public_certs_url": "",
+    "auth_jwt_auth_audience": "",
+    "auth_jwt_auth_algorithms": [
+      "HS256",
+      "RS256",
+      "ES256"
+    ],
+    "auth_jwt_auth_cookie_name": "",
+    "auth_jwt_auth_header_name": "",
+    "feature_show_permissions_control": false,
+    "send_email_on_failed_scheduled_queries": false,
+    "hide_plotly_mode_bar": false,
+    "disable_public_urls": false
+  },
+  "configuration_valid": {
+    "valid": true,
+    "missing-required": false,
+    "wrong-type": false,
+    "extra-property": true,
+    "enum-member": true,
+    "enum-non-member": false,
+    "number-as-string": false,
+    "bool": true
+  },
+  "configuration_secrets": {
+    "plain": {
+      "user": "u",
+      "password": "p"
+    },
+    "masked": {
+      "user": "u",
+      "password": "--------"
+    },
+    "json": "{\"password\": \"p\", \"user\": \"u\"}",
+    "after_placeholder_update": {
+      "user": "u2",
+      "password": "p"
+    },
+    "after_real_update": {
+      "user": "u3",
+      "password": "new"
+    }
+  },
+  "annotate_query": {
+    "empty": "/*  */ SELECT 1",
+    "one": "/* Username: a */ SELECT 1",
+    "many": "/* Username: a, query_id: 3, Job ID: j, Scheduled: False */ SELECT 1"
+  },
+  "fetch_columns": [
+    {
+      "name": "a",
+      "friendly_name": "a",
+      "type": "integer"
+    },
+    {
+      "name": "a1",
+      "friendly_name": "a1",
+      "type": "string"
+    },
+    {
+      "name": "a2",
+      "friendly_name": "a2",
+      "type": "string"
+    },
+    {
+      "name": "b",
+      "friendly_name": "b",
+      "type": "float"
+    }
+  ],
+  "guess_type": {
+    "True": "boolean",
+    "False": "boolean",
+    "1": "integer",
+    "1.5": "float",
+    "'1'": "integer",
+    "'1.5'": "float",
+    "'true'": "boolean",
+    "'TRUE'": "boolean",
+    "'2026-08-26'": "datetime",
+    "'2026-08-26T13:45:00'": "datetime",
+    "'hello'": "string",
+    "''": "string",
+    "None": "string",
+    "'1e5'": "float",
+    "'0x10'": "string",
+    "'-3'": "integer"
+  },
+  "guess_type_from_string": {
+    "''": "string",
+    "None": "string",
+    "'007'": "integer",
+    "'1_000'": "integer",
+    "'nan'": "float",
+    "'inf'": "float"
+  },
+  "serialize_job": {
+    "queued": {
+      "job": {
+        "id": "job-id",
+        "updated_at": 0,
+        "status": 1,
+        "error": "",
+        "result": 7,
+        "query_result_id": 7
+      }
+    },
+    "started": {
+      "job": {
+        "id": "job-id",
+        "updated_at": 0,
+        "status": 2,
+        "error": "",
+        "result": 7,
+        "query_result_id": 7
+      }
+    },
+    "finished": {
+      "job": {
+        "id": "job-id",
+        "updated_at": 0,
+        "status": 3,
+        "error": "",
+        "result": 7,
+        "query_result_id": 7
+      }
+    },
+    "failed": {
+      "job": {
+        "id": "job-id",
+        "updated_at": 0,
+        "status": 4,
+        "error": "",
+        "result": 7,
+        "query_result_id": 7
+      }
+    },
+    "canceled": {
+      "job": {
+        "id": "job-id",
+        "updated_at": 0,
+        "status": 5,
+        "error": "",
+        "result": 7,
+        "query_result_id": 7
+      }
+    },
+    "deferred": {
+      "job": {
+        "id": "job-id",
+        "updated_at": 0,
+        "status": 6,
+        "error": "",
+        "result": 7,
+        "query_result_id": 7
+      }
+    },
+    "scheduled": {
+      "job": {
+        "id": "job-id",
+        "updated_at": 0,
+        "status": 7,
+        "error": "",
+        "result": 7,
+        "query_result_id": 7
+      }
+    },
+    "started-with-time": {
+      "job": {
+        "id": "job-id",
+        "updated_at": "2026-08-26 13:45:00",
+        "status": 2,
+        "error": "",
+        "result": 7,
+        "query_result_id": 7
+      }
+    },
+    "cancelled": {
+      "job": {
+        "id": "job-id",
+        "updated_at": 0,
+        "status": 4,
+        "error": "Query cancelled by user.",
+        "result": null,
+        "query_result_id": null
+      }
+    },
+    "exception-result": {
+      "job": {
+        "id": "job-id",
+        "updated_at": 0,
+        "status": 4,
+        "error": "boom",
+        "result": null,
+        "query_result_id": null
+      }
+    },
+    "error-dict-result": {
+      "job": {
+        "id": "job-id",
+        "updated_at": 0,
+        "status": 4,
+        "error": "nope",
+        "result": null,
+        "query_result_id": null
+      }
+    }
+  },
+  "signer": {
+    "salt": "itsdangerous",
+    "digest_method": "sha1",
+    "key_derivation": "django-concat",
+    "sep": ".",
+    "epoch": null,
+    "derived_key_hex": "f50673b2d3e4a8b9565a280bb6c42f1a6dcada7c",
+    "signature_of_empty": "xNofumBBmU1_IcP1tiMPFxtRTS8"
+  }
+}

@@ -11,7 +11,7 @@ import SchedulePhrase from "@/components/queries/SchedulePhrase";
 
 import { wrap as itemsList, ControllerType } from "@/components/items-list/ItemsList";
 import useItemsListExtraActions from "@/components/items-list/hooks/useItemsListExtraActions";
-import { ResourceItemsSource } from "@/components/items-list/classes/ItemsSource";
+import { StreamItemsSource } from "@/components/items-list/classes/StreamItemsSource";
 import { UrlStateStorage } from "@/components/items-list/classes/StateStorage";
 
 import * as Sidebar from "@/components/items-list/components/Sidebar";
@@ -201,15 +201,9 @@ QueriesList.propTypes = {
 const QueriesListPage = itemsList(
   QueriesList,
   () =>
-    new ResourceItemsSource({
-      getResource({ params: { currentPage } }) {
-        return {
-          all: Query.query.bind(Query),
-          my: Query.myQueries.bind(Query),
-          favorites: Query.favorites.bind(Query),
-          archive: Query.archive.bind(Query),
-        }[currentPage];
-      },
+    new StreamItemsSource({
+      getPath: ({ params: { currentPage } }) => `api/streams/queries?set=${currentPage}`,
+      searchFields: ["name", "description", "query"],
       getItemProcessor() {
         return (item) => new Query(item);
       },

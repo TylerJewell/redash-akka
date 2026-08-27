@@ -14,6 +14,7 @@ import wrapSettingsTab from "@/components/SettingsWrapper";
 import PlainButton from "@/components/PlainButton";
 
 import DataSource, { IMG_ROOT } from "@/services/data-source";
+import { subscribe } from "@/services/stream";
 import { policy } from "@/services/policy";
 import recordEvent from "@/services/recordEvent";
 import routes from "@/services/routes";
@@ -64,13 +65,17 @@ class DataSourcesList extends React.Component {
   newDataSourceDialog = null;
 
   componentDidMount() {
-    Promise.all([DataSource.query(), DataSource.types()])
-      .then((values) =>
+    // The list arrives on a stream and the type catalogue on one fetch: the catalogue
+    // is a fixed property of the deployment rather than state the server owns, so
+    // there is nothing for it to notify about (RENDERING.md R1).
+    this.unsubscribe = subscribe("api/streams/data_sources", (dataSources) =>
+      this.setState({ dataSources, loading: false })
+    );
+    DataSource.types()
+      .then((dataSourceTypes) =>
         this.setState(
           {
-            dataSources: values[0],
-            dataSourceTypes: values[1],
-            loading: false,
+            dataSourceTypes,
           },
           () => {
             // all resources are loaded in state
@@ -88,6 +93,9 @@ class DataSourcesList extends React.Component {
   }
 
   componentWillUnmount() {
+    if (this.unsubscribe) {
+      this.unsubscribe();
+    }
     if (this.newDataSourceDialog) {
       this.newDataSourceDialog.dismiss();
     }

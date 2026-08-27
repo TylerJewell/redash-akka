@@ -1,0 +1,368 @@
+{
+  "attribution": {
+    "session": {
+      "status": 200,
+      "location": null,
+      "body": "{\"count\": 0, \"page\": 1, \"page_size\": 25, \"results\": []}"
+    },
+    "no-credential": {
+      "status": 404,
+      "location": null,
+      "body": "{\"message\": \"Couldn't find resource. Please login and try again.\"}"
+    },
+    "api-key-query-string": {
+      "status": 200,
+      "location": null,
+      "body": "{\"count\": 0, \"page\": 1, \"page_size\": 25, \"results\": []}"
+    },
+    "api-key-header": {
+      "status": 200,
+      "location": null,
+      "body": "{\"count\": 0, \"page\": 1, \"page_size\": 25, \"results\": []}"
+    },
+    "api-key-wrong": {
+      "status": 404,
+      "location": null,
+      "body": "{\"message\": \"Couldn't find resource. Please login and try again.\"}"
+    },
+    "api-key-on-non-api-page": {
+      "status": 200,
+      "location": null,
+      "body": "<!doctype html><html lang=\"en\" translate=\"no\"><head><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/><meta charset=\"UTF-8\"/><base href=\"/\"/><title>Redash</title><script src=\"/static/unsupportedRedirect.js\" async></script><link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/static/images/favicon-32x32.png\"/><link rel=\"icon\" type=\"image/png\" sizes=\"96x96\" href=\"/static/images/favicon-96x96.png\"/><link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/static/images/favicon-16x16.png\"/><script defer=\"defer\" src=\"/static/442.83585ef9f96e21b38baf.js\"></script><script defer=\"defer\" src=\"/static/app.b79898e5d34b50ea0eaf.js\"></script><link href=\"/static/442.83585ef9f96e21b38baf.css\" rel=\"stylesheet\"><link href=\"/static/app.b79898e5d34b50ea0eaf.css\" rel=\"stylesheet\"></head><body><section><div id=\"application-root\"></div><div class=\"loading-indicator\"><div id=\"css-logo\"><div id=\"circle\"><div></div></div><div id=\"point\"><div></div></div><div id=\"bars\"><div class=\"bar\"></div><div class=\"bar\"></div><div class=\"bar\"></div><div class=\"bar\"></div></div></div><div id=\"shadow\"></div></div></section></body></html>"
+    },
+    "xhr-without-credential": {
+      "status": 404,
+      "location": null,
+      "body": "{\"message\": \"Couldn't find resource. Please login and try again.\"}"
+    },
+    "html-without-credential": {
+      "status": 302,
+      "location": "/login?next=http://127.0.0.1:26600/queries",
+      "body": "<!doctype html>\n<html lang=en>\n<title>Redirecting...</title>\n<h1>Redirecting...</h1>\n<p>You should be redirected automatically to the target URL: <a href=\"/login?next=http://127.0.0.1:26600/queries\">/login?next=http://127.0.0.1:26600/queries</a>. If not, click the link.\n"
+    }
+  },
+  "headers": {
+    "index": {
+      "status": 200,
+      "headers": {
+        "Server": "gunicorn",
+        "Date": "Thu, 27 Aug 2026 10:10:40 GMT",
+        "Connection": "close",
+        "Content-Disposition": "inline; filename=index.html",
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Length": "1131",
+        "Last-Modified": "Sun, 23 Aug 2026 13:04:19 GMT",
+        "Cache-Control": "no-cache, max-age=0",
+        "Expires": "Thu, 27 Aug 2026 10:10:40 GMT",
+        "ETag": "\"1787490259.374402-1131-2955612552\"",
+        "X-Frame-Options": "deny",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;",
+        "X-Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Set-Cookie": "csrf_token=IjAwMjhmZjdmMzdkODNiMzBjZWRkNjg3NzcxMGViMzhiOWE1MGI5MGYi.apANIA.T3dsj8-mETz_GCCKVcVd3CboNXM; Path=/",
+        "Vary": "Cookie"
+      }
+    },
+    "ping": {
+      "status": 200,
+      "headers": {
+        "Server": "gunicorn",
+        "Date": "Thu, 27 Aug 2026 10:10:40 GMT",
+        "Connection": "close",
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Length": "5",
+        "X-Frame-Options": "deny",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;",
+        "X-Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Set-Cookie": "csrf_token=IjAwMjhmZjdmMzdkODNiMzBjZWRkNjg3NzcxMGViMzhiOWE1MGI5MGYi.apANIA.T3dsj8-mETz_GCCKVcVd3CboNXM; Path=/",
+        "Vary": "Cookie"
+      }
+    },
+    "api": {
+      "status": 200,
+      "headers": {
+        "Server": "gunicorn",
+        "Date": "Thu, 27 Aug 2026 10:10:40 GMT",
+        "Connection": "close",
+        "Content-Type": "application/json",
+        "Content-Length": "1587",
+        "X-Frame-Options": "deny",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;",
+        "X-Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Set-Cookie": "csrf_token=IjAwMjhmZjdmMzdkODNiMzBjZWRkNjg3NzcxMGViMzhiOWE1MGI5MGYi.apANIA.T3dsj8-mETz_GCCKVcVd3CboNXM; Path=/",
+        "Vary": "Cookie"
+      }
+    },
+    "login": {
+      "status": 302,
+      "headers": {
+        "Server": "gunicorn",
+        "Date": "Thu, 27 Aug 2026 10:10:40 GMT",
+        "Connection": "close",
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Length": "189",
+        "Location": "/",
+        "X-Frame-Options": "deny",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;",
+        "X-Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Set-Cookie": "csrf_token=IjAwMjhmZjdmMzdkODNiMzBjZWRkNjg3NzcxMGViMzhiOWE1MGI5MGYi.apANIA.T3dsj8-mETz_GCCKVcVd3CboNXM; Path=/",
+        "Vary": "Cookie"
+      }
+    }
+  },
+  "csrf": {
+    "with-token": {
+      "status": 200,
+      "body": "{\"id\": 3, \"slug\": \"csrf-probe\", \"name\": \"csrf probe\", \"user_id\": 1, \"user\": {\"id\": 1, \"name\": \"Admin\", \"email\": \"admin@example.com\", \"profile_image_url\": \"https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=40&d=identicon\"}, \"layout\": [], \"dashboard_filters_enabled\": false, \"widgets\": null, \"options\": {}, \"is_archived\": false, \"is_draft\": true, \"tags\": [], \"updated_at\": \"2026-08-27T10:10:40.537Z\", \"created_at\": \"2026-08-27T10:10:40.537Z\", \"version\": 1, \"is_favorite\": false}"
+    },
+    "without-token": {
+      "status": 200,
+      "body": "{\"id\": 4, \"slug\": \"csrf-probe\", \"name\": \"csrf probe\", \"user_id\": 1, \"user\": {\"id\": 1, \"name\": \"Admin\", \"email\": \"admin@example.com\", \"profile_image_url\": \"https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=40&d=identicon\"}, \"layout\": [], \"dashboard_filters_enabled\": false, \"widgets\": null, \"options\": {}, \"is_archived\": false, \"is_draft\": true, \"tags\": [], \"updated_at\": \"2026-08-27T10:10:40.566Z\", \"created_at\": \"2026-08-27T10:10:40.566Z\", \"version\": 1, \"is_favorite\": false}"
+    },
+    "with-bad-token": {
+      "status": 200,
+      "body": "{\"id\": 5, \"slug\": \"csrf-probe\", \"name\": \"csrf probe\", \"user_id\": 1, \"user\": {\"id\": 1, \"name\": \"Admin\", \"email\": \"admin@example.com\", \"profile_image_url\": \"https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=40&d=identicon\"}, \"layout\": [], \"dashboard_filters_enabled\": false, \"widgets\": null, \"options\": {}, \"is_archived\": false, \"is_draft\": true, \"tags\": [], \"updated_at\": \"2026-08-27T10:10:40.608Z\", \"created_at\": \"2026-08-27T10:10:40.608Z\", \"version\": 1, \"is_favorite\": false}"
+    },
+    "api-key-no-token": {
+      "status": 200,
+      "body": "{\"id\": 6, \"slug\": \"csrf-probe\", \"name\": \"csrf probe\", \"user_id\": 1, \"user\": {\"id\": 1, \"name\": \"Admin\", \"email\": \"admin@example.com\", \"profile_image_url\": \"https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=40&d=identicon\"}, \"layout\": [], \"dashboard_filters_enabled\": false, \"widgets\": null, \"options\": {}, \"is_archived\": false, \"is_draft\": true, \"tags\": [], \"updated_at\": \"2026-08-27T10:10:40.672Z\", \"created_at\": \"2026-08-27T10:10:40.672Z\", \"version\": 1, \"is_favorite\": false}"
+    }
+  },
+  "admin": {
+    "/status.json": {
+      "status": 200,
+      "body": "{\"dashboards_count\":6,\"database_metrics\":{\"metrics\":[[\"Query Results Size\",49152],[\"Redash DB Size\",11294399]]},\"manager\":{\"queues\":{\"default\":{\"size\":0},\"emails\":{\"size\":0},\"queries\":{\"size\":0},\"schemas\":{\"size\":0}}},\"queries_count\":2,\"query_results_count\":0,\"redis_used_memory\":2289384,\"redis_used_memory_human\":\"2.18M\",\"unused_query_results_count\":0,\"version\":\"26.08.0-dev\",\"widgets_count\":1,\"workers\":[]}\n"
+    },
+    "/api/admin/queries/outdated": {
+      "status": 500,
+      "body": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Error</title>\n<h1>Internal Server Error</h1>\n<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>\n"
+    },
+    "/api/admin/queries/rq_status": {
+      "status": 200,
+      "body": "{\"queues\": {\"default\": {\"name\": \"default\", \"started\": [{\"id\": \"f5368215-e26d-4d10-bc9d-54fc2d0bb52e\", \"name\": \"redash.tasks.general.record_event\", \"origin\": \"default\", \"enqueued_at\": \"2026-08-27T10:10:40.768\", \"started_at\": \"2026-08-27T10:10:40.776\", \"meta\": {}}], \"queued\": 0}, \"emails\": {\"name\": \"emails\", \"started\": [], \"queued\": 0}, \"queries\": {\"name\": \"queries\", \"started\": [], \"queued\": 0}, \"schemas\": {\"name\": \"schemas\", \"started\": [], \"queued\": 0}}, \"workers\": [{\"name\": \"1016a10837f94e85b884c6a175623338\", \"hostname\": \"7cd2b599284c\", \"pid\": 4424, \"queues\": \"periodic, emails, default, scheduled_queries, queries, schemas\", \"state\": \"busy\", \"last_heartbeat\": \"2026-08-27T10:10:40.775\", \"birth_date\": \"2026-08-27T09:55:05.749\", \"current_job\": \"f5368215-e26d-4d10-bc9d-54fc2d0bb52e (record_event)\", \"successful_jobs\": 12, \"failed_jobs\": 0, \"total_working_time\": 0.43547}, {\"name\": \"91867a210f5042bdaef64f509d7e1b7d\", \"hostname\": \"7cd2b599284c\", \"pid\": 4425, \"queues\": \"periodic, emails, default, scheduled_queries, queries, schemas\", \"state\": \"busy\", \"last_heartbeat\": \"2026-08-27T10:10:40.795\", \"birth_date\": \"2026-08-27T09:55:05.751\", \"current_job\": null, \"successful_jobs\": 15, \"failed_jobs\": 0, \"total_working_time\": 0.398126}]}"
+    }
+  },
+  "pages": {
+    "/": {
+      "status": 200,
+      "location": null,
+      "content_type": "text/html; charset=utf-8",
+      "length": "1131",
+      "first": "<!doctype html><html lang=\"en\" translate=\"no\"><head><meta name=\"viewport\" content=\"width=d"
+    },
+    "/queries": {
+      "status": 200,
+      "location": null,
+      "content_type": "text/html; charset=utf-8",
+      "length": "1131",
+      "first": "<!doctype html><html lang=\"en\" translate=\"no\"><head><meta name=\"viewport\" content=\"width=d"
+    },
+    "/dashboards": {
+      "status": 200,
+      "location": null,
+      "content_type": "text/html; charset=utf-8",
+      "length": "1131",
+      "first": "<!doctype html><html lang=\"en\" translate=\"no\"><head><meta name=\"viewport\" content=\"width=d"
+    },
+    "/alerts": {
+      "status": 200,
+      "location": null,
+      "content_type": "text/html; charset=utf-8",
+      "length": "1131",
+      "first": "<!doctype html><html lang=\"en\" translate=\"no\"><head><meta name=\"viewport\" content=\"width=d"
+    },
+    "/data_sources": {
+      "status": 200,
+      "location": null,
+      "content_type": "text/html; charset=utf-8",
+      "length": "1131",
+      "first": "<!doctype html><html lang=\"en\" translate=\"no\"><head><meta name=\"viewport\" content=\"width=d"
+    },
+    "/users": {
+      "status": 200,
+      "location": null,
+      "content_type": "text/html; charset=utf-8",
+      "length": "1131",
+      "first": "<!doctype html><html lang=\"en\" translate=\"no\"><head><meta name=\"viewport\" content=\"width=d"
+    },
+    "/groups": {
+      "status": 200,
+      "location": null,
+      "content_type": "text/html; charset=utf-8",
+      "length": "1131",
+      "first": "<!doctype html><html lang=\"en\" translate=\"no\"><head><meta name=\"viewport\" content=\"width=d"
+    },
+    "/destinations": {
+      "status": 200,
+      "location": null,
+      "content_type": "text/html; charset=utf-8",
+      "length": "1131",
+      "first": "<!doctype html><html lang=\"en\" translate=\"no\"><head><meta name=\"viewport\" content=\"width=d"
+    },
+    "/query_snippets": {
+      "status": 200,
+      "location": null,
+      "content_type": "text/html; charset=utf-8",
+      "length": "1131",
+      "first": "<!doctype html><html lang=\"en\" translate=\"no\"><head><meta name=\"viewport\" content=\"width=d"
+    },
+    "/admin/queries": {
+      "status": 200,
+      "location": null,
+      "content_type": "text/html; charset=utf-8",
+      "length": "1131",
+      "first": "<!doctype html><html lang=\"en\" translate=\"no\"><head><meta name=\"viewport\" content=\"width=d"
+    },
+    "/settings/general": {
+      "status": 200,
+      "location": null,
+      "content_type": "text/html; charset=utf-8",
+      "length": "1131",
+      "first": "<!doctype html><html lang=\"en\" translate=\"no\"><head><meta name=\"viewport\" content=\"width=d"
+    },
+    "/setup": {
+      "status": 302,
+      "location": "/",
+      "content_type": "text/html; charset=utf-8",
+      "length": "189",
+      "first": "<!doctype html>\n<html lang=en>\n<title>Redirecting...</title>\n<h1>Redirecting...</h1>\n<p>Yo"
+    },
+    "/forgot": {
+      "status": 200,
+      "location": null,
+      "content_type": "text/html; charset=utf-8",
+      "length": "1533",
+      "first": "<!DOCTYPE html>\n<html class=\"no-js\">\n<head>\n  <title>Password Reset</title>\n  <meta name=\""
+    },
+    "/login": {
+      "status": 302,
+      "location": "/",
+      "content_type": "text/html; charset=utf-8",
+      "length": "189",
+      "first": "<!doctype html>\n<html lang=en>\n<title>Redirecting...</title>\n<h1>Redirecting...</h1>\n<p>Yo"
+    },
+    "/logout": {
+      "status": 302,
+      "location": "/login",
+      "content_type": "text/html; charset=utf-8",
+      "length": "199",
+      "first": "<!doctype html>\n<html lang=en>\n<title>Redirecting...</title>\n<h1>Redirecting...</h1>\n<p>Yo"
+    },
+    "/invite/bad-token": {
+      "status": 400,
+      "location": null,
+      "content_type": "text/html; charset=utf-8",
+      "length": "1190",
+      "first": "\n\n<!DOCTYPE html>\n<html class=\"no-js\">\n<head>\n  <title>Error :-(</title>\n  <meta name=\"vie"
+    },
+    "/reset/bad-token": {
+      "status": 400,
+      "location": null,
+      "content_type": "text/html; charset=utf-8",
+      "length": "1190",
+      "first": "\n\n<!DOCTYPE html>\n<html class=\"no-js\">\n<head>\n  <title>Error :-(</title>\n  <meta name=\"vie"
+    },
+    "/verify/bad-token": {
+      "status": 400,
+      "location": null,
+      "content_type": "text/html; charset=utf-8",
+      "length": "1176",
+      "first": "\n\n<!DOCTYPE html>\n<html class=\"no-js\">\n<head>\n  <title>Error :-(</title>\n  <meta name=\"vie"
+    },
+    "/embed/query/1/visualization/1": {
+      "status": 302,
+      "location": "/login?next=http://127.0.0.1:26600/embed/query/1/visualization/1",
+      "content_type": "text/html; charset=utf-8",
+      "length": "315",
+      "first": "<!doctype html>\n<html lang=en>\n<title>Redirecting...</title>\n<h1>Redirecting...</h1>\n<p>Yo"
+    },
+    "/public/dashboards/bad-token": {
+      "status": 302,
+      "location": "/login?next=http://127.0.0.1:26600/public/dashboards/bad-token",
+      "content_type": "text/html; charset=utf-8",
+      "length": "311",
+      "first": "<!doctype html>\n<html lang=en>\n<title>Redirecting...</title>\n<h1>Redirecting...</h1>\n<p>Yo"
+    }
+  },
+  "cli": {
+    "--help": {
+      "returncode": 0,
+      "stdout": "Usage: manage.py [OPTIONS] COMMAND [ARGS]...\n\n  Management script for Redash\n\nOptions:\n  -e, --env-file FILE   Load environment variables from this file. python-\n                        dotenv must be installed.\n  -A, --app IMPORT      The Flask application or factory function to load, in\n                        the form 'module:name'. Module can be a dotted import\n                        or file path. Name is not required if it is 'app',\n                        'application', 'create_app', or 'make_app', and can be\n                        'name(args)' to pass arguments.\n  --debug / --no-debug  Set debug mode.\n  --version             Show the Flask version.\n  --help                Show this message and exit.\n\nCommands:\n  check-settings  Show the settings as Redash sees them (useful for...\n  database        Manage the database (create/drop tables.\n  db              Perform database migrations.\n  ds              Data sources management commands.\n  groups          Groups management commands.\n  limiter         Flask-Limiter maintenance & utility commmands\n  org             Organization management commands.\n  queries         Queries management commands.\n  routes          Show the routes for the app.\n  rq              RQ management commands.\n  run             Run a development server.\n  runserver       Run a development server.\n  send-test-mail  Send test message to EMAIL (default: the address you...\n  shell\n  status\n  users           Users management commands.\n  version         Displays Redash version.\n"
+    },
+    "version": {
+      "returncode": 0,
+      "stdout": "26.08.0-dev\n"
+    },
+    "status": {
+      "returncode": 0,
+      "stdout": "{\n  \"version\": \"26.08.0-dev\",\n  \"workers\": [],\n  \"redis_used_memory\": 2175752,\n  \"redis_used_memory_human\": \"2.07M\",\n  \"queries_count\": 2,\n  \"query_results_count\": 0,\n  \"unused_query_results_count\": 0,\n  \"dashboards_count\": 6,\n  \"widgets_count\": 1,\n  \"manager\": {\n    \"queues\": {\n      \"emails\": {\n        \"size\": 0\n      },\n      \"default\": {\n        \"size\": 0\n      },\n      \"schemas\": {\n        \"size\": 0\n      },\n      \"queries\": {\n        \"size\": 0\n      }\n    }\n  },\n  \"database_metrics\": {\n    \"metrics\": [\n      [\n        \"Query Results Size\",\n        49152\n      ],\n      [\n        \"Redash DB Size\",\n        11294399\n      ]\n    ]\n  }\n}\n"
+    },
+    "users --help": {
+      "returncode": 0,
+      "stdout": "Usage: manage.py users [OPTIONS] COMMAND [ARGS]...\n\n  Users management commands.\n\nOptions:\n  --help  Show this message and exit.\n\nCommands:\n  create       Create user EMAIL with display name NAME.\n  create_root  Create root user.\n  delete       Delete user EMAIL.\n  grant_admin  Grant admin access to user EMAIL.\n  invite       Sends an invitation to the given NAME and EMAIL from...\n  list         List all users\n  password     Resets password for EMAIL to PASSWORD.\n"
+    },
+    "users list": {
+      "returncode": 0,
+      "stdout": "Id: 1\nName: Admin\nEmail: admin@example.com\nOrganization: default\nActive: True\nGroups: admin, default\n--------------------\nId: 2\nName: Ana Two\nEmail: ana@example.com\nOrganization: default\nActive: True\nGroups: default\n"
+    },
+    "groups --help": {
+      "returncode": 0,
+      "stdout": "Usage: manage.py groups [OPTIONS] COMMAND [ARGS]...\n\n  Groups management commands.\n\nOptions:\n  --help  Show this message and exit.\n\nCommands:\n  change_permissions\n  create\n  list                List all groups\n"
+    },
+    "groups list": {
+      "returncode": 0,
+      "stdout": "Id: 1\nName: admin\nType: builtin\nOrganization: default\nPermissions: [admin,super_admin]\nUsers: Admin\n--------------------\nId: 4\nName: analysts\nType: regular\nOrganization: default\nPermissions: [create_dashboard,create_query,edit_dashboard,edit_query,view_query,view_source,execute_query,list_users,schedule_query,list_dashboards,list_alerts,list_data_sources]\nUsers:\n--------------------\nId: 2\nName: default\nType: builtin\nOrganization: default\nPermissions: [create_dashboard,create_query,edit_dashboard,edit_query,view_query,view_source,execute_query,list_users,schedule_query,list_dashboards,list_alerts,list_data_sources]\nUsers: Admin, Ana Two\n"
+    },
+    "ds --help": {
+      "returncode": 0,
+      "stdout": "Usage: manage.py ds [OPTIONS] COMMAND [ARGS]...\n\n  Data sources management commands.\n\nOptions:\n  --help  Show this message and exit.\n\nCommands:\n  delete      Delete data source by name.\n  edit        Edit data source settings (name, options, type).\n  list        List currently configured data sources.\n  list_types\n  new         Create new data source.\n  test        Test connection to data source by issuing a trivial query.\n"
+    },
+    "ds list_types": {
+      "returncode": 0,
+      "stdout": "Enabled Query Runners:\nCassandra\narangodb\nathena\naws_es\naxibasetsd\nazure_kusto\nbigquery\nclickhouse\ncloudwatch\ncloudwatch_insights\ncockroach\ncorporate_memory\ncouchbase\ncsv\nd1\ndatabend\ndatabricks\ndb2\ndgraph\ndrill\ndruid\nduckdb\ne6data\nelasticsearch\nelasticsearch2\nelasticsearch2_OpenDistroSQLElasticSearch\nelasticsearch2_XPackSQLElasticSearch\nexasol\nexcel\ngoogle_analytics\ngoogle_analytics4\ngoogle_search_console\ngoogle_spreadsheets\ngraphite\nhive\nhive_http\nignite\nimpala\ninfluxdb\ninfluxdbv2\njirajql\njson\nkibana\nkylin\nmemsql\nmongodb\nmssql\nmssql_odbc\nmysql\nnz\noracle\npg\nphoenix\npinot\npresto\nprometheus\nrds_mysql\nredshift\nredshift_iam\nresults\nrisingwave\nrockset\nsalesforce\nscylla\nsnowflake\nsparql_endpoint\nsqlite\ntinybird\ntreasuredata\ntrino\nuptycs\nurl\nyandex_appmetrika\nyandex_disk\nyandex_metrika\nTotal of 75.\n"
+    },
+    "ds list": {
+      "returncode": 0,
+      "stdout": "Id: 2\nName: probe-pg\nType: pg\nOptions: {\"dbname\": \"postgres\", \"host\": \"postgres\", \"port\": 5432, \"user\": \"postgres\"}\n--------------------\nId: 3\nName: probe-pg-2\nType: pg\nOptions: {\"dbname\": \"postgres\", \"host\": \"postgres\", \"port\": 5432, \"user\": \"postgres\"}\n"
+    },
+    "org --help": {
+      "returncode": 0,
+      "stdout": "Usage: manage.py org [OPTIONS] COMMAND [ARGS]...\n\n  Organization management commands.\n\nOptions:\n  --help  Show this message and exit.\n\nCommands:\n  create\n  list                      List all organizations\n  set_google_apps_domains   Sets the allowable domains to the comma...\n  show_google_apps_domains\n"
+    },
+    "org list": {
+      "returncode": 0,
+      "stdout": "Id: 1\nName: default\nSlug: default\n"
+    },
+    "org show_google_apps_domains": {
+      "returncode": 0,
+      "stdout": "Current list of Google Apps domains: \n"
+    },
+    "queries --help": {
+      "returncode": 0,
+      "stdout": "Usage: manage.py queries [OPTIONS] COMMAND [ARGS]...\n\n  Queries management commands.\n\nOptions:\n  --help  Show this message and exit.\n\nCommands:\n  add_tag\n  rehash\n  remove_tag\n"
+    },
+    "database --help": {
+      "returncode": 0,
+      "stdout": "Usage: manage.py database [OPTIONS] COMMAND [ARGS]...\n\n  Manage the database (create/drop tables. reencrypt data.).\n\nOptions:\n  --help  Show this message and exit.\n\nCommands:\n  create_tables  Create the database tables.\n  drop_tables    Drop the database tables.\n  reencrypt      Reencrypt data encrypted by OLD_SECRET with NEW_SECRET.\n"
+    },
+    "rq --help": {
+      "returncode": 0,
+      "stdout": "Usage: manage.py rq [OPTIONS] COMMAND [ARGS]...\n\n  RQ management commands.\n\nOptions:\n  --help  Show this message and exit.\n\nCommands:\n  healthcheck\n  scheduler\n  worker\n"
+    }
+  }
+}

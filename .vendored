@@ -1,0 +1,8 @@
+# What in this repository was written by somebody else, and why it is here.
+# One path per line, the reason after a `#`. `toolkit/source_hygiene.py` and
+# `toolkit/copied_strings.py` read this file and print what they skipped.
+
+frontend/                                   # redash's own web interface, shipped rather than rebuilt (RENDERING.md R3). Eleven files of 589 differ and every one of them is the data layer or the address of a database.
+src/main/resources/static-resources/        # what `frontend/` builds to: bundler output, fonts, and redash's own images.
+src/main/resources/templates/               # redash's own server-rendered pages: login, setup, invite, reset, verify, and the four account emails.
+src/main/resources/disposable-email-domains.txt  # the `disposable_email_domains` package's list, exported from a running redash. 4,055 domains that an invitation is refused for.

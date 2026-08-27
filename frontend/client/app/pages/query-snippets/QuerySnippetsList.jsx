@@ -9,7 +9,7 @@ import Paginator from "@/components/Paginator";
 import QuerySnippetDialog from "@/components/query-snippets/QuerySnippetDialog";
 
 import { wrap as itemsList, ControllerType } from "@/components/items-list/ItemsList";
-import { ResourceItemsSource } from "@/components/items-list/classes/ItemsSource";
+import { StreamItemsSource } from "@/components/items-list/classes/StreamItemsSource";
 import { StateStorage } from "@/components/items-list/classes/StateStorage";
 
 import LoadingState from "@/components/items-list/components/LoadingState";
@@ -202,14 +202,9 @@ const QuerySnippetsListPage = wrapSettingsTab(
   itemsList(
     QuerySnippetsList,
     () =>
-      new ResourceItemsSource({
-        isPlainList: true,
-        getRequest() {
-          return {};
-        },
-        getResource() {
-          return QuerySnippet.query.bind(QuerySnippet);
-        },
+      new StreamItemsSource({
+        getPath: () => "api/streams/query_snippets",
+        searchFields: ["trigger", "description"],
       }),
     () => new StateStorage({ orderByField: "trigger", itemsPerPage: 10 })
   )

@@ -1,0 +1,324 @@
+{
+  "csp-nonce": {
+    "headers": {
+      "Content-Length": "5",
+      "Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval' 'nonce-b2DlpSw8B10VIF7bqrDUDg'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "Content-Type": "text/html; charset=utf-8",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Vary": "Cookie",
+      "X-Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval' 'nonce-b2DlpSw8B10VIF7bqrDUDg'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "X-Content-Type-Options": "nosniff",
+      "X-Download-Options": "noopen",
+      "X-Frame-Options": "deny",
+      "X-XSS-Protection": "1; mode=block"
+    },
+    "location": null,
+    "set_cookie": [
+      "csrf_token=IjkxMTUzYWM3MDY0ODA3Mzg5MmYyYWZiYzg1NzBjNWE0YWYyYjAyM2Mi.apC2rA.-XDQO0SCVEzfx6PjPm20EqMNHxI; Path=/",
+      "session=eyJfcGVybWFuZW50Ijp0cnVlLCJjc3JmX3Rva2VuIjoiOTExNTNhYzcwNjQ4MDczODkyZjJhZmJjODU3MGM1YTRhZjJiMDIzYyJ9.apC2rA.btIuzT2hmtm9NmlTbTbA5nqtCmE; Expires=Fri, 28 Aug 2026 04:14:04 GMT; HttpOnly; Path=/"
+    ],
+    "status": 200
+  },
+  "csp-report-only": {
+    "headers": {
+      "Content-Length": "5",
+      "Content-Security-Policy-Report-Only": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "Content-Type": "text/html; charset=utf-8",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Vary": "Cookie",
+      "X-Content-Security-Policy-Report-Only": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "X-Content-Type-Options": "nosniff",
+      "X-Download-Options": "noopen",
+      "X-Frame-Options": "deny",
+      "X-XSS-Protection": "1; mode=block"
+    },
+    "location": null,
+    "set_cookie": [
+      "csrf_token=IjdhOWFiNmE3MWUwZDM2NDlmMGZjZDVkNDQxNzU4MGMyMDliZmRjYTki.apC2oQ.DR0W08RoY9L7OrlAA8tlBR7FtIo; Path=/",
+      "session=eyJfcGVybWFuZW50Ijp0cnVlLCJjc3JmX3Rva2VuIjoiN2E5YWI2YTcxZTBkMzY0OWYwZmNkNWQ0NDE3NTgwYzIwOWJmZGNhOSJ9.apC2oQ.S33Aj9dFrw8inbLzUXGvNkFLRwE; Expires=Fri, 28 Aug 2026 04:13:53 GMT; HttpOnly; Path=/"
+    ],
+    "status": 200
+  },
+  "csp-report-only-with-uri": {
+    "headers": {
+      "Content-Length": "5",
+      "Content-Security-Policy-Report-Only": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ; report-uri https://example.com/csp",
+      "Content-Type": "text/html; charset=utf-8",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Vary": "Cookie",
+      "X-Content-Security-Policy-Report-Only": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ; report-uri https://example.com/csp",
+      "X-Content-Type-Options": "nosniff",
+      "X-Download-Options": "noopen",
+      "X-Frame-Options": "deny",
+      "X-XSS-Protection": "1; mode=block"
+    },
+    "location": null,
+    "set_cookie": [
+      "csrf_token=ImJjNjMzNmNjYjM0ZmY4MzYzNTZhNDcxNGM2ZjI1M2U0MjU2ZTIwYzIi.apC2pg.euiqJ2NyAQqArdiGOB9oH60jOyo; Path=/",
+      "session=eyJfcGVybWFuZW50Ijp0cnVlLCJjc3JmX3Rva2VuIjoiYmM2MzM2Y2NiMzRmZjgzNjM1NmE0NzE0YzZmMjUzZTQyNTZlMjBjMiJ9.apC2pg.bZoSgmh90aL0MaJLro51q_Lrkq4; Expires=Fri, 28 Aug 2026 04:13:58 GMT; HttpOnly; Path=/"
+    ],
+    "status": 200
+  },
+  "csp-report-uri": {
+    "headers": {
+      "Content-Length": "5",
+      "Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ; report-uri https://example.com/csp",
+      "Content-Type": "text/html; charset=utf-8",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Vary": "Cookie",
+      "X-Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ; report-uri https://example.com/csp",
+      "X-Content-Type-Options": "nosniff",
+      "X-Download-Options": "noopen",
+      "X-Frame-Options": "deny",
+      "X-XSS-Protection": "1; mode=block"
+    },
+    "location": null,
+    "set_cookie": [
+      "csrf_token=ImE0ZWNiZTI2NjQzMTM5MDZmYzM4MjJmZmZjNWEwMGMwYzZiNjg4ZDIi.apC2nA.40i8ZgFhLgx6CK6nH8m9DKhjx44; Path=/",
+      "session=eyJfcGVybWFuZW50Ijp0cnVlLCJjc3JmX3Rva2VuIjoiYTRlY2JlMjY2NDMxMzkwNmZjMzgyMmZmZmM1YTAwYzBjNmI2ODhkMiJ9.apC2nA.IJhwtOn7wa5ZjVcrqera4CGOHk8; Expires=Fri, 28 Aug 2026 04:13:48 GMT; HttpOnly; Path=/"
+    ],
+    "status": 200
+  },
+  "default": {
+    "headers": {
+      "Content-Length": "5",
+      "Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "Content-Type": "text/html; charset=utf-8",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Vary": "Cookie",
+      "X-Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "X-Content-Type-Options": "nosniff",
+      "X-Download-Options": "noopen",
+      "X-Frame-Options": "deny",
+      "X-XSS-Protection": "1; mode=block"
+    },
+    "location": null,
+    "set_cookie": [
+      "csrf_token=IjRmMzFjNzA1NzZlOGQ0N2Q2ODZhNzljZTZjMGFmNTBkMDc5Njg4YTIi.apC2fg.PFzYvDUEtlQXf04U0BKEZ6R6jno; Path=/",
+      "session=eyJfcGVybWFuZW50Ijp0cnVlLCJjc3JmX3Rva2VuIjoiNGYzMWM3MDU3NmU4ZDQ3ZDY4NmE3OWNlNmMwYWY1MGQwNzk2ODhhMiJ9.apC2fg.P1OUF-QouhvwJ77Uijd2BIT-3zE; Expires=Fri, 28 Aug 2026 04:13:18 GMT; HttpOnly; Path=/"
+    ],
+    "status": 200
+  },
+  "feature-policy": {
+    "headers": {
+      "Content-Length": "5",
+      "Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "Content-Type": "text/html; charset=utf-8",
+      "Feature-Policy": "geolocation 'none'",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Vary": "Cookie",
+      "X-Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "X-Content-Type-Options": "nosniff",
+      "X-Download-Options": "noopen",
+      "X-Frame-Options": "deny",
+      "X-XSS-Protection": "1; mode=block"
+    },
+    "location": null,
+    "set_cookie": [
+      "csrf_token=IjhhODRiYzcyNmU2ZGM4NmVjMjMxNjE2MDk2MzI2NDZlZGJkMTdkMDMi.apC2lg.EAIcM33QN3pcvx-9RFIywcujbkM; Path=/",
+      "session=eyJfcGVybWFuZW50Ijp0cnVlLCJjc3JmX3Rva2VuIjoiOGE4NGJjNzI2ZTZkYzg2ZWMyMzE2MTYwOTYzMjY0NmVkYmQxN2QwMyJ9.apC2lg.pjukTkm-AhuSciVaWqRuKbQkJy4; Expires=Fri, 28 Aug 2026 04:13:42 GMT; HttpOnly; Path=/"
+    ],
+    "status": 200
+  },
+  "force-https": {
+    "headers": {
+      "Content-Length": "5",
+      "Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "Content-Type": "text/html; charset=utf-8",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Vary": "Cookie",
+      "X-Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "X-Content-Type-Options": "nosniff",
+      "X-Download-Options": "noopen",
+      "X-Frame-Options": "deny",
+      "X-XSS-Protection": "1; mode=block"
+    },
+    "location": null,
+    "set_cookie": [
+      "csrf_token=IjMzYzUyYzcyNTEwY2JkZTM5NTExYTVmNzA5MWNkMjYyNTg4NWI5YTEi.apC2xQ.-RvuiC0iC3bnxGxBwd5XPsxZxQM; Path=/",
+      "session=eyJfcGVybWFuZW50Ijp0cnVlLCJjc3JmX3Rva2VuIjoiMzNjNTJjNzI1MTBjYmRlMzk1MTFhNWY3MDkxY2QyNjI1ODg1YjlhMSJ9.apC2xQ.vCDZXbN1hAkw08AQ79b80tyyWT8; Expires=Fri, 28 Aug 2026 04:14:29 GMT; HttpOnly; Path=/"
+    ],
+    "status": 200
+  },
+  "force-https-permanent": {
+    "headers": {
+      "Content-Length": "5",
+      "Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "Content-Type": "text/html; charset=utf-8",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Vary": "Cookie",
+      "X-Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "X-Content-Type-Options": "nosniff",
+      "X-Download-Options": "noopen",
+      "X-Frame-Options": "deny",
+      "X-XSS-Protection": "1; mode=block"
+    },
+    "location": null,
+    "set_cookie": [
+      "csrf_token=IjQzZTllM2FmN2E4MTEzNGZkMTJkMmZhZmEwYzE1NmQ2OWRhY2EzNDci.apC2yg.Yb86WR8_emreXQUqlLs1Kmlz9BQ; Path=/",
+      "session=eyJfcGVybWFuZW50Ijp0cnVlLCJjc3JmX3Rva2VuIjoiNDNlOWUzYWY3YTgxMTM0ZmQxMmQyZmFmYTBjMTU2ZDY5ZGFjYTM0NyJ9.apC2yg.mgVHvZi0_b5aaGAEhjt6GViotrc; Expires=Fri, 28 Aug 2026 04:14:34 GMT; HttpOnly; Path=/"
+    ],
+    "status": 200
+  },
+  "frame-allow-from": {
+    "headers": {
+      "Content-Length": "5",
+      "Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "Content-Type": "text/html; charset=utf-8",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Vary": "Cookie",
+      "X-Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "X-Content-Type-Options": "nosniff",
+      "X-Download-Options": "noopen",
+      "X-Frame-Options": "allow-from",
+      "X-XSS-Protection": "1; mode=block"
+    },
+    "location": null,
+    "set_cookie": [
+      "csrf_token=ImZkYTY3Y2M4NjA5YzY4YmU5NmYyMmRiYjM4ODE3NDMyMTM5N2Q0Zjci.apC2sQ.rTWQza148txZ_u_jpFCndwII5sM; Path=/",
+      "session=eyJfcGVybWFuZW50Ijp0cnVlLCJjc3JmX3Rva2VuIjoiZmRhNjdjYzg2MDljNjhiZTk2ZjIyZGJiMzg4MTc0MzIxMzk3ZDRmNyJ9.apC2sQ.hxgCprqsg90douad2RSkVOEdcPc; Expires=Fri, 28 Aug 2026 04:14:09 GMT; HttpOnly; Path=/"
+    ],
+    "status": 200
+  },
+  "frame-options-allowfrom-uppercase": {
+    "headers": {
+      "Content-Length": "5",
+      "Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "Content-Type": "text/html; charset=utf-8",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Vary": "Cookie",
+      "X-Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "X-Content-Type-Options": "nosniff",
+      "X-Download-Options": "noopen",
+      "X-Frame-Options": "ALLOW-FROM https://example.com",
+      "X-XSS-Protection": "1; mode=block"
+    },
+    "location": null,
+    "set_cookie": [
+      "csrf_token=IjY5M2Y3MzkxNzEzN2M1YWViYjE4NWVhNjM0NzY5ZTJkNTNiY2E2NDQi.apC2tg.pPrQJEgNTR7-YSQ8qSYaE2a2IS0; Path=/",
+      "session=eyJfcGVybWFuZW50Ijp0cnVlLCJjc3JmX3Rva2VuIjoiNjkzZjczOTE3MTM3YzVhZWJiMTg1ZWE2MzQ3NjllMmQ1M2JjYTY0NCJ9.apC2tg.FDOrg3ETpMOgMONtZE9IL9gMaX0; Expires=Fri, 28 Aug 2026 04:14:14 GMT; HttpOnly; Path=/"
+    ],
+    "status": 200
+  },
+  "hsts": {
+    "headers": {
+      "Content-Length": "5",
+      "Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "Content-Type": "text/html; charset=utf-8",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Vary": "Cookie",
+      "X-Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "X-Content-Type-Options": "nosniff",
+      "X-Download-Options": "noopen",
+      "X-Frame-Options": "deny",
+      "X-XSS-Protection": "1; mode=block"
+    },
+    "location": null,
+    "set_cookie": [
+      "csrf_token=IjQ5Mjc4MWJlODM0YWVkZDFlMTdmYjUzY2UwYWM3NGNhMzMyYTFiN2Yi.apC2gw.CT0yGzDO_RvFibJuGwnjzOUk_1M; Path=/",
+      "session=eyJfcGVybWFuZW50Ijp0cnVlLCJjc3JmX3Rva2VuIjoiNDkyNzgxYmU4MzRhZWRkMWUxN2ZiNTNjZTBhYzc0Y2EzMzJhMWI3ZiJ9.apC2gw.cU-OM5inZvv61A5uxNRb2iBKwLE; Expires=Fri, 28 Aug 2026 04:13:23 GMT; HttpOnly; Path=/"
+    ],
+    "status": 200
+  },
+  "hsts-all": {
+    "headers": {
+      "Content-Length": "5",
+      "Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "Content-Type": "text/html; charset=utf-8",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Vary": "Cookie",
+      "X-Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "X-Content-Type-Options": "nosniff",
+      "X-Download-Options": "noopen",
+      "X-Frame-Options": "deny",
+      "X-XSS-Protection": "1; mode=block"
+    },
+    "location": null,
+    "set_cookie": [
+      "csrf_token=IjY3OTY4M2MyZDUwMzllOGQ0YzlkYjI5MWIwMTFhYTMzZTZmOTVmNmMi.apC2iA.l8-L8QEdoz6BqR11ngubkhxnzmY; Path=/",
+      "session=eyJfcGVybWFuZW50Ijp0cnVlLCJjc3JmX3Rva2VuIjoiNjc5NjgzYzJkNTAzOWU4ZDRjOWRiMjkxYjAxMWFhMzNlNmY5NWY2YyJ9.apC2iA.5dI2YIYUd_MOw_W2w1yX9q-NJ_E; Expires=Fri, 28 Aug 2026 04:13:28 GMT; HttpOnly; Path=/"
+    ],
+    "status": 200
+  },
+  "hsts-all-over-https": {
+    "headers": {
+      "Content-Length": "5",
+      "Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "Content-Type": "text/html; charset=utf-8",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Strict-Transport-Security": "max-age=1234; includeSubDomains; preload",
+      "Vary": "Cookie",
+      "X-Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "X-Content-Type-Options": "nosniff",
+      "X-Download-Options": "noopen",
+      "X-Frame-Options": "deny",
+      "X-XSS-Protection": "1; mode=block"
+    },
+    "location": null,
+    "set_cookie": [
+      "csrf_token=ImVhMjAzY2Q3NzlmNDM3ZDE0MTNjNzA3NmFmNzFhMjYzYjVhZjEzNjgi.apC2kg.jApqXHu7ph2ektiNGpnDyrB1hOw; Path=/",
+      "session=eyJfcGVybWFuZW50Ijp0cnVlLCJjc3JmX3Rva2VuIjoiZWEyMDNjZDc3OWY0MzdkMTQxM2M3MDc2YWY3MWEyNjNiNWFmMTM2OCJ9.apC2kg.DiK-Z-honsO28WKkSc2Rg27lpbc; Expires=Fri, 28 Aug 2026 04:13:38 GMT; HttpOnly; Path=/"
+    ],
+    "status": 200
+  },
+  "hsts-over-https": {
+    "headers": {
+      "Content-Length": "5",
+      "Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "Content-Type": "text/html; charset=utf-8",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Strict-Transport-Security": "max-age=31556926",
+      "Vary": "Cookie",
+      "X-Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "X-Content-Type-Options": "nosniff",
+      "X-Download-Options": "noopen",
+      "X-Frame-Options": "deny",
+      "X-XSS-Protection": "1; mode=block"
+    },
+    "location": null,
+    "set_cookie": [
+      "csrf_token=IjU5NmU5MjNmODJjOTU2MGU5MmViZDdjMGY2YTI4YWJjMzY4ZDVjMmMi.apC2jQ.Ub1FtsAFlOc8-pvR0ddERuXZRKo; Path=/",
+      "session=eyJfcGVybWFuZW50Ijp0cnVlLCJjc3JmX3Rva2VuIjoiNTk2ZTkyM2Y4MmM5NTYwZTkyZWJkN2MwZjZhMjhhYmMzNjhkNWMyYyJ9.apC2jQ.UDp_nSzWQARg-nGdosdw5mhSces; Expires=Fri, 28 Aug 2026 04:13:33 GMT; HttpOnly; Path=/"
+    ],
+    "status": 200
+  },
+  "no-file-save": {
+    "headers": {
+      "Content-Length": "5",
+      "Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "Content-Type": "text/html; charset=utf-8",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Vary": "Cookie",
+      "X-Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "deny",
+      "X-XSS-Protection": "1; mode=block"
+    },
+    "location": null,
+    "set_cookie": [
+      "csrf_token=ImJhMGJkYmI5ZDY5MTQyMWRjNzZhZThlOGIxMDhlZmM4NDJhZTEyNDgi.apC2uw.AhkqRnef3OPVGVIx5qQRUjKRP2c; Path=/",
+      "session=eyJfcGVybWFuZW50Ijp0cnVlLCJjc3JmX3Rva2VuIjoiYmEwYmRiYjlkNjkxNDIxZGM3NmFlOGU4YjEwOGVmYzg0MmFlMTI0OCJ9.apC2uw.l1OJqUjXBRHZvFvTPRe9edW1e2k; Expires=Fri, 28 Aug 2026 04:14:19 GMT; HttpOnly; Path=/"
+    ],
+    "status": 200
+  },
+  "session-cookie": {
+    "headers": {
+      "Content-Length": "5",
+      "Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "Content-Type": "text/html; charset=utf-8",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Vary": "Cookie",
+      "X-Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; font-src 'self' data:; img-src 'self' http: https: data: blob:; object-src 'none'; frame-ancestors 'none'; frame-src redash.io;  ",
+      "X-Content-Type-Options": "nosniff",
+      "X-Download-Options": "noopen",
+      "X-Frame-Options": "deny",
+      "X-XSS-Protection": "1; mode=block"
+    },
+    "location": null,
+    "set_cookie": [
+      "csrf_token=IjJlNmZkMzExMjM2NDI0N2RlYWQzNDQ1ZDI1NzRhMWY3OWRkZWJkNjEi.apC2vw.WIj9ar5ghn2WnQrGqYdsH7EW91s; Path=/",
+      "session=eyJfcGVybWFuZW50Ijp0cnVlLCJjc3JmX3Rva2VuIjoiMmU2ZmQzMTEyMzY0MjQ3ZGVhZDM0NDVkMjU3NGExZjc5ZGRlYmQ2MSJ9.apC2vw.-SB9TxyGuSIMTHQC0vKZLgM4GGA; Expires=Fri, 28 Aug 2026 04:14:23 GMT; Secure; Path=/"
+    ],
+    "status": 200
+  }
+}

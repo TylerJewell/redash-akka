@@ -13,6 +13,7 @@ import wrapSettingsTab from "@/components/SettingsWrapper";
 import PlainButton from "@/components/PlainButton";
 
 import Destination, { IMG_ROOT } from "@/services/destination";
+import { subscribe } from "@/services/stream";
 import { policy } from "@/services/policy";
 import routes from "@/services/routes";
 
@@ -34,13 +35,17 @@ class DestinationsList extends React.Component {
   };
 
   componentDidMount() {
-    Promise.all([Destination.query(), Destination.types()])
-      .then((values) =>
+    // The list arrives on a stream and the type catalogue on one fetch: the catalogue
+    // is a fixed property of the deployment rather than state the server owns, so
+    // there is nothing for it to notify about (RENDERING.md R1).
+    this.unsubscribe = subscribe("api/streams/destinations", (destinations) =>
+      this.setState({ destinations, loading: false })
+    );
+    Destination.types()
+      .then((destinationTypes) =>
         this.setState(
           {
-            destinations: values[0],
-            destinationTypes: values[1],
-            loading: false,
+            destinationTypes,
           },
           () => {
             // all resources are loaded in state
@@ -61,11 +66,9 @@ class DestinationsList extends React.Component {
     const target = { options: {}, type: selectedType.type };
     helper.updateTargetWithValues(target, values);
 
-    return Destination.create(target).then((destination) => {
-      this.setState({ loading: true });
-      Destination.query().then((destinations) => this.setState({ destinations, loading: false }));
-      return destination;
-    });
+    // No re-fetch after a create: the stream carries the new row, and asking again
+    // here is the poll RENDERING.md R1 exists to remove.
+    return Destination.create(target);
   };
 
   showCreateSourceDialog = () => {

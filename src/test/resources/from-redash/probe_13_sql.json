@@ -1,0 +1,347 @@
+{
+  "split": [
+    {
+      "script": "SELECT 1",
+      "statements": [
+        "SELECT 1"
+      ],
+      "combined": "SELECT 1"
+    },
+    {
+      "script": "SELECT 1;",
+      "statements": [
+        "SELECT 1"
+      ],
+      "combined": "SELECT 1"
+    },
+    {
+      "script": "SELECT 1; SELECT 2",
+      "statements": [
+        "SELECT 1",
+        "SELECT 2"
+      ],
+      "combined": "SELECT 1;\nSELECT 2"
+    },
+    {
+      "script": "SELECT 1;;SELECT 2",
+      "statements": [
+        "SELECT 1",
+        "SELECT 2"
+      ],
+      "combined": "SELECT 1;\nSELECT 2"
+    },
+    {
+      "script": "SELECT 1; -- trailing line comment",
+      "statements": [
+        "SELECT 1"
+      ],
+      "combined": "SELECT 1"
+    },
+    {
+      "script": "SELECT 1; /* trailing block */",
+      "statements": [
+        "SELECT 1"
+      ],
+      "combined": "SELECT 1"
+    },
+    {
+      "script": "-- only a comment",
+      "statements": [
+        ""
+      ],
+      "combined": ""
+    },
+    {
+      "script": "/* only a block comment */",
+      "statements": [
+        ""
+      ],
+      "combined": ""
+    },
+    {
+      "script": "",
+      "statements": [
+        ""
+      ],
+      "combined": ""
+    },
+    {
+      "script": "   ",
+      "statements": [
+        ""
+      ],
+      "combined": ""
+    },
+    {
+      "script": ";",
+      "statements": [
+        ""
+      ],
+      "combined": ""
+    },
+    {
+      "script": ";;",
+      "statements": [
+        ""
+      ],
+      "combined": ""
+    },
+    {
+      "script": "SELECT ';' ; SELECT 2",
+      "statements": [
+        "SELECT ';'",
+        "SELECT 2"
+      ],
+      "combined": "SELECT ';';\nSELECT 2"
+    },
+    {
+      "script": "SELECT 1\n-- c\n;\nSELECT 2",
+      "statements": [
+        "SELECT 1\n-- c",
+        "SELECT 2"
+      ],
+      "combined": "SELECT 1\n-- c;\nSELECT 2"
+    },
+    {
+      "script": "SELECT 1 /* mid */ FROM t",
+      "statements": [
+        "SELECT 1 /* mid */ FROM t"
+      ],
+      "combined": "SELECT 1 /* mid */ FROM t"
+    },
+    {
+      "script": "INSERT INTO t VALUES (1); SELECT 1",
+      "statements": [
+        "INSERT INTO t VALUES (1)",
+        "SELECT 1"
+      ],
+      "combined": "INSERT INTO t VALUES (1);\nSELECT 1"
+    }
+  ],
+  "auto_limit_base": [
+    {
+      "query": "SELECT 1",
+      "off": "SELECT 1",
+      "on": "SELECT 1 LIMIT 1000",
+      "is_select_no_limit": true
+    },
+    {
+      "query": "select 1",
+      "off": "select 1",
+      "on": "select 1 LIMIT 1000",
+      "is_select_no_limit": true
+    },
+    {
+      "query": "SELECT * FROM t",
+      "off": "SELECT * FROM t",
+      "on": "SELECT * FROM t LIMIT 1000",
+      "is_select_no_limit": true
+    },
+    {
+      "query": "SELECT * FROM t LIMIT 5",
+      "off": "SELECT * FROM t LIMIT 5",
+      "on": "SELECT * FROM t LIMIT 5",
+      "is_select_no_limit": false
+    },
+    {
+      "query": "SELECT * FROM t limit 5",
+      "off": "SELECT * FROM t limit 5",
+      "on": "SELECT * FROM t limit 5",
+      "is_select_no_limit": false
+    },
+    {
+      "query": "SELECT * FROM t OFFSET 5",
+      "off": "SELECT * FROM t OFFSET 5",
+      "on": "SELECT * FROM t OFFSET 5",
+      "is_select_no_limit": false
+    },
+    {
+      "query": "SELECT * FROM t ORDER BY a",
+      "off": "SELECT * FROM t ORDER BY a",
+      "on": "SELECT * FROM t ORDER BY a LIMIT 1000",
+      "is_select_no_limit": true
+    },
+    {
+      "query": "SELECT * FROM t;",
+      "off": "SELECT * FROM t",
+      "on": "SELECT * FROM t LIMIT 1000",
+      "is_select_no_limit": true
+    },
+    {
+      "query": "SELECT * FROM t WHERE a = 1;",
+      "off": "SELECT * FROM t WHERE a = 1",
+      "on": "SELECT * FROM t WHERE a = 1 LIMIT 1000",
+      "is_select_no_limit": true
+    },
+    {
+      "query": "INSERT INTO t VALUES (1)",
+      "off": "INSERT INTO t VALUES (1)",
+      "on": "INSERT INTO t VALUES (1)",
+      "is_select_no_limit": false
+    },
+    {
+      "query": "WITH x AS (SELECT 1) SELECT * FROM x",
+      "off": "WITH x AS (SELECT 1) SELECT * FROM x",
+      "on": "WITH x AS (SELECT 1) SELECT * FROM x",
+      "is_select_no_limit": false
+    },
+    {
+      "query": "SELECT 1; SELECT 2",
+      "off": "SELECT 1;\nSELECT 2",
+      "on": "SELECT 1;\nSELECT 2 LIMIT 1000",
+      "is_select_no_limit": true
+    },
+    {
+      "query": "SELECT 1; INSERT INTO t VALUES (1)",
+      "off": "SELECT 1;\nINSERT INTO t VALUES (1)",
+      "on": "SELECT 1;\nINSERT INTO t VALUES (1)",
+      "is_select_no_limit": true
+    },
+    {
+      "query": "INSERT INTO t VALUES (1); SELECT 2",
+      "off": "INSERT INTO t VALUES (1);\nSELECT 2",
+      "on": "INSERT INTO t VALUES (1);\nSELECT 2 LIMIT 1000",
+      "is_select_no_limit": false
+    },
+    {
+      "query": "-- comment only",
+      "off": "",
+      "on": "",
+      "is_select_no_limit": false
+    },
+    {
+      "query": "",
+      "off": "",
+      "on": "",
+      "is_select_no_limit": false
+    },
+    {
+      "query": "SELECT * FROM t -- trailing",
+      "off": "SELECT * FROM t",
+      "on": "SELECT * FROM t LIMIT 1000",
+      "is_select_no_limit": true
+    }
+  ],
+  "auto_limit_variants": [
+    {
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "types": [
+        "Cassandra",
+        "arangodb",
+        "athena",
+        "aws_es",
+        "axibasetsd",
+        "azure_kusto",
+        "bigquery",
+        "clickhouse",
+        "cloudwatch",
+        "cloudwatch_insights",
+        "cockroach",
+        "corporate_memory",
+        "couchbase",
+        "csv",
+        "d1",
+        "databend",
+        "databricks",
+        "db2",
+        "dgraph",
+        "drill",
+        "druid",
+        "duckdb",
+        "e6data",
+        "elasticsearch",
+        "elasticsearch2",
+        "elasticsearch2_OpenDistroSQLElasticSearch",
+        "elasticsearch2_XPackSQLElasticSearch",
+        "exasol",
+        "excel",
+        "google_analytics",
+        "google_analytics4",
+        "google_search_console",
+        "google_spreadsheets",
+        "graphite",
+        "hive",
+        "hive_http",
+        "ignite",
+        "impala",
+        "influxdb",
+        "influxdbv2",
+        "jirajql",
+        "json",
+        "kibana",
+        "kylin",
+        "memsql",
+        "mongodb",
+        "mysql",
+        "nz",
+        "pg",
+        "phoenix",
+        "pinot",
+        "presto",
+        "prometheus",
+        "rds_mysql",
+        "redshift",
+        "redshift_iam",
+        "results",
+        "risingwave",
+        "rockset",
+        "salesforce",
+        "scylla",
+        "snowflake",
+        "sparql_endpoint",
+        "sqlite",
+        "tinybird",
+        "treasuredata",
+        "trino",
+        "uptycs",
+        "url",
+        "yandex_appmetrika",
+        "yandex_disk",
+        "yandex_metrika"
+      ],
+      "example": "SELECT * FROM t"
+    },
+    {
+      "limit_query": " TOP 1000",
+      "limit_keywords": [
+        "TOP"
+      ],
+      "limit_after_select": true,
+      "types": [
+        "mssql",
+        "mssql_odbc"
+      ],
+      "example": "SELECT TOP 1000 * FROM t"
+    },
+    {
+      "limit_query": " FETCH NEXT 1000 ROWS ONLY",
+      "limit_keywords": [
+        "ROW",
+        "ROWS",
+        "ONLY",
+        "TIES"
+      ],
+      "limit_after_select": false,
+      "types": [
+        "oracle"
+      ],
+      "example": "SELECT * FROM t FETCH NEXT 1000 ROWS ONLY"
+    }
+  ],
+  "sqlparse_format_options": {
+    "reindent": true,
+    "keyword_case": "upper"
+  },
+  "format": {
+    "select a,b from t where a=1": "SELECT a,\n       b\nFROM t\nWHERE a=1",
+    "SELECT * FROM t JOIN u ON t.id = u.id WHERE x > 1 ORDER BY a": "SELECT *\nFROM t\nJOIN u ON t.id = u.id\nWHERE x > 1\nORDER BY a",
+    "select 1": "SELECT 1",
+    "": "",
+    "-- comment\nselect 1": "-- comment\n\nSELECT 1"
+  }
+}

@@ -1,0 +1,717 @@
+{
+  "validation": [
+    {
+      "case": "text/string",
+      "definition": {
+        "name": "p",
+        "type": "text"
+      },
+      "value": "abc",
+      "result": {
+        "ok": true,
+        "query": "SELECT abc",
+        "text": "SELECT abc"
+      }
+    },
+    {
+      "case": "text/number",
+      "definition": {
+        "name": "p",
+        "type": "text"
+      },
+      "value": 5,
+      "result": {
+        "ok": false,
+        "error": "InvalidParameterError",
+        "message": "The following parameter values are incompatible with their definitions: p"
+      }
+    },
+    {
+      "case": "text/list",
+      "definition": {
+        "name": "p",
+        "type": "text"
+      },
+      "value": [
+        "a",
+        "b"
+      ],
+      "result": {
+        "ok": false,
+        "error": "InvalidParameterError",
+        "message": "The following parameter values are incompatible with their definitions: p"
+      }
+    },
+    {
+      "case": "text-pattern/matches",
+      "definition": {
+        "name": "p",
+        "type": "text-pattern",
+        "regex": "^a+$"
+      },
+      "value": "aaa",
+      "result": {
+        "ok": true,
+        "query": "SELECT aaa",
+        "text": "SELECT aaa"
+      }
+    },
+    {
+      "case": "text-pattern/does-not-match",
+      "definition": {
+        "name": "p",
+        "type": "text-pattern",
+        "regex": "^a+$"
+      },
+      "value": "abc",
+      "result": {
+        "ok": false,
+        "error": "InvalidParameterError",
+        "message": "The following parameter values are incompatible with their definitions: p"
+      }
+    },
+    {
+      "case": "text-pattern/partial-is-refused",
+      "definition": {
+        "name": "p",
+        "type": "text-pattern",
+        "regex": "^a+$"
+      },
+      "value": "aaab",
+      "result": {
+        "ok": false,
+        "error": "InvalidParameterError",
+        "message": "The following parameter values are incompatible with their definitions: p"
+      }
+    },
+    {
+      "case": "text-pattern/invalid-regex",
+      "definition": {
+        "name": "p",
+        "type": "text-pattern",
+        "regex": "([unclosed"
+      },
+      "value": "aaa",
+      "result": {
+        "ok": false,
+        "error": "InvalidParameterError",
+        "message": "The following parameter values are incompatible with their definitions: p"
+      }
+    },
+    {
+      "case": "number/int",
+      "definition": {
+        "name": "p",
+        "type": "number"
+      },
+      "value": 5,
+      "result": {
+        "ok": true,
+        "query": "SELECT 5",
+        "text": "SELECT 5"
+      }
+    },
+    {
+      "case": "number/float",
+      "definition": {
+        "name": "p",
+        "type": "number"
+      },
+      "value": 5.5,
+      "result": {
+        "ok": true,
+        "query": "SELECT 5.5",
+        "text": "SELECT 5.5"
+      }
+    },
+    {
+      "case": "number/numeric-string",
+      "definition": {
+        "name": "p",
+        "type": "number"
+      },
+      "value": "5",
+      "result": {
+        "ok": true,
+        "query": "SELECT 5",
+        "text": "SELECT 5"
+      }
+    },
+    {
+      "case": "number/word",
+      "definition": {
+        "name": "p",
+        "type": "number"
+      },
+      "value": "five",
+      "result": {
+        "ok": false,
+        "error": "InvalidParameterError",
+        "message": "The following parameter values are incompatible with their definitions: p"
+      }
+    },
+    {
+      "case": "number/bool",
+      "definition": {
+        "name": "p",
+        "type": "number"
+      },
+      "value": true,
+      "result": {
+        "ok": true,
+        "query": "SELECT True",
+        "text": "SELECT True"
+      }
+    },
+    {
+      "case": "enum/member",
+      "definition": {
+        "name": "p",
+        "type": "enum",
+        "enumOptions": "a\nb\nc"
+      },
+      "value": "a",
+      "result": {
+        "ok": true,
+        "query": "SELECT a",
+        "text": "SELECT a"
+      }
+    },
+    {
+      "case": "enum/non-member",
+      "definition": {
+        "name": "p",
+        "type": "enum",
+        "enumOptions": "a\nb\nc"
+      },
+      "value": "z",
+      "result": {
+        "ok": false,
+        "error": "InvalidParameterError",
+        "message": "The following parameter values are incompatible with their definitions: p"
+      }
+    },
+    {
+      "case": "enum/list-without-multi",
+      "definition": {
+        "name": "p",
+        "type": "enum",
+        "enumOptions": "a\nb\nc"
+      },
+      "value": [
+        "a",
+        "b"
+      ],
+      "result": {
+        "ok": false,
+        "error": "InvalidParameterError",
+        "message": "The following parameter values are incompatible with their definitions: p"
+      }
+    },
+    {
+      "case": "enum/list-with-multi",
+      "definition": {
+        "name": "p",
+        "type": "enum",
+        "enumOptions": "a\nb\nc",
+        "multiValuesOptions": {
+          "separator": ",",
+          "prefix": "'",
+          "suffix": "'"
+        }
+      },
+      "value": [
+        "a",
+        "b"
+      ],
+      "result": {
+        "ok": true,
+        "query": "SELECT 'a','b'",
+        "text": "SELECT 'a','b'"
+      }
+    },
+    {
+      "case": "enum/list-with-multi-non-member",
+      "definition": {
+        "name": "p",
+        "type": "enum",
+        "enumOptions": "a\nb\nc",
+        "multiValuesOptions": {
+          "separator": ",",
+          "prefix": "'",
+          "suffix": "'"
+        }
+      },
+      "value": [
+        "a",
+        "z"
+      ],
+      "result": {
+        "ok": false,
+        "error": "InvalidParameterError",
+        "message": "The following parameter values are incompatible with their definitions: p"
+      }
+    },
+    {
+      "case": "enum/multi-single-value",
+      "definition": {
+        "name": "p",
+        "type": "enum",
+        "enumOptions": "a\nb\nc",
+        "multiValuesOptions": {
+          "separator": ",",
+          "prefix": "'",
+          "suffix": "'"
+        }
+      },
+      "value": "b",
+      "result": {
+        "ok": true,
+        "query": "SELECT b",
+        "text": "SELECT b"
+      }
+    },
+    {
+      "case": "date/iso",
+      "definition": {
+        "name": "p",
+        "type": "date"
+      },
+      "value": "2026-08-26",
+      "result": {
+        "ok": true,
+        "query": "SELECT 2026-08-26",
+        "text": "SELECT 2026-08-26"
+      }
+    },
+    {
+      "case": "date/datetime",
+      "definition": {
+        "name": "p",
+        "type": "date"
+      },
+      "value": "2026-08-26 13:45:00",
+      "result": {
+        "ok": true,
+        "query": "SELECT 2026-08-26 13:45:00",
+        "text": "SELECT 2026-08-26 13:45:00"
+      }
+    },
+    {
+      "case": "date/nonsense",
+      "definition": {
+        "name": "p",
+        "type": "date"
+      },
+      "value": "not-a-date",
+      "result": {
+        "ok": false,
+        "error": "InvalidParameterError",
+        "message": "The following parameter values are incompatible with their definitions: p"
+      }
+    },
+    {
+      "case": "datetime-local/iso",
+      "definition": {
+        "name": "p",
+        "type": "datetime-local"
+      },
+      "value": "2026-08-26",
+      "result": {
+        "ok": true,
+        "query": "SELECT 2026-08-26",
+        "text": "SELECT 2026-08-26"
+      }
+    },
+    {
+      "case": "datetime-local/datetime",
+      "definition": {
+        "name": "p",
+        "type": "datetime-local"
+      },
+      "value": "2026-08-26 13:45:00",
+      "result": {
+        "ok": true,
+        "query": "SELECT 2026-08-26 13:45:00",
+        "text": "SELECT 2026-08-26 13:45:00"
+      }
+    },
+    {
+      "case": "datetime-local/nonsense",
+      "definition": {
+        "name": "p",
+        "type": "datetime-local"
+      },
+      "value": "not-a-date",
+      "result": {
+        "ok": false,
+        "error": "InvalidParameterError",
+        "message": "The following parameter values are incompatible with their definitions: p"
+      }
+    },
+    {
+      "case": "datetime-with-seconds/iso",
+      "definition": {
+        "name": "p",
+        "type": "datetime-with-seconds"
+      },
+      "value": "2026-08-26",
+      "result": {
+        "ok": true,
+        "query": "SELECT 2026-08-26",
+        "text": "SELECT 2026-08-26"
+      }
+    },
+    {
+      "case": "datetime-with-seconds/datetime",
+      "definition": {
+        "name": "p",
+        "type": "datetime-with-seconds"
+      },
+      "value": "2026-08-26 13:45:00",
+      "result": {
+        "ok": true,
+        "query": "SELECT 2026-08-26 13:45:00",
+        "text": "SELECT 2026-08-26 13:45:00"
+      }
+    },
+    {
+      "case": "datetime-with-seconds/nonsense",
+      "definition": {
+        "name": "p",
+        "type": "datetime-with-seconds"
+      },
+      "value": "not-a-date",
+      "result": {
+        "ok": false,
+        "error": "InvalidParameterError",
+        "message": "The following parameter values are incompatible with their definitions: p"
+      }
+    },
+    {
+      "case": "date-range/pair",
+      "definition": {
+        "name": "p",
+        "type": "date-range"
+      },
+      "value": {
+        "start": "2026-08-01",
+        "end": "2026-08-26"
+      },
+      "result": {
+        "ok": true,
+        "query": "SELECT {'start': '2026-08-01', 'end': '2026-08-26'}",
+        "text": "SELECT {'start': '2026-08-01', 'end': '2026-08-26'}"
+      }
+    },
+    {
+      "case": "date-range/bad-end",
+      "definition": {
+        "name": "p",
+        "type": "date-range"
+      },
+      "value": {
+        "start": "2026-08-01",
+        "end": "nope"
+      },
+      "result": {
+        "ok": false,
+        "error": "InvalidParameterError",
+        "message": "The following parameter values are incompatible with their definitions: p"
+      }
+    },
+    {
+      "case": "date-range/not-a-pair",
+      "definition": {
+        "name": "p",
+        "type": "date-range"
+      },
+      "value": "2026-08-01",
+      "result": {
+        "ok": false,
+        "error": "InvalidParameterError",
+        "message": "The following parameter values are incompatible with their definitions: p"
+      }
+    },
+    {
+      "case": "datetime-range/pair",
+      "definition": {
+        "name": "p",
+        "type": "datetime-range"
+      },
+      "value": {
+        "start": "2026-08-01",
+        "end": "2026-08-26"
+      },
+      "result": {
+        "ok": true,
+        "query": "SELECT {'start': '2026-08-01', 'end': '2026-08-26'}",
+        "text": "SELECT {'start': '2026-08-01', 'end': '2026-08-26'}"
+      }
+    },
+    {
+      "case": "datetime-range/bad-end",
+      "definition": {
+        "name": "p",
+        "type": "datetime-range"
+      },
+      "value": {
+        "start": "2026-08-01",
+        "end": "nope"
+      },
+      "result": {
+        "ok": false,
+        "error": "InvalidParameterError",
+        "message": "The following parameter values are incompatible with their definitions: p"
+      }
+    },
+    {
+      "case": "datetime-range/not-a-pair",
+      "definition": {
+        "name": "p",
+        "type": "datetime-range"
+      },
+      "value": "2026-08-01",
+      "result": {
+        "ok": false,
+        "error": "InvalidParameterError",
+        "message": "The following parameter values are incompatible with their definitions: p"
+      }
+    },
+    {
+      "case": "datetime-range-with-seconds/pair",
+      "definition": {
+        "name": "p",
+        "type": "datetime-range-with-seconds"
+      },
+      "value": {
+        "start": "2026-08-01",
+        "end": "2026-08-26"
+      },
+      "result": {
+        "ok": true,
+        "query": "SELECT {'start': '2026-08-01', 'end': '2026-08-26'}",
+        "text": "SELECT {'start': '2026-08-01', 'end': '2026-08-26'}"
+      }
+    },
+    {
+      "case": "datetime-range-with-seconds/bad-end",
+      "definition": {
+        "name": "p",
+        "type": "datetime-range-with-seconds"
+      },
+      "value": {
+        "start": "2026-08-01",
+        "end": "nope"
+      },
+      "result": {
+        "ok": false,
+        "error": "InvalidParameterError",
+        "message": "The following parameter values are incompatible with their definitions: p"
+      }
+    },
+    {
+      "case": "datetime-range-with-seconds/not-a-pair",
+      "definition": {
+        "name": "p",
+        "type": "datetime-range-with-seconds"
+      },
+      "value": "2026-08-01",
+      "result": {
+        "ok": false,
+        "error": "InvalidParameterError",
+        "message": "The following parameter values are incompatible with their definitions: p"
+      }
+    },
+    {
+      "case": "unknown-type",
+      "definition": {
+        "name": "p",
+        "type": "wat"
+      },
+      "value": "x",
+      "result": {
+        "ok": false,
+        "error": "InvalidParameterError",
+        "message": "The following parameter values are incompatible with their definitions: p"
+      }
+    },
+    {
+      "case": "no-schema-accepts-anything",
+      "definition": null,
+      "value": "anything at all",
+      "result": {
+        "ok": true,
+        "query": "SELECT anything at all",
+        "text": "SELECT anything at all"
+      }
+    },
+    {
+      "case": "name-not-in-schema",
+      "definition": {
+        "name": "p",
+        "type": "text"
+      },
+      "value": "abc",
+      "result": {
+        "ok": false,
+        "error": "InvalidParameterError",
+        "message": "The following parameter values are incompatible with their definitions: other"
+      }
+    }
+  ],
+  "range_substitution": {
+    "ok": true,
+    "query": "SELECT '2026-08-01' AND '2026-08-26'",
+    "text": "SELECT '2026-08-01' AND '2026-08-26'"
+  },
+  "missing_params": {
+    "SELECT {{a}} << {}": [
+      "a"
+    ],
+    "SELECT {{a}} << {\"a\": 1}": [],
+    "SELECT {{a}} {{b}} << {\"a\": 1}": [
+      "b"
+    ],
+    "SELECT {{#s}}{{x}}{{/s}} << {}": [
+      "s",
+      "x"
+    ],
+    "SELECT {{p.start}} << {\"p\": {\"start\": \"x\", \"end\": \"y\"}}": [],
+    "SELECT 1 << {}": []
+  },
+  "is_safe": {
+    "no-parameters": true,
+    "text-parameter": false,
+    "number-parameter": true,
+    "text-pattern-parameter": true,
+    "enum-parameter": true,
+    "mixed": false
+  },
+  "mustache": {
+    "plain": {
+      "template": "{{a}}",
+      "context": {
+        "a": "x"
+      },
+      "render": "x",
+      "render_escape": "x"
+    },
+    "missing": {
+      "template": "{{a}}",
+      "context": {},
+      "render": "",
+      "render_escape": ""
+    },
+    "dotted": {
+      "template": "{{a.b}}",
+      "context": {
+        "a": {
+          "b": "x"
+        }
+      },
+      "render": "x",
+      "render_escape": "x"
+    },
+    "section-truthy": {
+      "template": "{{#a}}yes{{/a}}",
+      "context": {
+        "a": true
+      },
+      "render": "yes",
+      "render_escape": "yes"
+    },
+    "section-falsy": {
+      "template": "{{#a}}yes{{/a}}",
+      "context": {
+        "a": false
+      },
+      "render": "",
+      "render_escape": ""
+    },
+    "section-list": {
+      "template": "{{#a}}[{{.}}]{{/a}}",
+      "context": {
+        "a": [
+          1,
+          2
+        ]
+      },
+      "render": "[1][2]",
+      "render_escape": "[1][2]"
+    },
+    "inverted": {
+      "template": "{{^a}}none{{/a}}",
+      "context": {
+        "a": false
+      },
+      "render": "none",
+      "render_escape": "none"
+    },
+    "needs-escaping": {
+      "template": "{{a}}",
+      "context": {
+        "a": "<b>&'\""
+      },
+      "render": "<b>&'\"",
+      "render_escape": "&lt;b&gt;&amp;&#x27;&quot;"
+    },
+    "triple-stache": {
+      "template": "{{{a}}}",
+      "context": {
+        "a": "<b>"
+      },
+      "render": "<b>",
+      "render_escape": "<b>"
+    },
+    "ampersand": {
+      "template": "{{&a}}",
+      "context": {
+        "a": "<b>"
+      },
+      "render": "<b>",
+      "render_escape": "<b>"
+    },
+    "comment": {
+      "template": "x{{! hidden }}y",
+      "context": {},
+      "render": "xy",
+      "render_escape": "xy"
+    },
+    "literal-braces": {
+      "template": "{{a}} }} {{",
+      "context": {
+        "a": "x"
+      },
+      "render": "x }} {{",
+      "render_escape": "x }} {{"
+    },
+    "number": {
+      "template": "{{a}}",
+      "context": {
+        "a": 5
+      },
+      "render": "5",
+      "render_escape": "5"
+    },
+    "none": {
+      "template": "{{a}}",
+      "context": {
+        "a": null
+      },
+      "render": "None",
+      "render_escape": "None"
+    },
+    "list-value": {
+      "template": "{{a}}",
+      "context": {
+        "a": [
+          "p",
+          "q"
+        ]
+      },
+      "render": "['p', 'q']",
+      "render_escape": "[&#x27;p&#x27;, &#x27;q&#x27;]"
+    }
+  }
+}

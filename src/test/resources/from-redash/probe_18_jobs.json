@@ -1,0 +1,100 @@
+{
+  "schedule": {
+    "jobs": [
+      {
+        "name": "refresh_queries",
+        "interval_seconds": 30,
+        "timeout": 600,
+        "result_ttl": 600
+      },
+      {
+        "name": "remove_ghost_locks",
+        "interval_seconds": 60.0,
+        "timeout": null,
+        "result_ttl": 600
+      },
+      {
+        "name": "empty_schedules",
+        "interval_seconds": 3600.0,
+        "timeout": null,
+        "result_ttl": null
+      },
+      {
+        "name": "refresh_schemas",
+        "interval_seconds": 1800.0,
+        "timeout": null,
+        "result_ttl": null
+      },
+      {
+        "name": "sync_user_details",
+        "interval_seconds": 60.0,
+        "timeout": 60,
+        "result_ttl": 600
+      },
+      {
+        "name": "send_aggregated_errors",
+        "interval_seconds": 3600.0,
+        "timeout": null,
+        "result_ttl": null
+      },
+      {
+        "name": "version_check",
+        "interval_seconds": 86400.0,
+        "timeout": null,
+        "result_ttl": null
+      },
+      {
+        "name": "cleanup_query_results",
+        "interval_seconds": 300.0,
+        "timeout": null,
+        "result_ttl": null
+      }
+    ],
+    "version_check": true,
+    "cleanup_enabled": true,
+    "cleanup_max_age_days": 7,
+    "cleanup_count": 100,
+    "schemas_refresh_minutes": 30,
+    "failure_email_minutes": 60,
+    "max_failure_reports": 100
+  },
+  "ghost_locks": {
+    "had_a_live_job": true,
+    "before": [
+      "query_hash_job:probe-dead",
+      "query_hash_job:probe-dead-2",
+      "query_hash_job:probe-live"
+    ],
+    "after": [
+      "query_hash_job:probe-live"
+    ]
+  },
+  "result_cleanup": {
+    "max_age_days": 7,
+    "survived": {
+      "old_unused": false,
+      "just_inside": true,
+      "fresh_unused": true,
+      "old_pointed_at": true
+    }
+  },
+  "failure_reports": {
+    "failures_after_three": 3,
+    "recorded": 3,
+    "recorded_past_the_ceiling": 0,
+    "recorded_while_unsubscribed": 0,
+    "messages": [
+      "first kind of trouble",
+      "first kind of trouble",
+      "second kind of trouble"
+    ],
+    "fields": [
+      "failed_at",
+      "id",
+      "message",
+      "name",
+      "schedule_failures"
+    ],
+    "left_after_the_report": 0
+  }
+}

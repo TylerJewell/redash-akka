@@ -1,0 +1,317 @@
+{
+  "has_access": [
+    {
+      "groups": "all-view-only",
+      "user": "admin",
+      "wanted": "view",
+      "allowed": true
+    },
+    {
+      "groups": "all-view-only",
+      "user": "admin",
+      "wanted": "modify",
+      "allowed": true
+    },
+    {
+      "groups": "all-view-only",
+      "user": "member-of-1",
+      "wanted": "view",
+      "allowed": true
+    },
+    {
+      "groups": "all-view-only",
+      "user": "member-of-1",
+      "wanted": "modify",
+      "allowed": false
+    },
+    {
+      "groups": "all-view-only",
+      "user": "member-of-2",
+      "wanted": "view",
+      "allowed": true
+    },
+    {
+      "groups": "all-view-only",
+      "user": "member-of-2",
+      "wanted": "modify",
+      "allowed": false
+    },
+    {
+      "groups": "all-view-only",
+      "user": "member-of-both",
+      "wanted": "view",
+      "allowed": true
+    },
+    {
+      "groups": "all-view-only",
+      "user": "member-of-both",
+      "wanted": "modify",
+      "allowed": false
+    },
+    {
+      "groups": "all-view-only",
+      "user": "member-of-none",
+      "wanted": "view",
+      "allowed": false
+    },
+    {
+      "groups": "all-view-only",
+      "user": "member-of-none",
+      "wanted": "modify",
+      "allowed": false
+    },
+    {
+      "groups": "mixed",
+      "user": "admin",
+      "wanted": "view",
+      "allowed": true
+    },
+    {
+      "groups": "mixed",
+      "user": "admin",
+      "wanted": "modify",
+      "allowed": true
+    },
+    {
+      "groups": "mixed",
+      "user": "member-of-1",
+      "wanted": "view",
+      "allowed": true
+    },
+    {
+      "groups": "mixed",
+      "user": "member-of-1",
+      "wanted": "modify",
+      "allowed": false
+    },
+    {
+      "groups": "mixed",
+      "user": "member-of-2",
+      "wanted": "view",
+      "allowed": true
+    },
+    {
+      "groups": "mixed",
+      "user": "member-of-2",
+      "wanted": "modify",
+      "allowed": true
+    },
+    {
+      "groups": "mixed",
+      "user": "member-of-both",
+      "wanted": "view",
+      "allowed": true
+    },
+    {
+      "groups": "mixed",
+      "user": "member-of-both",
+      "wanted": "modify",
+      "allowed": true
+    },
+    {
+      "groups": "mixed",
+      "user": "member-of-none",
+      "wanted": "view",
+      "allowed": false
+    },
+    {
+      "groups": "mixed",
+      "user": "member-of-none",
+      "wanted": "modify",
+      "allowed": false
+    },
+    {
+      "groups": "none-view-only",
+      "user": "admin",
+      "wanted": "view",
+      "allowed": true
+    },
+    {
+      "groups": "none-view-only",
+      "user": "admin",
+      "wanted": "modify",
+      "allowed": true
+    },
+    {
+      "groups": "none-view-only",
+      "user": "member-of-1",
+      "wanted": "view",
+      "allowed": true
+    },
+    {
+      "groups": "none-view-only",
+      "user": "member-of-1",
+      "wanted": "modify",
+      "allowed": true
+    },
+    {
+      "groups": "none-view-only",
+      "user": "member-of-2",
+      "wanted": "view",
+      "allowed": true
+    },
+    {
+      "groups": "none-view-only",
+      "user": "member-of-2",
+      "wanted": "modify",
+      "allowed": true
+    },
+    {
+      "groups": "none-view-only",
+      "user": "member-of-both",
+      "wanted": "view",
+      "allowed": true
+    },
+    {
+      "groups": "none-view-only",
+      "user": "member-of-both",
+      "wanted": "modify",
+      "allowed": true
+    },
+    {
+      "groups": "none-view-only",
+      "user": "member-of-none",
+      "wanted": "view",
+      "allowed": false
+    },
+    {
+      "groups": "none-view-only",
+      "user": "member-of-none",
+      "wanted": "modify",
+      "allowed": false
+    },
+    {
+      "groups": "empty",
+      "user": "admin",
+      "wanted": "view",
+      "allowed": true
+    },
+    {
+      "groups": "empty",
+      "user": "admin",
+      "wanted": "modify",
+      "allowed": true
+    },
+    {
+      "groups": "empty",
+      "user": "member-of-1",
+      "wanted": "view",
+      "allowed": false
+    },
+    {
+      "groups": "empty",
+      "user": "member-of-1",
+      "wanted": "modify",
+      "allowed": false
+    },
+    {
+      "groups": "empty",
+      "user": "member-of-2",
+      "wanted": "view",
+      "allowed": false
+    },
+    {
+      "groups": "empty",
+      "user": "member-of-2",
+      "wanted": "modify",
+      "allowed": false
+    },
+    {
+      "groups": "empty",
+      "user": "member-of-both",
+      "wanted": "view",
+      "allowed": false
+    },
+    {
+      "groups": "empty",
+      "user": "member-of-both",
+      "wanted": "modify",
+      "allowed": false
+    },
+    {
+      "groups": "empty",
+      "user": "member-of-none",
+      "wanted": "view",
+      "allowed": false
+    },
+    {
+      "groups": "empty",
+      "user": "member-of-none",
+      "wanted": "modify",
+      "allowed": false
+    }
+  ],
+  "has_access_api_key": [
+    {
+      "key": "OWNKEY",
+      "wanted": "view",
+      "allowed": true
+    },
+    {
+      "key": "OWNKEY",
+      "wanted": "modify",
+      "allowed": false
+    },
+    {
+      "key": "DASHKEY",
+      "wanted": "view",
+      "allowed": true
+    },
+    {
+      "key": "DASHKEY",
+      "wanted": "modify",
+      "allowed": false
+    },
+    {
+      "key": "OTHERKEY",
+      "wanted": "view",
+      "allowed": false
+    },
+    {
+      "key": "OTHERKEY",
+      "wanted": "modify",
+      "allowed": false
+    },
+    {
+      "key": "OWNKEY/no-dashboards",
+      "wanted": "view",
+      "allowed": true
+    },
+    {
+      "key": "OWNKEY/no-dashboards",
+      "wanted": "modify",
+      "allowed": false
+    },
+    {
+      "key": "OTHERKEY/no-dashboards",
+      "wanted": "view",
+      "allowed": false
+    },
+    {
+      "key": "OTHERKEY/no-dashboards",
+      "wanted": "modify",
+      "allowed": false
+    }
+  ],
+  "json_dumps": {
+    "decimal": "{\"v\": 1.25}",
+    "timedelta": "{\"v\": \"0:01:30\"}",
+    "uuid": "{\"v\": \"12345678-1234-5678-1234-567812345678\"}",
+    "datetime-naive": "{\"v\": \"2026-08-26T13:45:01\"}",
+    "datetime-micro": "{\"v\": \"2026-08-26T13:45:01.123\"}",
+    "datetime-utc": "{\"v\": \"2026-08-26T13:45:01Z\"}",
+    "datetime-offset": "{\"v\": \"2026-08-26T13:45:01+02:00\"}",
+    "date": "{\"v\": \"2026-08-26\"}",
+    "time": "{\"v\": \"13:45:01\"}",
+    "time-micro": "{\"v\": \"13:45:01.123\"}",
+    "bytes": "{\"v\": \"0001ff\"}",
+    "memoryview": "{\"v\": \"0001ff\"}",
+    "nan": "{\"v\": null}",
+    "inf": "{\"v\": null}",
+    "-inf": "{\"v\": null}",
+    "nested-nan": "{\"v\": {\"a\": [null, 1]}}",
+    "unicode": "{\"v\": \"caf\u00e9 \u4e2d\"}",
+    "true": "{\"v\": true}",
+    "none": "{\"v\": null}"
+  }
+}

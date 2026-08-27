@@ -1,0 +1,6 @@
+/*!
+ * React port of Cornelius library (based on v0.1 released under the MIT license)
+ * Original library: http://restorando.github.io/cornelius
+ */
+
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */

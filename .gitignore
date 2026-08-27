@@ -2,3 +2,6 @@ target/
 frontend/node_modules/
 frontend/client/dist/
 frontend/viz-lib/node_modules/
+frontend/client/cypress/videos/
+frontend/client/cypress/screenshots/
+frontend/client/cypress/downloads/

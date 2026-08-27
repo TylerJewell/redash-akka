@@ -1,0 +1,5125 @@
+{
+  "requested_query_runner_modules": "<itertools.filterfalse object at 0x7e4e8b2cddb0>",
+  "registered_query_runner_types": [
+    "Cassandra",
+    "arangodb",
+    "athena",
+    "aws_es",
+    "axibasetsd",
+    "azure_kusto",
+    "bigquery",
+    "clickhouse",
+    "cloudwatch",
+    "cloudwatch_insights",
+    "cockroach",
+    "corporate_memory",
+    "couchbase",
+    "csv",
+    "d1",
+    "databend",
+    "databricks",
+    "db2",
+    "dgraph",
+    "drill",
+    "druid",
+    "duckdb",
+    "e6data",
+    "elasticsearch",
+    "elasticsearch2",
+    "elasticsearch2_OpenDistroSQLElasticSearch",
+    "elasticsearch2_XPackSQLElasticSearch",
+    "exasol",
+    "excel",
+    "google_analytics",
+    "google_analytics4",
+    "google_search_console",
+    "google_spreadsheets",
+    "graphite",
+    "hive",
+    "hive_http",
+    "ignite",
+    "impala",
+    "influxdb",
+    "influxdbv2",
+    "jirajql",
+    "json",
+    "kibana",
+    "kylin",
+    "memsql",
+    "mongodb",
+    "mssql",
+    "mssql_odbc",
+    "mysql",
+    "nz",
+    "oracle",
+    "pg",
+    "phoenix",
+    "pinot",
+    "presto",
+    "prometheus",
+    "rds_mysql",
+    "redshift",
+    "redshift_iam",
+    "results",
+    "risingwave",
+    "rockset",
+    "salesforce",
+    "scylla",
+    "snowflake",
+    "sparql_endpoint",
+    "sqlite",
+    "tinybird",
+    "treasuredata",
+    "trino",
+    "uptycs",
+    "url",
+    "yandex_appmetrika",
+    "yandex_disk",
+    "yandex_metrika"
+  ],
+  "query_runners": {
+    "Cassandra": {
+      "name": "Cassandra",
+      "type": "Cassandra",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "number",
+            "default": 9042
+          },
+          "keyspace": {
+            "type": "string",
+            "title": "Keyspace name"
+          },
+          "username": {
+            "type": "string",
+            "title": "Username"
+          },
+          "password": {
+            "type": "string",
+            "title": "Password"
+          },
+          "protocol": {
+            "type": "number",
+            "title": "Protocol Version",
+            "default": 3
+          },
+          "timeout": {
+            "type": "number",
+            "title": "Timeout",
+            "default": 10
+          },
+          "useSsl": {
+            "type": "boolean",
+            "title": "Use SSL",
+            "default": false
+          },
+          "sslCertificateFile": {
+            "type": "string",
+            "title": "SSL Certificate File"
+          },
+          "sslProtocol": {
+            "type": "string",
+            "title": "SSL Protocol",
+            "enum": [
+              "PROTOCOL_SSLv23",
+              "PROTOCOL_TLS",
+              "PROTOCOL_TLS_CLIENT",
+              "PROTOCOL_TLS_SERVER",
+              "PROTOCOL_TLSv1",
+              "PROTOCOL_TLSv1_1",
+              "PROTOCOL_TLSv1_2"
+            ]
+          }
+        },
+        "required": [
+          "keyspace",
+          "host",
+          "useSsl"
+        ],
+        "secret": [
+          "sslCertificateFile"
+        ]
+      }
+    },
+    "arangodb": {
+      "name": "ArangoDB",
+      "type": "arangodb",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "host": {
+            "type": "string",
+            "default": "127.0.0.1"
+          },
+          "port": {
+            "type": "number",
+            "default": 8529
+          },
+          "dbname": {
+            "type": "string",
+            "title": "Database Name"
+          },
+          "timeout": {
+            "type": "number",
+            "default": 0.0,
+            "title": "AQL Timeout in seconds (0 = no timeout)"
+          }
+        },
+        "order": [
+          "host",
+          "port",
+          "user",
+          "password",
+          "dbname"
+        ],
+        "required": [
+          "host",
+          "user",
+          "password",
+          "dbname"
+        ],
+        "secret": [
+          "password"
+        ]
+      }
+    },
+    "athena": {
+      "name": "Amazon Athena",
+      "type": "athena",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "region": {
+            "type": "string",
+            "title": "AWS Region"
+          },
+          "aws_access_key": {
+            "type": "string",
+            "title": "AWS Access Key"
+          },
+          "aws_secret_key": {
+            "type": "string",
+            "title": "AWS Secret Key"
+          },
+          "s3_staging_dir": {
+            "type": "string",
+            "title": "S3 Staging (Query Results) Bucket Path"
+          },
+          "schema": {
+            "type": "string",
+            "title": "Schema Name",
+            "default": "default"
+          },
+          "glue": {
+            "type": "boolean",
+            "title": "Use Glue Data Catalog"
+          },
+          "catalog_ids": {
+            "type": "string",
+            "title": "Enter Glue Data Catalog IDs, separated by commas (leave blank for default catalog)"
+          },
+          "work_group": {
+            "type": "string",
+            "title": "Athena Work Group",
+            "default": "primary"
+          },
+          "cost_per_tb": {
+            "type": "number",
+            "title": "Athena cost per Tb scanned (USD)",
+            "default": 5
+          },
+          "result_reuse_enable": {
+            "type": "boolean",
+            "title": "Reuse Athena query results"
+          },
+          "result_reuse_minutes": {
+            "type": "number",
+            "title": "Minutes to reuse Athena query results",
+            "default": 60
+          },
+          "encryption_option": {
+            "type": "string",
+            "title": "Encryption Option"
+          },
+          "kms_key": {
+            "type": "string",
+            "title": "KMS Key"
+          }
+        },
+        "required": [
+          "region",
+          "s3_staging_dir"
+        ],
+        "extra_options": [
+          "glue",
+          "catalog_ids",
+          "cost_per_tb",
+          "result_reuse_enable",
+          "result_reuse_minutes",
+          "encryption_option",
+          "kms_key"
+        ],
+        "order": [
+          "region",
+          "aws_access_key",
+          "aws_secret_key",
+          "s3_staging_dir",
+          "schema",
+          "work_group",
+          "cost_per_tb",
+          "result_reuse_enable",
+          "result_reuse_minutes"
+        ],
+        "secret": [
+          "aws_secret_key"
+        ]
+      }
+    },
+    "aws_es": {
+      "name": "Amazon Elasticsearch Service",
+      "type": "aws_es",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "server": {
+            "type": "string",
+            "title": "Endpoint"
+          },
+          "region": {
+            "type": "string"
+          },
+          "access_key": {
+            "type": "string",
+            "title": "Access Key"
+          },
+          "secret_key": {
+            "type": "string",
+            "title": "Secret Key"
+          },
+          "use_aws_iam_profile": {
+            "type": "boolean",
+            "title": "Use AWS IAM Profile"
+          }
+        },
+        "secret": [
+          "secret_key"
+        ],
+        "order": [
+          "server",
+          "region",
+          "access_key",
+          "secret_key",
+          "use_aws_iam_profile"
+        ],
+        "required": [
+          "server",
+          "region"
+        ]
+      }
+    },
+    "axibasetsd": {
+      "name": "Axibase Time Series Database",
+      "type": "axibasetsd",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "protocol": {
+            "type": "string",
+            "title": "Protocol",
+            "default": "http"
+          },
+          "hostname": {
+            "type": "string",
+            "title": "Host",
+            "default": "axibase_tsd_hostname"
+          },
+          "port": {
+            "type": "number",
+            "title": "Port",
+            "default": 8088
+          },
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string",
+            "title": "Password"
+          },
+          "timeout": {
+            "type": "number",
+            "default": 600,
+            "title": "Connection Timeout"
+          },
+          "min_insert_date": {
+            "type": "string",
+            "title": "Metric Minimum Insert Date"
+          },
+          "expression": {
+            "type": "string",
+            "title": "Metric Filter"
+          },
+          "limit": {
+            "type": "number",
+            "default": 5000,
+            "title": "Metric Limit"
+          },
+          "trust_certificate": {
+            "type": "boolean",
+            "title": "Trust SSL Certificate"
+          }
+        },
+        "required": [
+          "username",
+          "password",
+          "hostname",
+          "protocol",
+          "port"
+        ],
+        "secret": [
+          "password"
+        ]
+      }
+    },
+    "azure_kusto": {
+      "name": "Azure Data Explorer (Kusto)",
+      "type": "azure_kusto",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "cluster": {
+            "type": "string"
+          },
+          "azure_ad_client_id": {
+            "type": "string",
+            "title": "Azure AD Client ID"
+          },
+          "azure_ad_client_secret": {
+            "type": "string",
+            "title": "Azure AD Client Secret"
+          },
+          "azure_ad_tenant_id": {
+            "type": "string",
+            "title": "Azure AD Tenant Id"
+          },
+          "database": {
+            "type": "string"
+          },
+          "msi": {
+            "type": "boolean",
+            "title": "Use Managed Service Identity"
+          },
+          "user_msi": {
+            "type": "string",
+            "title": "User-assigned managed identity client ID"
+          }
+        },
+        "required": [
+          "cluster",
+          "database"
+        ],
+        "order": [
+          "cluster",
+          "azure_ad_client_id",
+          "azure_ad_client_secret",
+          "azure_ad_tenant_id",
+          "database"
+        ],
+        "secret": [
+          "azure_ad_client_secret"
+        ]
+      }
+    },
+    "bigquery": {
+      "name": "BigQuery",
+      "type": "bigquery",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "title": "Project ID"
+          },
+          "jsonKeyFile": {
+            "type": "string",
+            "title": "JSON Key File (ADC is used if omitted)"
+          },
+          "totalMBytesProcessedLimit": {
+            "type": "number",
+            "title": "Scanned Data Limit (MB)"
+          },
+          "userDefinedFunctionResourceUri": {
+            "type": "string",
+            "title": "UDF Source URIs (i.e. gs://bucket/date_utils.js, gs://bucket/string_utils.js )"
+          },
+          "useStandardSql": {
+            "type": "boolean",
+            "title": "Use Standard SQL",
+            "default": true
+          },
+          "location": {
+            "type": "string",
+            "title": "Processing Location"
+          },
+          "loadSchema": {
+            "type": "boolean",
+            "title": "Load Schema"
+          },
+          "maximumBillingTier": {
+            "type": "number",
+            "title": "Maximum Billing Tier"
+          },
+          "useQueryAnnotation": {
+            "type": "boolean",
+            "title": "Use Query Annotation",
+            "default": false
+          }
+        },
+        "required": [
+          "projectId"
+        ],
+        "order": [
+          "projectId",
+          "jsonKeyFile",
+          "loadSchema",
+          "useStandardSql",
+          "location",
+          "totalMBytesProcessedLimit",
+          "maximumBillingTier",
+          "userDefinedFunctionResourceUri",
+          "useQueryAnnotation"
+        ],
+        "secret": [
+          "jsonKeyFile"
+        ]
+      }
+    },
+    "clickhouse": {
+      "name": "ClickHouse",
+      "type": "clickhouse",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "default": "http://127.0.0.1:8123"
+          },
+          "user": {
+            "type": "string",
+            "default": "default"
+          },
+          "password": {
+            "type": "string"
+          },
+          "dbname": {
+            "type": "string",
+            "title": "Database Name"
+          },
+          "timeout": {
+            "type": "number",
+            "title": "Request Timeout",
+            "default": 30
+          },
+          "verify": {
+            "type": "boolean",
+            "title": "Verify SSL certificate",
+            "default": true
+          }
+        },
+        "order": [
+          "url",
+          "user",
+          "password",
+          "dbname"
+        ],
+        "required": [
+          "dbname"
+        ],
+        "extra_options": [
+          "timeout",
+          "verify"
+        ],
+        "secret": [
+          "password"
+        ]
+      }
+    },
+    "cloudwatch": {
+      "name": "Amazon CloudWatch",
+      "type": "cloudwatch",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "region": {
+            "type": "string",
+            "title": "AWS Region"
+          },
+          "aws_access_key": {
+            "type": "string",
+            "title": "AWS Access Key"
+          },
+          "aws_secret_key": {
+            "type": "string",
+            "title": "AWS Secret Key"
+          }
+        },
+        "required": [
+          "region",
+          "aws_access_key",
+          "aws_secret_key"
+        ],
+        "order": [
+          "region",
+          "aws_access_key",
+          "aws_secret_key"
+        ],
+        "secret": [
+          "aws_secret_key"
+        ]
+      }
+    },
+    "cloudwatch_insights": {
+      "name": "Amazon CloudWatch Logs Insights",
+      "type": "cloudwatch_insights",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "region": {
+            "type": "string",
+            "title": "AWS Region"
+          },
+          "aws_access_key": {
+            "type": "string",
+            "title": "AWS Access Key"
+          },
+          "aws_secret_key": {
+            "type": "string",
+            "title": "AWS Secret Key"
+          }
+        },
+        "required": [
+          "region",
+          "aws_access_key",
+          "aws_secret_key"
+        ],
+        "order": [
+          "region",
+          "aws_access_key",
+          "aws_secret_key"
+        ],
+        "secret": [
+          "aws_secret_key"
+        ]
+      }
+    },
+    "cockroach": {
+      "name": "CockroachDB",
+      "type": "cockroach",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "host": {
+            "type": "string",
+            "default": "127.0.0.1"
+          },
+          "port": {
+            "type": "number",
+            "default": 5432
+          },
+          "dbname": {
+            "type": "string",
+            "title": "Database Name"
+          },
+          "dsn": {
+            "type": "string",
+            "default": "application_name=redash",
+            "title": "Parameters"
+          },
+          "sslmode": {
+            "type": "string",
+            "title": "SSL Mode",
+            "default": "prefer",
+            "extendedEnum": [
+              {
+                "value": "disable",
+                "name": "Disable"
+              },
+              {
+                "value": "allow",
+                "name": "Allow"
+              },
+              {
+                "value": "prefer",
+                "name": "Prefer"
+              },
+              {
+                "value": "require",
+                "name": "Require"
+              },
+              {
+                "value": "verify-ca",
+                "name": "Verify CA"
+              },
+              {
+                "value": "verify-full",
+                "name": "Verify Full"
+              }
+            ]
+          },
+          "sslrootcertFile": {
+            "type": "string",
+            "title": "SSL Root Certificate"
+          },
+          "sslcertFile": {
+            "type": "string",
+            "title": "SSL Client Certificate"
+          },
+          "sslkeyFile": {
+            "type": "string",
+            "title": "SSL Client Key"
+          }
+        },
+        "order": [
+          "host",
+          "port",
+          "user",
+          "password"
+        ],
+        "required": [
+          "dbname"
+        ],
+        "secret": [
+          "password",
+          "sslrootcertFile",
+          "sslcertFile",
+          "sslkeyFile"
+        ],
+        "extra_options": [
+          "sslmode",
+          "sslrootcertFile",
+          "sslcertFile",
+          "sslkeyFile"
+        ]
+      }
+    },
+    "corporate_memory": {
+      "name": "eccenca Corporate Memory (with SPARQL)",
+      "type": "corporate_memory",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "CMEM_BASE_URI": {
+            "type": "string",
+            "title": "Base URL"
+          },
+          "OAUTH_GRANT_TYPE": {
+            "type": "string",
+            "title": "Grant Type",
+            "default": "client_credentials",
+            "extendedEnum": [
+              {
+                "value": "client_credentials",
+                "name": "client_credentials"
+              },
+              {
+                "value": "password",
+                "name": "password"
+              }
+            ]
+          },
+          "OAUTH_CLIENT_ID": {
+            "type": "string",
+            "title": "Client ID (e.g. cmem-service-account)",
+            "default": "cmem-service-account"
+          },
+          "OAUTH_CLIENT_SECRET": {
+            "type": "string",
+            "title": "Client Secret - only needed for grant type 'client_credentials'"
+          },
+          "OAUTH_USER": {
+            "type": "string",
+            "title": "User account - only needed for grant type 'password'"
+          },
+          "OAUTH_PASSWORD": {
+            "type": "string",
+            "title": "User Password - only needed for grant type 'password'"
+          },
+          "SSL_VERIFY": {
+            "type": "boolean",
+            "title": "Verify SSL certificates for API requests",
+            "default": true
+          },
+          "REQUESTS_CA_BUNDLE": {
+            "type": "string",
+            "title": "Path to the CA Bundle file (.pem)"
+          }
+        },
+        "required": [
+          "CMEM_BASE_URI",
+          "OAUTH_GRANT_TYPE",
+          "OAUTH_CLIENT_ID"
+        ],
+        "secret": [
+          "OAUTH_CLIENT_SECRET",
+          "OAUTH_PASSWORD"
+        ],
+        "extra_options": [
+          "OAUTH_GRANT_TYPE",
+          "OAUTH_USER",
+          "OAUTH_PASSWORD",
+          "SSL_VERIFY",
+          "REQUESTS_CA_BUNDLE"
+        ]
+      }
+    },
+    "couchbase": {
+      "name": "Couchbase",
+      "type": "couchbase",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "protocol": {
+            "type": "string",
+            "default": "http"
+          },
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "string",
+            "title": "Port (Defaults: 8095 - Analytics, 8093 - N1QL)",
+            "default": "8095"
+          },
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "host",
+          "user",
+          "password"
+        ],
+        "order": [
+          "protocol",
+          "host",
+          "port",
+          "user",
+          "password"
+        ],
+        "secret": [
+          "password"
+        ]
+      }
+    },
+    "csv": {
+      "name": "CSV",
+      "type": "csv",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    "d1": {
+      "name": "Cloudflare D1",
+      "type": "d1",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "cf_url": {
+            "type": "string",
+            "title": "Cloudflare D1 API URL"
+          },
+          "cf_token": {
+            "type": "string",
+            "title": "Cloudflare API Token"
+          }
+        },
+        "required": [
+          "cf_url",
+          "cf_token"
+        ],
+        "secret": [
+          "cf_token"
+        ]
+      }
+    },
+    "databend": {
+      "name": "Databend",
+      "type": "databend",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string",
+            "default": "localhost"
+          },
+          "port": {
+            "type": "string",
+            "default": "8000"
+          },
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string",
+            "default": ""
+          },
+          "database": {
+            "type": "string"
+          },
+          "secure": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "order": [
+          "username",
+          "password",
+          "host",
+          "port",
+          "database"
+        ],
+        "required": [
+          "username",
+          "database"
+        ],
+        "secret": [
+          "password"
+        ]
+      }
+    },
+    "databricks": {
+      "name": "Databricks",
+      "type": "databricks",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "http_path": {
+            "type": "string",
+            "title": "HTTP Path"
+          },
+          "http_password": {
+            "type": "string",
+            "title": "Access Token"
+          }
+        },
+        "order": [
+          "host",
+          "http_path",
+          "http_password"
+        ],
+        "secret": [
+          "http_password"
+        ],
+        "required": [
+          "host",
+          "http_path",
+          "http_password"
+        ]
+      }
+    },
+    "db2": {
+      "name": "DB2",
+      "type": "db2",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "host": {
+            "type": "string",
+            "default": "127.0.0.1"
+          },
+          "port": {
+            "type": "number",
+            "default": 50000
+          },
+          "dbname": {
+            "type": "string",
+            "title": "Database Name"
+          }
+        },
+        "order": [
+          "host",
+          "port",
+          "user",
+          "password",
+          "dbname"
+        ],
+        "required": [
+          "dbname"
+        ],
+        "secret": [
+          "password"
+        ]
+      }
+    },
+    "dgraph": {
+      "name": "Dgraph",
+      "type": "dgraph",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "servers": {
+            "type": "string"
+          }
+        },
+        "order": [
+          "servers",
+          "user",
+          "password"
+        ],
+        "required": [
+          "servers"
+        ],
+        "secret": [
+          "password"
+        ]
+      }
+    },
+    "drill": {
+      "name": "Apache Drill",
+      "type": "drill",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "Drill URL"
+          },
+          "username": {
+            "type": "string",
+            "title": "Username"
+          },
+          "password": {
+            "type": "string",
+            "title": "Password"
+          },
+          "allowed_schemas": {
+            "type": "string",
+            "title": "List of schemas to use in schema browser (comma separated)"
+          }
+        },
+        "secret": [
+          "password"
+        ],
+        "order": [
+          "url",
+          "username",
+          "password",
+          "allowed_schemas"
+        ],
+        "required": [
+          "url"
+        ]
+      }
+    },
+    "druid": {
+      "name": "Druid",
+      "type": "druid",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string",
+            "default": "localhost"
+          },
+          "port": {
+            "type": "number",
+            "default": 8082
+          },
+          "scheme": {
+            "type": "string",
+            "default": "http"
+          },
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "order": [
+          "scheme",
+          "host",
+          "port",
+          "user",
+          "password"
+        ],
+        "required": [
+          "host"
+        ],
+        "secret": [
+          "password"
+        ]
+      }
+    },
+    "duckdb": {
+      "name": "DuckDB",
+      "type": "duckdb",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "dbpath": {
+            "type": "string",
+            "title": "Database Path",
+            "default": ":memory:"
+          },
+          "extensions": {
+            "type": "string",
+            "title": "Extensions (comma separated)"
+          }
+        },
+        "order": [
+          "dbpath",
+          "extensions"
+        ],
+        "required": [
+          "dbpath"
+        ]
+      }
+    },
+    "e6data": {
+      "name": "e6data",
+      "type": "e6data",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "number"
+          },
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "catalog": {
+            "type": "string"
+          },
+          "database": {
+            "type": "string"
+          }
+        },
+        "order": [
+          "host",
+          "port",
+          "username",
+          "password",
+          "catalog",
+          "database"
+        ],
+        "required": [
+          "host",
+          "port",
+          "username",
+          "password",
+          "catalog",
+          "database"
+        ],
+        "secret": [
+          "password"
+        ]
+      }
+    },
+    "elasticsearch": {
+      "name": "Elasticsearch",
+      "type": "elasticsearch",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "server": {
+            "type": "string",
+            "title": "Base URL"
+          },
+          "basic_auth_user": {
+            "type": "string",
+            "title": "Basic Auth User"
+          },
+          "basic_auth_password": {
+            "type": "string",
+            "title": "Basic Auth Password"
+          }
+        },
+        "order": [
+          "server",
+          "basic_auth_user",
+          "basic_auth_password"
+        ],
+        "secret": [
+          "basic_auth_password"
+        ],
+        "required": [
+          "server"
+        ]
+      },
+      "deprecated": true
+    },
+    "elasticsearch2": {
+      "name": "Elasticsearch",
+      "type": "elasticsearch2",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "URL base path"
+          },
+          "username": {
+            "type": "string",
+            "title": "HTTP Basic Auth Username"
+          },
+          "password": {
+            "type": "string",
+            "title": "HTTP Basic Auth Password"
+          }
+        },
+        "secret": [
+          "password"
+        ],
+        "order": [
+          "url",
+          "username",
+          "password"
+        ],
+        "required": [
+          "url"
+        ]
+      }
+    },
+    "elasticsearch2_OpenDistroSQLElasticSearch": {
+      "name": "Open Distro SQL Elasticsearch",
+      "type": "elasticsearch2_OpenDistroSQLElasticSearch",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "URL base path"
+          },
+          "username": {
+            "type": "string",
+            "title": "HTTP Basic Auth Username"
+          },
+          "password": {
+            "type": "string",
+            "title": "HTTP Basic Auth Password"
+          }
+        },
+        "secret": [
+          "password"
+        ],
+        "order": [
+          "url",
+          "username",
+          "password"
+        ],
+        "required": [
+          "url"
+        ]
+      }
+    },
+    "elasticsearch2_XPackSQLElasticSearch": {
+      "name": "X-Pack SQL Elasticsearch",
+      "type": "elasticsearch2_XPackSQLElasticSearch",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "URL base path"
+          },
+          "username": {
+            "type": "string",
+            "title": "HTTP Basic Auth Username"
+          },
+          "password": {
+            "type": "string",
+            "title": "HTTP Basic Auth Password"
+          }
+        },
+        "secret": [
+          "password"
+        ],
+        "order": [
+          "url",
+          "username",
+          "password"
+        ],
+        "required": [
+          "url"
+        ]
+      }
+    },
+    "exasol": {
+      "name": "Exasol",
+      "type": "exasol",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "number",
+            "default": 8563
+          },
+          "encrypted": {
+            "type": "boolean",
+            "title": "Enable SSL Encryption"
+          }
+        },
+        "required": [
+          "host",
+          "port",
+          "user",
+          "password"
+        ],
+        "order": [
+          "host",
+          "port",
+          "user",
+          "password",
+          "encrypted"
+        ],
+        "secret": [
+          "password"
+        ]
+      }
+    },
+    "excel": {
+      "name": "Excel",
+      "type": "excel",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    "google_analytics": {
+      "name": "Google Analytics",
+      "type": "google_analytics",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "jsonKeyFile": {
+            "type": "string",
+            "title": "JSON Key File (ADC is used if omitted)"
+          }
+        },
+        "required": [],
+        "secret": [
+          "jsonKeyFile"
+        ]
+      }
+    },
+    "google_analytics4": {
+      "name": "Google Analytics 4",
+      "type": "google_analytics4",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "propertyId": {
+            "type": "number",
+            "title": "Property Id"
+          },
+          "jsonKeyFile": {
+            "type": "string",
+            "title": "JSON Key File (ADC is used if omitted)"
+          }
+        },
+        "required": [
+          "propertyId"
+        ],
+        "secret": [
+          "jsonKeyFile"
+        ]
+      }
+    },
+    "google_search_console": {
+      "name": "Google Search Console",
+      "type": "google_search_console",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "siteURL": {
+            "type": "string",
+            "title": "Site URL"
+          },
+          "jsonKeyFile": {
+            "type": "string",
+            "title": "JSON Key File (ADC is used if omitted)"
+          }
+        },
+        "required": [],
+        "secret": [
+          "jsonKeyFile"
+        ]
+      }
+    },
+    "google_spreadsheets": {
+      "name": "Google Sheets",
+      "type": "google_spreadsheets",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "jsonKeyFile": {
+            "type": "string",
+            "title": "JSON Key File (ADC is used if omitted)"
+          }
+        },
+        "required": [],
+        "secret": [
+          "jsonKeyFile"
+        ]
+      }
+    },
+    "graphite": {
+      "name": "Graphite",
+      "type": "graphite",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "verify": {
+            "type": "boolean",
+            "title": "Verify SSL certificate"
+          }
+        },
+        "required": [
+          "url"
+        ],
+        "secret": [
+          "password"
+        ]
+      }
+    },
+    "hive": {
+      "name": "Hive",
+      "type": "hive",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "number"
+          },
+          "database": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          }
+        },
+        "order": [
+          "host",
+          "port",
+          "database",
+          "username"
+        ],
+        "required": [
+          "host"
+        ]
+      }
+    },
+    "hive_http": {
+      "name": "Hive (HTTP)",
+      "type": "hive_http",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "number"
+          },
+          "database": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "http_scheme": {
+            "type": "string",
+            "title": "HTTP Scheme (http or https)",
+            "default": "https"
+          },
+          "http_path": {
+            "type": "string",
+            "title": "HTTP Path"
+          },
+          "http_password": {
+            "type": "string",
+            "title": "Password"
+          }
+        },
+        "order": [
+          "host",
+          "port",
+          "http_path",
+          "username",
+          "http_password",
+          "database",
+          "http_scheme"
+        ],
+        "secret": [
+          "http_password"
+        ],
+        "required": [
+          "host",
+          "http_path"
+        ]
+      }
+    },
+    "ignite": {
+      "name": "Apache Ignite",
+      "type": "ignite",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "server": {
+            "type": "string",
+            "default": "127.0.0.1:10800"
+          },
+          "tls": {
+            "type": "boolean",
+            "default": false,
+            "title": "Use SSL/TLS connection"
+          },
+          "schema": {
+            "type": "string",
+            "title": "Schema Name",
+            "default": "PUBLIC"
+          },
+          "distributed_joins": {
+            "type": "boolean",
+            "title": "Allow distributed joins",
+            "default": false
+          },
+          "enforce_join_order": {
+            "type": "boolean",
+            "title": "Enforce join order",
+            "default": false
+          },
+          "lazy": {
+            "type": "boolean",
+            "title": "Lazy query execution",
+            "default": true
+          },
+          "gridgain": {
+            "type": "boolean",
+            "title": "Use GridGain libraries",
+            "default": false
+          }
+        },
+        "required": [
+          "server"
+        ],
+        "secret": [
+          "password"
+        ]
+      }
+    },
+    "impala": {
+      "name": "Impala",
+      "type": "impala",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "number"
+          },
+          "protocol": {
+            "type": "string",
+            "extendedEnum": [
+              {
+                "value": "beeswax",
+                "name": "Beeswax"
+              },
+              {
+                "value": "hiveserver2",
+                "name": "Hive Server 2"
+              }
+            ],
+            "title": "Protocol"
+          },
+          "database": {
+            "type": "string"
+          },
+          "use_ldap": {
+            "type": "boolean"
+          },
+          "use_ssl": {
+            "type": "boolean"
+          },
+          "ldap_user": {
+            "type": "string"
+          },
+          "ldap_password": {
+            "type": "string"
+          },
+          "timeout": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "host"
+        ],
+        "secret": [
+          "ldap_password"
+        ]
+      }
+    },
+    "influxdb": {
+      "name": "InfluxDB",
+      "type": "influxdb",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "url"
+        ]
+      }
+    },
+    "influxdbv2": {
+      "name": "InfluxDBv2",
+      "type": "influxdbv2",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "URL"
+          },
+          "org": {
+            "type": "string",
+            "title": "Organization"
+          },
+          "token": {
+            "type": "string",
+            "title": "Token"
+          },
+          "verify_ssl": {
+            "type": "boolean",
+            "title": "Verify SSL",
+            "default": false
+          },
+          "cert_File": {
+            "type": "string",
+            "title": "SSL Client Certificate",
+            "default": null
+          },
+          "cert_key_File": {
+            "type": "string",
+            "title": "SSL Client Key",
+            "default": null
+          },
+          "cert_key_password": {
+            "type": "string",
+            "title": "Password for SSL Client Key",
+            "default": null
+          },
+          "ssl_ca_cert_File": {
+            "type": "string",
+            "title": "SSL Root Certificate",
+            "default": null
+          }
+        },
+        "order": [
+          "url",
+          "org",
+          "token",
+          "cert_File",
+          "cert_key_File",
+          "cert_key_password",
+          "ssl_ca_cert_File"
+        ],
+        "required": [
+          "url",
+          "org",
+          "token"
+        ],
+        "secret": [
+          "token",
+          "cert_File",
+          "cert_key_File",
+          "cert_key_password",
+          "ssl_ca_cert_File"
+        ],
+        "extra_options": [
+          "verify_ssl",
+          "cert_File",
+          "cert_key_File",
+          "cert_key_password",
+          "ssl_ca_cert_File"
+        ]
+      }
+    },
+    "jirajql": {
+      "name": "JIRA (JQL)",
+      "type": "jirajql",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "JIRA URL"
+          },
+          "username": {
+            "type": "string",
+            "title": "Username"
+          },
+          "password": {
+            "type": "string",
+            "title": "API Token"
+          }
+        },
+        "secret": [
+          "password"
+        ],
+        "order": [
+          "url",
+          "username",
+          "password"
+        ],
+        "required": [
+          "url",
+          "username",
+          "password"
+        ]
+      }
+    },
+    "json": {
+      "name": "JSON",
+      "type": "json",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "base_url": {
+            "type": "string",
+            "title": "Base URL"
+          },
+          "username": {
+            "type": "string",
+            "title": "HTTP Basic Auth Username"
+          },
+          "password": {
+            "type": "string",
+            "title": "HTTP Basic Auth Password"
+          }
+        },
+        "secret": [
+          "password"
+        ],
+        "order": [
+          "base_url",
+          "username",
+          "password"
+        ]
+      }
+    },
+    "kibana": {
+      "name": "Kibana",
+      "type": "kibana",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "server": {
+            "type": "string",
+            "title": "Base URL"
+          },
+          "basic_auth_user": {
+            "type": "string",
+            "title": "Basic Auth User"
+          },
+          "basic_auth_password": {
+            "type": "string",
+            "title": "Basic Auth Password"
+          }
+        },
+        "order": [
+          "server",
+          "basic_auth_user",
+          "basic_auth_password"
+        ],
+        "secret": [
+          "basic_auth_password"
+        ],
+        "required": [
+          "server"
+        ]
+      },
+      "deprecated": true
+    },
+    "kylin": {
+      "name": "Kylin",
+      "type": "kylin",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string",
+            "title": "Kylin Username"
+          },
+          "password": {
+            "type": "string",
+            "title": "Kylin Password"
+          },
+          "url": {
+            "type": "string",
+            "title": "Kylin API URL",
+            "default": "http://kylin.example.com/kylin/"
+          },
+          "project": {
+            "type": "string",
+            "title": "Kylin Project"
+          }
+        },
+        "order": [
+          "url",
+          "project",
+          "user",
+          "password"
+        ],
+        "required": [
+          "url",
+          "project",
+          "user",
+          "password"
+        ],
+        "secret": [
+          "password"
+        ]
+      }
+    },
+    "memsql": {
+      "name": "MemSQL",
+      "type": "memsql",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "number"
+          },
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "host",
+          "port"
+        ],
+        "secret": [
+          "password"
+        ]
+      }
+    },
+    "mongodb": {
+      "name": "MongoDB",
+      "type": "mongodb",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "connectionString": {
+            "type": "string",
+            "title": "Connection String"
+          },
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "dbName": {
+            "type": "string",
+            "title": "Database Name"
+          },
+          "replicaSetName": {
+            "type": "string",
+            "title": "Replica Set Name"
+          },
+          "readPreference": {
+            "type": "string",
+            "extendedEnum": [
+              {
+                "value": "primaryPreferred",
+                "name": "Primary Preferred"
+              },
+              {
+                "value": "primary",
+                "name": "Primary"
+              },
+              {
+                "value": "secondary",
+                "name": "Secondary"
+              },
+              {
+                "value": "secondaryPreferred",
+                "name": "Secondary Preferred"
+              },
+              {
+                "value": "nearest",
+                "name": "Nearest"
+              }
+            ],
+            "title": "Replica Set Read Preference"
+          },
+          "flatten": {
+            "type": "string",
+            "extendedEnum": [
+              {
+                "value": "False",
+                "name": "False"
+              },
+              {
+                "value": "True",
+                "name": "True"
+              }
+            ],
+            "title": "Flatten Results"
+          }
+        },
+        "secret": [
+          "password"
+        ],
+        "required": [
+          "connectionString",
+          "dbName"
+        ]
+      }
+    },
+    "mssql": {
+      "name": "Microsoft SQL Server",
+      "type": "mssql",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "server": {
+            "type": "string",
+            "default": "127.0.0.1"
+          },
+          "port": {
+            "type": "number",
+            "default": 1433
+          },
+          "tds_version": {
+            "type": "string",
+            "default": "7.0",
+            "title": "TDS Version"
+          },
+          "charset": {
+            "type": "string",
+            "default": "UTF-8",
+            "title": "Character Set"
+          },
+          "db": {
+            "type": "string",
+            "title": "Database Name"
+          }
+        },
+        "required": [
+          "db"
+        ],
+        "secret": [
+          "password"
+        ]
+      }
+    },
+    "mssql_odbc": {
+      "name": "Microsoft SQL Server (ODBC)",
+      "type": "mssql_odbc",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "server": {
+            "type": "string"
+          },
+          "port": {
+            "type": "number",
+            "default": 1433
+          },
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "db": {
+            "type": "string",
+            "title": "Database Name"
+          },
+          "charset": {
+            "type": "string",
+            "default": "UTF-8",
+            "title": "Character Set"
+          },
+          "use_ssl": {
+            "type": "boolean",
+            "title": "Use SSL",
+            "default": false
+          },
+          "verify_ssl": {
+            "type": "boolean",
+            "title": "Verify SSL certificate",
+            "default": false
+          }
+        },
+        "order": [
+          "server",
+          "port",
+          "user",
+          "password",
+          "db",
+          "charset",
+          "use_ssl",
+          "verify_ssl"
+        ],
+        "required": [
+          "server",
+          "user",
+          "password",
+          "db"
+        ],
+        "secret": [
+          "password"
+        ],
+        "extra_options": [
+          "verify_ssl",
+          "use_ssl"
+        ]
+      }
+    },
+    "mysql": {
+      "name": "MySQL",
+      "type": "mysql",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string",
+            "default": "127.0.0.1"
+          },
+          "user": {
+            "type": "string"
+          },
+          "passwd": {
+            "type": "string",
+            "title": "Password"
+          },
+          "db": {
+            "type": "string",
+            "title": "Database name"
+          },
+          "port": {
+            "type": "number",
+            "default": 3306
+          },
+          "connect_timeout": {
+            "type": "number",
+            "default": 60,
+            "title": "Connection Timeout"
+          },
+          "charset": {
+            "type": "string",
+            "default": "utf8mb4"
+          },
+          "use_unicode": {
+            "type": "boolean",
+            "default": true
+          },
+          "autocommit": {
+            "type": "boolean",
+            "default": false
+          },
+          "ssl_mode": {
+            "type": "string",
+            "title": "SSL Mode",
+            "default": "preferred",
+            "extendedEnum": [
+              {
+                "value": "disabled",
+                "name": "Disabled"
+              },
+              {
+                "value": "preferred",
+                "name": "Preferred"
+              },
+              {
+                "value": "required",
+                "name": "Required"
+              },
+              {
+                "value": "verify-ca",
+                "name": "Verify CA"
+              },
+              {
+                "value": "verify-identity",
+                "name": "Verify Identity"
+              }
+            ]
+          },
+          "use_ssl": {
+            "type": "boolean",
+            "title": "Use SSL"
+          },
+          "ssl_cacert": {
+            "type": "string",
+            "title": "Path to CA certificate file to verify peer against (SSL)"
+          },
+          "ssl_cert": {
+            "type": "string",
+            "title": "Path to client certificate file (SSL)"
+          },
+          "ssl_key": {
+            "type": "string",
+            "title": "Path to private key file (SSL)"
+          }
+        },
+        "order": [
+          "host",
+          "port",
+          "user",
+          "passwd",
+          "db",
+          "connect_timeout",
+          "charset",
+          "use_unicode",
+          "autocommit"
+        ],
+        "required": [
+          "db"
+        ],
+        "secret": [
+          "passwd"
+        ]
+      }
+    },
+    "nz": {
+      "name": "Netezza",
+      "type": "nz",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "host": {
+            "type": "string",
+            "default": "127.0.0.1"
+          },
+          "port": {
+            "type": "number",
+            "default": 5480
+          },
+          "database": {
+            "type": "string",
+            "title": "Database Name",
+            "default": "system"
+          }
+        },
+        "order": [
+          "host",
+          "port",
+          "user",
+          "password",
+          "database"
+        ],
+        "required": [
+          "user",
+          "password",
+          "database"
+        ],
+        "secret": [
+          "password"
+        ]
+      }
+    },
+    "oracle": {
+      "name": "Oracle",
+      "type": "oracle",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "host": {
+            "type": "string",
+            "title": "Host: To use a DSN Service Name instead, use the text string `_useservicename` in the host name field."
+          },
+          "port": {
+            "type": "number"
+          },
+          "servicename": {
+            "type": "string",
+            "title": "DSN Service Name"
+          },
+          "encoding": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "servicename",
+          "user",
+          "password",
+          "host",
+          "port"
+        ],
+        "extra_options": [
+          "encoding"
+        ],
+        "secret": [
+          "password"
+        ]
+      }
+    },
+    "pg": {
+      "name": "PostgreSQL",
+      "type": "pg",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "host": {
+            "type": "string",
+            "default": "127.0.0.1"
+          },
+          "port": {
+            "type": "number",
+            "default": 5432
+          },
+          "dbname": {
+            "type": "string",
+            "title": "Database Name"
+          },
+          "dsn": {
+            "type": "string",
+            "default": "application_name=redash",
+            "title": "Parameters"
+          },
+          "sslmode": {
+            "type": "string",
+            "title": "SSL Mode",
+            "default": "prefer",
+            "extendedEnum": [
+              {
+                "value": "disable",
+                "name": "Disable"
+              },
+              {
+                "value": "allow",
+                "name": "Allow"
+              },
+              {
+                "value": "prefer",
+                "name": "Prefer"
+              },
+              {
+                "value": "require",
+                "name": "Require"
+              },
+              {
+                "value": "verify-ca",
+                "name": "Verify CA"
+              },
+              {
+                "value": "verify-full",
+                "name": "Verify Full"
+              }
+            ]
+          },
+          "sslrootcertFile": {
+            "type": "string",
+            "title": "SSL Root Certificate"
+          },
+          "sslcertFile": {
+            "type": "string",
+            "title": "SSL Client Certificate"
+          },
+          "sslkeyFile": {
+            "type": "string",
+            "title": "SSL Client Key"
+          }
+        },
+        "order": [
+          "host",
+          "port",
+          "user",
+          "password"
+        ],
+        "required": [
+          "dbname"
+        ],
+        "secret": [
+          "password",
+          "sslrootcertFile",
+          "sslcertFile",
+          "sslkeyFile"
+        ],
+        "extra_options": [
+          "sslmode",
+          "sslrootcertFile",
+          "sslcertFile",
+          "sslkeyFile"
+        ]
+      }
+    },
+    "phoenix": {
+      "name": "Phoenix",
+      "type": "phoenix",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "url"
+        ]
+      }
+    },
+    "pinot": {
+      "name": "Pinot",
+      "type": "pinot",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "brokerHost": {
+            "type": "string",
+            "default": ""
+          },
+          "brokerPort": {
+            "type": "number",
+            "default": 8099
+          },
+          "brokerScheme": {
+            "type": "string",
+            "default": "http"
+          },
+          "controllerURI": {
+            "type": "string",
+            "default": ""
+          },
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "order": [
+          "brokerScheme",
+          "brokerHost",
+          "brokerPort",
+          "controllerURI",
+          "username",
+          "password"
+        ],
+        "required": [
+          "brokerHost",
+          "controllerURI"
+        ],
+        "secret": [
+          "password"
+        ]
+      }
+    },
+    "presto": {
+      "name": "Presto",
+      "type": "presto",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "protocol": {
+            "type": "string",
+            "default": "http"
+          },
+          "port": {
+            "type": "number"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "catalog": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "order": [
+          "host",
+          "protocol",
+          "port",
+          "username",
+          "password",
+          "schema",
+          "catalog"
+        ],
+        "required": [
+          "host"
+        ]
+      }
+    },
+    "prometheus": {
+      "name": "Prometheus",
+      "type": "prometheus",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "Prometheus API URL"
+          },
+          "verify_ssl": {
+            "type": "boolean",
+            "title": "Verify SSL (Ignored, if SSL Root Certificate is given)",
+            "default": true
+          },
+          "cert_File": {
+            "type": "string",
+            "title": "SSL Client Certificate",
+            "default": null
+          },
+          "cert_key_File": {
+            "type": "string",
+            "title": "SSL Client Key",
+            "default": null
+          },
+          "ca_cert_File": {
+            "type": "string",
+            "title": "SSL Root Certificate",
+            "default": null
+          }
+        },
+        "required": [
+          "url"
+        ],
+        "secret": [
+          "cert_File",
+          "cert_key_File",
+          "ca_cert_File"
+        ],
+        "extra_options": [
+          "verify_ssl",
+          "cert_File",
+          "cert_key_File",
+          "ca_cert_File"
+        ]
+      }
+    },
+    "rds_mysql": {
+      "name": "MySQL (Amazon RDS)",
+      "type": "rds_mysql",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "user": {
+            "type": "string"
+          },
+          "passwd": {
+            "type": "string",
+            "title": "Password"
+          },
+          "db": {
+            "type": "string",
+            "title": "Database name"
+          },
+          "port": {
+            "type": "number",
+            "default": 3306
+          },
+          "use_ssl": {
+            "type": "boolean",
+            "title": "Use SSL"
+          },
+          "charset": {
+            "type": "string",
+            "default": "utf8mb4"
+          }
+        },
+        "order": [
+          "host",
+          "port",
+          "user",
+          "passwd",
+          "db"
+        ],
+        "required": [
+          "db",
+          "user",
+          "passwd",
+          "host"
+        ],
+        "secret": [
+          "passwd"
+        ]
+      }
+    },
+    "redshift": {
+      "name": "Redshift",
+      "type": "redshift",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "number"
+          },
+          "dbname": {
+            "type": "string",
+            "title": "Database Name"
+          },
+          "sslmode": {
+            "type": "string",
+            "title": "SSL Mode",
+            "default": "prefer"
+          },
+          "adhoc_query_group": {
+            "type": "string",
+            "title": "Query Group for Adhoc Queries",
+            "default": "default"
+          },
+          "scheduled_query_group": {
+            "type": "string",
+            "title": "Query Group for Scheduled Queries",
+            "default": "default"
+          }
+        },
+        "order": [
+          "host",
+          "port",
+          "user",
+          "password",
+          "dbname",
+          "sslmode",
+          "adhoc_query_group",
+          "scheduled_query_group"
+        ],
+        "required": [
+          "dbname",
+          "user",
+          "password",
+          "host",
+          "port"
+        ],
+        "secret": [
+          "password"
+        ]
+      }
+    },
+    "redshift_iam": {
+      "name": "Redshift (with IAM User/Role)",
+      "type": "redshift_iam",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "rolename": {
+            "type": "string",
+            "title": "IAM Role Name"
+          },
+          "aws_region": {
+            "type": "string",
+            "title": "AWS Region"
+          },
+          "aws_access_key_id": {
+            "type": "string",
+            "title": "AWS Access Key ID"
+          },
+          "aws_secret_access_key": {
+            "type": "string",
+            "title": "AWS Secret Access Key"
+          },
+          "clusterid": {
+            "type": "string",
+            "title": "Redshift Cluster ID"
+          },
+          "user": {
+            "type": "string"
+          },
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "number"
+          },
+          "dbname": {
+            "type": "string",
+            "title": "Database Name"
+          },
+          "sslmode": {
+            "type": "string",
+            "title": "SSL Mode",
+            "default": "prefer"
+          },
+          "adhoc_query_group": {
+            "type": "string",
+            "title": "Query Group for Adhoc Queries",
+            "default": "default"
+          },
+          "scheduled_query_group": {
+            "type": "string",
+            "title": "Query Group for Scheduled Queries",
+            "default": "default"
+          }
+        },
+        "order": [
+          "rolename",
+          "aws_region",
+          "aws_access_key_id",
+          "aws_secret_access_key",
+          "clusterid",
+          "host",
+          "port",
+          "user",
+          "dbname",
+          "sslmode",
+          "adhoc_query_group",
+          "scheduled_query_group"
+        ],
+        "required": [
+          "dbname",
+          "user",
+          "host",
+          "port",
+          "aws_region"
+        ],
+        "secret": [
+          "aws_secret_access_key"
+        ]
+      }
+    },
+    "results": {
+      "name": "Query Results",
+      "type": "results",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    "risingwave": {
+      "name": "RisingWave",
+      "type": "risingwave",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "host": {
+            "type": "string",
+            "default": "127.0.0.1"
+          },
+          "port": {
+            "type": "number",
+            "default": 5432
+          },
+          "dbname": {
+            "type": "string",
+            "title": "Database Name"
+          },
+          "dsn": {
+            "type": "string",
+            "default": "application_name=redash",
+            "title": "Parameters"
+          },
+          "sslmode": {
+            "type": "string",
+            "title": "SSL Mode",
+            "default": "prefer",
+            "extendedEnum": [
+              {
+                "value": "disable",
+                "name": "Disable"
+              },
+              {
+                "value": "allow",
+                "name": "Allow"
+              },
+              {
+                "value": "prefer",
+                "name": "Prefer"
+              },
+              {
+                "value": "require",
+                "name": "Require"
+              },
+              {
+                "value": "verify-ca",
+                "name": "Verify CA"
+              },
+              {
+                "value": "verify-full",
+                "name": "Verify Full"
+              }
+            ]
+          },
+          "sslrootcertFile": {
+            "type": "string",
+            "title": "SSL Root Certificate"
+          },
+          "sslcertFile": {
+            "type": "string",
+            "title": "SSL Client Certificate"
+          },
+          "sslkeyFile": {
+            "type": "string",
+            "title": "SSL Client Key"
+          }
+        },
+        "order": [
+          "host",
+          "port",
+          "user",
+          "password"
+        ],
+        "required": [
+          "dbname"
+        ],
+        "secret": [
+          "password",
+          "sslrootcertFile",
+          "sslcertFile",
+          "sslkeyFile"
+        ],
+        "extra_options": [
+          "sslmode",
+          "sslrootcertFile",
+          "sslcertFile",
+          "sslkeyFile"
+        ]
+      }
+    },
+    "rockset": {
+      "name": "Rockset",
+      "type": "rockset",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "api_server": {
+            "type": "string",
+            "title": "API Server",
+            "default": "https://api.rs2.usw2.rockset.com"
+          },
+          "api_key": {
+            "title": "API Key",
+            "type": "string"
+          },
+          "vi_id": {
+            "title": "Virtual Instance ID",
+            "type": "string"
+          }
+        },
+        "order": [
+          "api_key",
+          "api_server",
+          "vi_id"
+        ],
+        "required": [
+          "api_server",
+          "api_key"
+        ],
+        "secret": [
+          "api_key"
+        ]
+      }
+    },
+    "salesforce": {
+      "name": "Salesforce",
+      "type": "salesforce",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string",
+            "title": "Security Token"
+          },
+          "sandbox": {
+            "type": "boolean"
+          },
+          "api_version": {
+            "type": "string",
+            "title": "Salesforce API Version",
+            "default": "38.0"
+          }
+        },
+        "required": [
+          "username",
+          "password"
+        ],
+        "secret": [
+          "password",
+          "token"
+        ]
+      }
+    },
+    "scylla": {
+      "name": "ScyllaDB",
+      "type": "scylla",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "number",
+            "default": 9042
+          },
+          "keyspace": {
+            "type": "string",
+            "title": "Keyspace name"
+          },
+          "username": {
+            "type": "string",
+            "title": "Username"
+          },
+          "password": {
+            "type": "string",
+            "title": "Password"
+          },
+          "protocol": {
+            "type": "number",
+            "title": "Protocol Version",
+            "default": 3
+          },
+          "timeout": {
+            "type": "number",
+            "title": "Timeout",
+            "default": 10
+          },
+          "useSsl": {
+            "type": "boolean",
+            "title": "Use SSL",
+            "default": false
+          },
+          "sslCertificateFile": {
+            "type": "string",
+            "title": "SSL Certificate File"
+          },
+          "sslProtocol": {
+            "type": "string",
+            "title": "SSL Protocol",
+            "enum": [
+              "PROTOCOL_SSLv23",
+              "PROTOCOL_TLS",
+              "PROTOCOL_TLS_CLIENT",
+              "PROTOCOL_TLS_SERVER",
+              "PROTOCOL_TLSv1",
+              "PROTOCOL_TLSv1_1",
+              "PROTOCOL_TLSv1_2"
+            ]
+          }
+        },
+        "required": [
+          "keyspace",
+          "host",
+          "useSsl"
+        ],
+        "secret": [
+          "sslCertificateFile"
+        ]
+      }
+    },
+    "snowflake": {
+      "name": "Snowflake",
+      "type": "snowflake",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "account": {
+            "type": "string"
+          },
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "private_key_File": {
+            "type": "string"
+          },
+          "private_key_pwd": {
+            "type": "string"
+          },
+          "warehouse": {
+            "type": "string"
+          },
+          "database": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string",
+            "default": "us-west"
+          },
+          "lower_case_columns": {
+            "type": "boolean",
+            "title": "Lower Case Column Names in Results",
+            "default": false
+          },
+          "host": {
+            "type": "string"
+          }
+        },
+        "order": [
+          "account",
+          "user",
+          "password",
+          "private_key_File",
+          "private_key_pwd",
+          "warehouse",
+          "database",
+          "region",
+          "host"
+        ],
+        "required": [
+          "user",
+          "account",
+          "database",
+          "warehouse"
+        ],
+        "secret": [
+          "password",
+          "private_key_File",
+          "private_key_pwd"
+        ],
+        "extra_options": [
+          "host"
+        ]
+      }
+    },
+    "sparql_endpoint": {
+      "name": "SPARQL Endpoint",
+      "type": "sparql_endpoint",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "SPARQL_BASE_URI": {
+            "type": "string",
+            "title": "Base URL"
+          },
+          "SSL_VERIFY": {
+            "type": "boolean",
+            "title": "Verify SSL certificates for API requests",
+            "default": true
+          }
+        },
+        "required": [
+          "SPARQL_BASE_URI"
+        ],
+        "secret": [],
+        "extra_options": [
+          "SSL_VERIFY"
+        ]
+      }
+    },
+    "sqlite": {
+      "name": "Sqlite",
+      "type": "sqlite",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "dbpath": {
+            "type": "string",
+            "title": "Database Path"
+          }
+        },
+        "required": [
+          "dbpath"
+        ]
+      }
+    },
+    "tinybird": {
+      "name": "Tinybird",
+      "type": "tinybird",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "default": "https://api.tinybird.co"
+          },
+          "token": {
+            "type": "string",
+            "title": "Auth Token"
+          },
+          "timeout": {
+            "type": "number",
+            "title": "Request Timeout",
+            "default": 30
+          },
+          "verify": {
+            "type": "boolean",
+            "title": "Verify SSL certificate",
+            "default": true
+          }
+        },
+        "order": [
+          "url",
+          "token"
+        ],
+        "required": [
+          "token"
+        ],
+        "extra_options": [
+          "timeout",
+          "verify"
+        ],
+        "secret": [
+          "token"
+        ]
+      }
+    },
+    "treasuredata": {
+      "name": "TreasureData",
+      "type": "treasuredata",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "endpoint": {
+            "type": "string"
+          },
+          "apikey": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "db": {
+            "type": "string",
+            "title": "Database Name"
+          },
+          "get_schema": {
+            "type": "boolean",
+            "title": "Auto Schema Retrieval",
+            "default": false
+          }
+        },
+        "secret": [
+          "apikey"
+        ],
+        "required": [
+          "apikey",
+          "db"
+        ]
+      }
+    },
+    "trino": {
+      "name": "Trino",
+      "type": "trino",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "protocol": {
+            "type": "string",
+            "default": "http"
+          },
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "number"
+          },
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string",
+            "default": "redash"
+          },
+          "client_tags": {
+            "type": "string",
+            "title": "Client tags (comma separated)"
+          },
+          "catalog": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "impersonation": {
+            "type": "boolean",
+            "default": false
+          },
+          "impersonationField": {
+            "type": "string",
+            "title": "Impersonation User Attribute",
+            "default": "email",
+            "extendedEnum": [
+              {
+                "value": "email",
+                "name": "Email"
+              },
+              {
+                "value": "name",
+                "name": "Name"
+              }
+            ]
+          }
+        },
+        "order": [
+          "protocol",
+          "host",
+          "port",
+          "username",
+          "password",
+          "source",
+          "client_tags",
+          "catalog",
+          "schema",
+          "impersonation"
+        ],
+        "required": [
+          "host",
+          "username"
+        ],
+        "secret": [
+          "password"
+        ],
+        "extra_options": [
+          "client_tags",
+          "impersonation",
+          "impersonationField"
+        ]
+      }
+    },
+    "uptycs": {
+      "name": "Uptycs",
+      "type": "uptycs",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "customer_id": {
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "verify_ssl": {
+            "type": "boolean",
+            "default": true,
+            "title": "Verify SSL Certificates"
+          },
+          "secret": {
+            "type": "string"
+          }
+        },
+        "order": [
+          "url",
+          "customer_id",
+          "key",
+          "secret"
+        ],
+        "required": [
+          "url",
+          "customer_id",
+          "key",
+          "secret"
+        ],
+        "secret": [
+          "secret",
+          "key"
+        ]
+      }
+    },
+    "url": {
+      "name": "Url",
+      "type": "url",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "URL base path"
+          },
+          "username": {
+            "type": "string",
+            "title": "HTTP Basic Auth Username"
+          },
+          "password": {
+            "type": "string",
+            "title": "HTTP Basic Auth Password"
+          }
+        },
+        "secret": [
+          "password"
+        ],
+        "order": [
+          "url",
+          "username",
+          "password"
+        ]
+      },
+      "deprecated": true
+    },
+    "yandex_appmetrika": {
+      "name": "Yandex AppMetrica",
+      "type": "yandex_appmetrika",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "title": "OAuth Token"
+          }
+        },
+        "secret": [
+          "token"
+        ],
+        "required": [
+          "token"
+        ]
+      }
+    },
+    "yandex_disk": {
+      "name": "Yandex Disk",
+      "type": "yandex_disk",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "title": "OAuth Token"
+          }
+        },
+        "secret": [
+          "token"
+        ],
+        "required": [
+          "token"
+        ]
+      }
+    },
+    "yandex_metrika": {
+      "name": "Yandex Metrica",
+      "type": "yandex_metrika",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "title": "OAuth Token"
+          }
+        },
+        "secret": [
+          "token"
+        ],
+        "required": [
+          "token"
+        ]
+      }
+    }
+  },
+  "query_runner_traits": {
+    "Cassandra": {
+      "class": "Cassandra",
+      "module": "redash.query_runner.cass",
+      "should_annotate_query": true,
+      "noop_query": "SELECT dateof(now()) FROM system.local",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "arangodb": {
+      "class": "Arango",
+      "module": "redash.query_runner.arango",
+      "should_annotate_query": true,
+      "noop_query": "RETURN {'id': 1}",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "athena": {
+      "class": "Athena",
+      "module": "redash.query_runner.athena",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "aws_es": {
+      "class": "AmazonElasticsearchService",
+      "module": "redash.query_runner.amazon_elasticsearch",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "ElasticSearch2",
+        "BaseHTTPQueryRunner",
+        "BaseQueryRunner"
+      ],
+      "instance_error": "KeyError: 'region'",
+      "supports_auto_limit": false,
+      "syntax": null
+    },
+    "axibasetsd": {
+      "class": "AxibaseTSD",
+      "module": "redash.query_runner.axibase_tsd",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "azure_kusto": {
+      "class": "AzureKusto",
+      "module": "redash.query_runner.azure_kusto",
+      "should_annotate_query": false,
+      "noop_query": "let noop = datatable (Noop:string)[1]; noop",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "custom"
+    },
+    "bigquery": {
+      "class": "BigQuery",
+      "module": "redash.query_runner.big_query",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "clickhouse": {
+      "class": "ClickHouse",
+      "module": "redash.query_runner.clickhouse",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "cloudwatch": {
+      "class": "CloudWatch",
+      "module": "redash.query_runner.cloudwatch",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "yaml"
+    },
+    "cloudwatch_insights": {
+      "class": "CloudWatchInsights",
+      "module": "redash.query_runner.cloudwatch_insights",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "yaml"
+    },
+    "cockroach": {
+      "class": "CockroachDB",
+      "module": "redash.query_runner.pg",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "PostgreSQL",
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "corporate_memory": {
+      "class": "CorporateMemoryQueryRunner",
+      "module": "redash.query_runner.corporate_memory",
+      "should_annotate_query": false,
+      "noop_query": "SELECT ?noop WHERE {BIND('noop' as ?noop)}",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "couchbase": {
+      "class": "Couchbase",
+      "module": "redash.query_runner.couchbase",
+      "should_annotate_query": false,
+      "noop_query": "Select 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "csv": {
+      "class": "CSV",
+      "module": "redash.query_runner.csv",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "yaml"
+    },
+    "d1": {
+      "class": "D1QueryRunner",
+      "module": "redash.query_runner.d1",
+      "should_annotate_query": true,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "databend": {
+      "class": "Databend",
+      "module": "redash.query_runner.databend",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "databricks": {
+      "class": "Databricks",
+      "module": "redash.query_runner.databricks",
+      "should_annotate_query": false,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "db2": {
+      "class": "DB2",
+      "module": "redash.query_runner.db2",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1 FROM SYSIBM.SYSDUMMY1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "dgraph": {
+      "class": "Dgraph",
+      "module": "redash.query_runner.dgraph",
+      "should_annotate_query": false,
+      "noop_query": "\n    {\n      test() {\n      }\n    }\n    ",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "drill": {
+      "class": "Drill",
+      "module": "redash.query_runner.drill",
+      "should_annotate_query": false,
+      "noop_query": "select version from sys.version",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseHTTPQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "druid": {
+      "class": "Druid",
+      "module": "redash.query_runner.druid",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "duckdb": {
+      "class": "DuckDB",
+      "module": "redash.query_runner.duckdb",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "e6data": {
+      "class": "e6data",
+      "module": "redash.query_runner.e6data",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "instance_error": "ValueError: username or password cannot be empty.",
+      "supports_auto_limit": false,
+      "syntax": null
+    },
+    "elasticsearch": {
+      "class": "ElasticSearch",
+      "module": "redash.query_runner.elasticsearch",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": true,
+      "base": [
+        "BaseElasticSearch",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "json"
+    },
+    "elasticsearch2": {
+      "class": "ElasticSearch2",
+      "module": "redash.query_runner.elasticsearch2",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseHTTPQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "json"
+    },
+    "elasticsearch2_OpenDistroSQLElasticSearch": {
+      "class": "OpenDistroSQLElasticSearch",
+      "module": "redash.query_runner.elasticsearch2",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "ElasticSearch2",
+        "BaseHTTPQueryRunner",
+        "BaseQueryRunner"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "elasticsearch2_XPackSQLElasticSearch": {
+      "class": "XPackSQLElasticSearch",
+      "module": "redash.query_runner.elasticsearch2",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "ElasticSearch2",
+        "BaseHTTPQueryRunner",
+        "BaseQueryRunner"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "exasol": {
+      "class": "Exasol",
+      "module": "redash.query_runner.exasol",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1 FROM DUAL",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "excel": {
+      "class": "Excel",
+      "module": "redash.query_runner.excel",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "yaml"
+    },
+    "google_analytics": {
+      "class": "GoogleAnalytics",
+      "module": "redash.query_runner.google_analytics",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "json"
+    },
+    "google_analytics4": {
+      "class": "GoogleAnalytics4",
+      "module": "redash.query_runner.google_analytics4",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "google_search_console": {
+      "class": "GoogleSearchConsole",
+      "module": "redash.query_runner.google_search_console",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "json"
+    },
+    "google_spreadsheets": {
+      "class": "GoogleSpreadsheet",
+      "module": "redash.query_runner.google_spreadsheets",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "custom"
+    },
+    "graphite": {
+      "class": "Graphite",
+      "module": "redash.query_runner.graphite",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "instance_error": "KeyError: 'url'",
+      "supports_auto_limit": false,
+      "syntax": null
+    },
+    "hive": {
+      "class": "Hive",
+      "module": "redash.query_runner.hive_ds",
+      "should_annotate_query": false,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "hive_http": {
+      "class": "HiveHttp",
+      "module": "redash.query_runner.hive_ds",
+      "should_annotate_query": false,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "Hive",
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "ignite": {
+      "class": "Ignite",
+      "module": "redash.query_runner.ignite",
+      "should_annotate_query": false,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "impala": {
+      "class": "Impala",
+      "module": "redash.query_runner.impala_ds",
+      "should_annotate_query": true,
+      "noop_query": "show schemas",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "influxdb": {
+      "class": "InfluxDB",
+      "module": "redash.query_runner.influx_db",
+      "should_annotate_query": false,
+      "noop_query": "show measurements limit 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "influxdbv2": {
+      "class": "InfluxDBv2",
+      "module": "redash.query_runner.influx_db_v2",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "jirajql": {
+      "class": "JiraJQL",
+      "module": "redash.query_runner.jql",
+      "should_annotate_query": false,
+      "noop_query": "{\"queryType\": \"count\"}",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseHTTPQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "json"
+    },
+    "json": {
+      "class": "JSON",
+      "module": "redash.query_runner.json_ds",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseHTTPQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "yaml"
+    },
+    "kibana": {
+      "class": "Kibana",
+      "module": "redash.query_runner.elasticsearch",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": true,
+      "base": [
+        "BaseElasticSearch",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "json"
+    },
+    "kylin": {
+      "class": "Kylin",
+      "module": "redash.query_runner.kylin",
+      "should_annotate_query": true,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "memsql": {
+      "class": "MemSQL",
+      "module": "redash.query_runner.memsql_ds",
+      "should_annotate_query": false,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "mongodb": {
+      "class": "MongoDB",
+      "module": "redash.query_runner.mongodb",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "json"
+    },
+    "mssql": {
+      "class": "SqlServer",
+      "module": "redash.query_runner.mssql",
+      "should_annotate_query": false,
+      "noop_query": "SELECT 1",
+      "limit_query": " TOP 1000",
+      "limit_keywords": [
+        "TOP"
+      ],
+      "limit_after_select": true,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "mssql_odbc": {
+      "class": "SQLServerODBC",
+      "module": "redash.query_runner.mssql_odbc",
+      "should_annotate_query": false,
+      "noop_query": "SELECT 1",
+      "limit_query": " TOP 1000",
+      "limit_keywords": [
+        "TOP"
+      ],
+      "limit_after_select": true,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "mysql": {
+      "class": "Mysql",
+      "module": "redash.query_runner.mysql",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "nz": {
+      "class": "Netezza",
+      "module": "redash.query_runner.nz",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "oracle": {
+      "class": "Oracle",
+      "module": "redash.query_runner.oracle",
+      "should_annotate_query": false,
+      "noop_query": "SELECT 1 FROM dual",
+      "limit_query": " FETCH NEXT 1000 ROWS ONLY",
+      "limit_keywords": [
+        "ROW",
+        "ROWS",
+        "ONLY",
+        "TIES"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "pg": {
+      "class": "PostgreSQL",
+      "module": "redash.query_runner.pg",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "phoenix": {
+      "class": "Phoenix",
+      "module": "redash.query_runner.phoenix",
+      "should_annotate_query": true,
+      "noop_query": "select 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "pinot": {
+      "class": "Pinot",
+      "module": "redash.query_runner.pinot",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "presto": {
+      "class": "Presto",
+      "module": "redash.query_runner.presto",
+      "should_annotate_query": true,
+      "noop_query": "SHOW TABLES",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "prometheus": {
+      "class": "Prometheus",
+      "module": "redash.query_runner.prometheus",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "rds_mysql": {
+      "class": "RDSMySQL",
+      "module": "redash.query_runner.mysql",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "Mysql",
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "redshift": {
+      "class": "Redshift",
+      "module": "redash.query_runner.pg",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "PostgreSQL",
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "redshift_iam": {
+      "class": "RedshiftIAM",
+      "module": "redash.query_runner.pg",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "Redshift",
+        "PostgreSQL",
+        "BaseSQLQueryRunner"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "results": {
+      "class": "Results",
+      "module": "redash.query_runner.query_results",
+      "should_annotate_query": false,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "risingwave": {
+      "class": "RisingWave",
+      "module": "redash.query_runner.risingwave",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "PostgreSQL",
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "rockset": {
+      "class": "Rockset",
+      "module": "redash.query_runner.rockset",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "salesforce": {
+      "class": "Salesforce",
+      "module": "redash.query_runner.salesforce",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "scylla": {
+      "class": "ScyllaDB",
+      "module": "redash.query_runner.cass",
+      "should_annotate_query": true,
+      "noop_query": "SELECT dateof(now()) FROM system.local",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "Cassandra",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "snowflake": {
+      "class": "Snowflake",
+      "module": "redash.query_runner.snowflake",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "sparql_endpoint": {
+      "class": "SPARQLEndpointQueryRunner",
+      "module": "redash.query_runner.sparql_endpoint",
+      "should_annotate_query": true,
+      "noop_query": "SELECT ?noop WHERE {BIND('noop' as ?noop)}",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "sqlite": {
+      "class": "Sqlite",
+      "module": "redash.query_runner.sqlite",
+      "should_annotate_query": true,
+      "noop_query": "pragma quick_check",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "tinybird": {
+      "class": "Tinybird",
+      "module": "redash.query_runner.tinybird",
+      "should_annotate_query": true,
+      "noop_query": "SELECT count() FROM tinybird.pipe_stats LIMIT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "ClickHouse",
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "treasuredata": {
+      "class": "TreasureData",
+      "module": "redash.query_runner.treasuredata",
+      "should_annotate_query": false,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "trino": {
+      "class": "Trino",
+      "module": "redash.query_runner.trino",
+      "should_annotate_query": true,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "uptycs": {
+      "class": "Uptycs",
+      "module": "redash.query_runner.uptycs",
+      "should_annotate_query": false,
+      "noop_query": "SELECT 1",
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "sql"
+    },
+    "url": {
+      "class": "Url",
+      "module": "redash.query_runner.url",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": true,
+      "base": [
+        "BaseHTTPQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": false,
+      "syntax": "sql"
+    },
+    "yandex_appmetrika": {
+      "class": "YandexAppMetrica",
+      "module": "redash.query_runner.yandex_metrica",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "YandexMetrica",
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "yaml"
+    },
+    "yandex_disk": {
+      "class": "YandexDisk",
+      "module": "redash.query_runner.yandex_disk",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "yaml"
+    },
+    "yandex_metrika": {
+      "class": "YandexMetrica",
+      "module": "redash.query_runner.yandex_metrica",
+      "should_annotate_query": false,
+      "noop_query": null,
+      "limit_query": " LIMIT 1000",
+      "limit_keywords": [
+        "LIMIT",
+        "OFFSET"
+      ],
+      "limit_after_select": false,
+      "deprecated": false,
+      "base": [
+        "BaseSQLQueryRunner",
+        "BaseQueryRunner",
+        "object"
+      ],
+      "supports_auto_limit": true,
+      "syntax": "yaml"
+    }
+  },
+  "requested_destination_modules": "<generator object distinct at 0x7e4e8b1db3d0>",
+  "registered_destination_types": [
+    "asana",
+    "chatwork",
+    "datadog",
+    "discord",
+    "email",
+    "hangouts_chat",
+    "mattermost",
+    "microsoft_teams_webhook",
+    "pagerduty",
+    "slack",
+    "webex",
+    "webhook"
+  ],
+  "destinations": {
+    "asana": {
+      "name": "Asana",
+      "type": "asana",
+      "icon": "fa-asana",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "pat": {
+            "type": "string",
+            "title": "Asana Personal Access Token"
+          },
+          "project_id": {
+            "type": "string",
+            "title": "Asana Project ID"
+          }
+        },
+        "secret": [
+          "pat"
+        ],
+        "required": [
+          "pat",
+          "project_id"
+        ]
+      }
+    },
+    "chatwork": {
+      "name": "ChatWork",
+      "type": "chatwork",
+      "icon": "fa-comment",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "api_token": {
+            "type": "string",
+            "title": "API Token"
+          },
+          "room_id": {
+            "type": "string",
+            "title": "Room ID"
+          },
+          "message_template": {
+            "type": "string",
+            "default": "{alert_name} changed state to {new_state}.\\n{alert_url}\\n{query_url}",
+            "title": "Message Template"
+          }
+        },
+        "secret": [
+          "api_token"
+        ],
+        "required": [
+          "message_template",
+          "api_token",
+          "room_id"
+        ]
+      }
+    },
+    "datadog": {
+      "name": "Datadog",
+      "type": "datadog",
+      "icon": "fa-datadog",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "type": "string",
+            "title": "API Key"
+          },
+          "tags": {
+            "type": "string",
+            "title": "Tags"
+          },
+          "priority": {
+            "type": "string",
+            "default": "normal",
+            "title": "Priority"
+          },
+          "source_type_name": {
+            "type": "string",
+            "default": "my_apps",
+            "title": "Source Type Name"
+          }
+        },
+        "secret": [
+          "api_key"
+        ],
+        "required": [
+          "api_key"
+        ]
+      }
+    },
+    "discord": {
+      "name": "Discord",
+      "type": "discord",
+      "icon": "fa-discord",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "Discord Webhook URL"
+          }
+        },
+        "secret": [
+          "url"
+        ],
+        "required": [
+          "url"
+        ]
+      }
+    },
+    "email": {
+      "name": "Email",
+      "type": "email",
+      "icon": "fa-envelope",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "addresses": {
+            "type": "string"
+          },
+          "subject_template": {
+            "type": "string",
+            "default": "Alert: {alert_name} changed status to {state}",
+            "title": "Subject Template"
+          }
+        },
+        "required": [
+          "addresses"
+        ],
+        "extra_options": [
+          "subject_template"
+        ]
+      }
+    },
+    "hangouts_chat": {
+      "name": "Google Hangouts Chat",
+      "type": "hangouts_chat",
+      "icon": "fa-bolt",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "Webhook URL (get it from the room settings)"
+          },
+          "icon_url": {
+            "type": "string",
+            "title": "Icon URL (32x32 or multiple, png format)"
+          }
+        },
+        "secret": [
+          "url"
+        ],
+        "required": [
+          "url"
+        ]
+      }
+    },
+    "mattermost": {
+      "name": "Mattermost",
+      "type": "mattermost",
+      "icon": "fa-bolt",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "Mattermost Webhook URL"
+          },
+          "username": {
+            "type": "string",
+            "title": "Username"
+          },
+          "icon_url": {
+            "type": "string",
+            "title": "Icon (URL)"
+          },
+          "channel": {
+            "type": "string",
+            "title": "Channel"
+          }
+        },
+        "secret": "url"
+      }
+    },
+    "microsoft_teams_webhook": {
+      "name": "Microsoft Teams Webhook",
+      "type": "microsoft_teams_webhook",
+      "icon": "fa-bolt",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "Microsoft Teams Webhook URL"
+          },
+          "message_template": {
+            "type": "string",
+            "default": "{\"@type\": \"MessageCard\", \"@context\": \"http://schema.org/extensions\", \"themeColor\": \"0076D7\", \"summary\": \"A Redash Alert was Triggered\", \"sections\": [{\"activityTitle\": \"A Redash Alert was Triggered\", \"facts\": [{\"name\": \"Alert Name\", \"value\": \"{alert_name}\"}, {\"name\": \"Alert URL\", \"value\": \"{alert_url}\"}, {\"name\": \"Query\", \"value\": \"{query_text}\"}, {\"name\": \"Query URL\", \"value\": \"{query_url}\"}], \"markdown\": true}]}",
+            "title": "Message Template"
+          }
+        },
+        "required": [
+          "url"
+        ]
+      }
+    },
+    "pagerduty": {
+      "name": "PagerDuty",
+      "type": "pagerduty",
+      "icon": "creative-commons-pd-alt",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "integration_key": {
+            "type": "string",
+            "title": "PagerDuty Service Integration Key"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description for the event, defaults to alert name"
+          }
+        },
+        "secret": [
+          "integration_key"
+        ],
+        "required": [
+          "integration_key"
+        ]
+      }
+    },
+    "slack": {
+      "name": "Slack",
+      "type": "slack",
+      "icon": "fa-slack",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "Slack Webhook URL"
+          }
+        },
+        "secret": [
+          "url"
+        ]
+      }
+    },
+    "webex": {
+      "name": "Webex",
+      "type": "webex",
+      "icon": "fa-webex",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "webex_bot_token": {
+            "type": "string",
+            "title": "Webex Bot Token"
+          },
+          "to_person_emails": {
+            "type": "string",
+            "title": "People (comma-separated)"
+          },
+          "to_room_ids": {
+            "type": "string",
+            "title": "Rooms (comma-separated)"
+          }
+        },
+        "secret": [
+          "webex_bot_token"
+        ],
+        "required": [
+          "webex_bot_token"
+        ]
+      }
+    },
+    "webhook": {
+      "name": "Webhook",
+      "type": "webhook",
+      "icon": "fa-bolt",
+      "configuration_schema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "url"
+        ],
+        "secret": [
+          "password",
+          "url"
+        ]
+      }
+    }
+  }
+}
