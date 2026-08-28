@@ -1,0 +1,26 @@
+redash-akka
+Copyright 2026 Tyler Jewell
+
+This software was written for the Akka Specify port experiment and is licensed
+under the Apache License, Version 2.0. See LICENSE.
+
+It is a clean-room implementation: written against a specification derived by
+running getredash/redash and recording what it does, not by translating its source.
+
+Portions of this repository are NOT covered by that licence. The following trees
+are reused verbatim from getredash/redash (https://github.com/getredash/redash):
+
+    frontend/
+    src/main/resources/disposable-email-domains.txt
+    src/main/resources/static-resources/
+    src/main/resources/templates/
+
+    Copyright 2013-2020, Arik Fraimovich
+    Licensed under BSD-2-Clause
+
+Those files remain under the licence their authors chose. Nothing in this
+repository relicenses them. See LICENSING.md and .vendored.
+
+Installed dependencies inside those trees (node_modules)
+are neither this project's work nor getredash/redash's. Each package
+there remains under the licence its own author chose.

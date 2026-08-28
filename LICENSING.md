@@ -6,22 +6,24 @@ This repository holds two kinds of code and they are not under the same licence.
 
 Everything outside the vendored trees listed below was written for this project. It is a
 clean-room implementation: written against a specification derived by running
-[getredash/redash](https://github.com/getredash/redash) and recording what it does, not by translating
-its source. See `../redash-port/specs/SPEC-001-redash.md` for the rules it was built to, and `ACKNOWLEDGEMENTS.md` for the
+[getredash/redash](https://github.com/getredash/redash) and recording what it does, not by translating its
+source. See `../redash-port/specs/SPEC-001-redash.md` for the rules it was built to, and `ACKNOWLEDGEMENTS.md` for the
 places any text was carried across and why.
 
-It is licensed under the Apache License 2.0. See `LICENSE`.
+It is licensed under the Apache License 2.0, Copyright 2026 Tyler Jewell. See `LICENSE`
+and `NOTICE`.
 
 ## The interface — BSD-2-Clause, as getredash/redash licensed it
 
 - `frontend/`
+- `src/main/resources/disposable-email-domains.txt`
 - `src/main/resources/static-resources/`
 - `src/main/resources/templates/`
 
-That code was written by the getredash/redash project and is shipped here **verbatim**, reused
-rather than rebuilt, per this harness's RENDERING.md R3. It remains under the licence its
-authors chose, unmodified, in `LICENSE-redash` and beside the code itself. Nothing
-about this repository relicenses it.
+That code was written by the getredash/redash project, Copyright 2013-2020, Arik Fraimovich, and is shipped
+here **verbatim**, reused rather than rebuilt, per this harness's RENDERING.md R3. It
+remains under the licence its authors chose, unmodified, in `LICENSE-redash` and beside
+the code itself. Nothing about this repository relicenses it.
 
 ## Why the split
 
