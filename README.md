@@ -26,7 +26,7 @@ The specifications the port was generated from are in
 
 ## getredash/redash → this port
 
-📉 21,353 Python lines → **17,204 Java lines**<br>
+📉 21,353 Python lines → **17,293 Java lines**<br>
 📁 168 files → **90 files**<br>
 ✅ 187 requests compared → **187 agree**<br>
 ✅ 238 scheduling and alarm answers compared → **238 agree**<br>
@@ -49,9 +49,9 @@ Full method and the numbers that did *not* make this list:
 
 ## What it took to build
 
-⏱️ **107.7 hours** from the first command to the published repository, **10.9** of them active<br>
-💬 **3,465** exchanges with the model<br>
-✍️ **2,957,248** tokens written by the model, **1,730,331,903** counting everything sent and re-sent<br>
+⏱️ **127.6 hours** from the first command to the published repository, **11.2** of them active<br>
+💬 **3,787** exchanges with the model<br>
+✍️ **3,062,717** tokens written by the model, **1,770,849,428** counting everything sent and re-sent<br>
 🙋 **0** questions to a human<br>
 🧪 **141** tests
 
@@ -172,6 +172,28 @@ akka local run
 
 The service starts on **port 9156**. Open http://localhost:9156 and it offers to create the
 first account.
+
+### Run the tests
+
+```bash
+mvn test      # 122 tests, nothing else needs to be running
+mvn verify    # the same 122 plus 19 that start a runtime
+```
+
+Eighteen of the nineteen run; the one that captures screens waits for `REDASH_CAPTURE`
+to be set. They need two things beyond Java. A PostgreSQL has to answer at
+`127.0.0.1:26602` — they point a data source at it and run real SQL, so a bare instance is
+enough — and `python` has to be on the path, because the walk that compares this service's
+whole HTTP surface against a recording of the original's is a Python program both sides run.
+Set `REDASH_PROBE_PG_HOST`, `REDASH_PROBE_PG_PORT` and `PYTHON` to move any of the three.
+Without the database, twenty-seven of the walk's 187 steps answer with a failed query and
+the run reports a disagreement that is about the machine rather than about the code.
+
+```bash
+docker run -d --name redash-akka-probe-pg -p 26602:5432 \
+  -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=postgres \
+  postgres:16-alpine
+```
 
 ### Rebuild the pages
 

@@ -127,21 +127,24 @@ output rather than an estimate, and the list it is computed from is committed at
 
 | | Class | Why it is in both |
 |---:|---|---|
-| 264 | the 75 data source configuration schemas | Wire formats: the front end draws every connection form from them, so a reworded title ships a form nobody can fill in. |
+| 263 | the 75 data source configuration schemas | Wire formats: the front end draws every connection form from them, so a reworded title ships a form nobody can fill in. |
+| 222 | route paths, field names and stored values the front end reads | The front end is redash's own and builds these URLs and reads these fields. |
 | 218 | the names of environment variables and organisation settings | A deployment sets these. A port that renamed one would silently ignore a configured value. |
-| 217 | route paths, field names and stored values the front end reads | The front end is redash's own and builds these URLs and reads these fields. |
-| 180 | the vocabulary the domain and the store share | Alert states, operator names, table names, the redis key prefixes — values that are stored and read back, not prose. |
-| 38 | field names and stored values, wherever else they are read | The same vocabulary, in files the classes above do not cover. |
+| 182 | the vocabulary the domain and the store share | Alert states, operator names, table names, the redis key prefixes — values that are stored and read back, not prose. |
+| 42 | field names and stored values, wherever else they are read | The same vocabulary, in files the classes above do not cover. |
 | 32 | the 12 destination configuration schemas | The same argument as the data source schemas. |
 | 29 | what a destination puts on the wire | Compared against the original's own, thirty cases, in `DeliveryTest`. |
 | 28 | the SQL a runner sends to read a schema | Each runner's schema query is what that database answers; a different query answers a different question. |
 | 10 | what the command line prints, and the words it is driven with | A command line is read by people and by scripts, so the text is the interface. |
 | 10 | wording a person reads, reproduced word for word | Refusals and page text. Compared at the walk steps listed above. |
-| 5 | the names of HTTP headers | `Content-Type`, `Authorization` and three more. Neither system's. |
+| 4 | the names of HTTP headers | The four security headers a response carries. `Content-Type` and `Authorization` are named one at a time below. Neither system's; they are the wire's. |
+| 2 | fixtures and expectations in this port's own tests | Two field names the benchmark runner reads out of a response, in a file that is not shipped. |
 
-Eleven the classifier leaves for a reader, each here so nobody has to look them up:
-`--password` and `create_root` and `create_tables` are how this port's own tests drive its
-command line, which is redash's command line; `Active: True`, `Name: admin`,
+That is all 1,042, and the classifier exits 0 only when no string is left over.
+
+Thirteen are named one at a time rather than by class, because no class is true of all of
+them: `--password` and `create_root` and `create_tables` are how this port's own tests drive
+its command line, which is redash's command line; `Active: True`, `Name: admin`,
 `Organization: default`, `Slug: default`, `Type: builtin`, `Type: sqlite` and
 `already an admin` are lines that command line prints, asserted word for word;
 `Authorization`, `X-Frame-Options` and `X-Forwarded-Remote-User` are HTTP header names.

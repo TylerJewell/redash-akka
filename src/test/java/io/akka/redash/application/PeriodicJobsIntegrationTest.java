@@ -116,6 +116,10 @@ class PeriodicJobsIntegrationTest extends TestKitSupport {
 
   @Test
   void removesTheSameLocksTheOriginalRemoves() {
+    // The lock is held by a query that is still running, which needs a database slow enough
+    // to still be answering. An absent one leaves nothing in flight to lock.
+    io.akka.redash.domain.ProbeDatabase.require();
+
     var recorded = Oracle.section(RECORDED, "ghost_locks");
     var before = Json.asList(recorded.get("before"));
     var after = Json.asList(recorded.get("after"));
