@@ -45,10 +45,6 @@ class SurfaceWalkIntegrationTest extends TestKitSupport {
 
   @Test
   void theWholeSurfaceAnswersAsTheOriginalDoes() throws Exception {
-    // The walk points a data source at a real PostgreSQL and runs real SQL through it. An
-    // absent one is a missing fixture rather than a disagreement, and is said so here.
-    io.akka.redash.domain.ProbeDatabase.require();
-
     // Set the instance up the way the original's own stack is set up: through the command
     // line, before the walk starts. Doing it through the setup *page* instead would sign
     // the new administrator in, and the original's `manage.py users create_root` does not —
